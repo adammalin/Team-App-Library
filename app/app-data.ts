@@ -5,6 +5,7 @@ export const sectionOrder = [
   "run",
   "uninstall",
   "usage",
+  "ai-integration",
 ] as const;
 
 export type SectionId = (typeof sectionOrder)[number];
@@ -25,6 +26,33 @@ export type PlatformInstructions = {
   runNote?: string;
   uninstall: string[];
   dataNote: string;
+};
+
+export type AIIntegration = {
+  type: "local" | "mcp";
+  kicker: string;
+  title: string;
+  intro: string;
+  overviewTitle: string;
+  overviewBody: string;
+  overviewPoints: string[];
+  setupTitle: string;
+  setupIntro: string;
+  setupSteps: string[];
+  examples: {
+    title: string;
+    body: string;
+    prompt?: string;
+  }[];
+  reviewTitle: string;
+  reviewSteps: string[];
+  boundaryTitle: string;
+  boundaryBody: string;
+  boundaryPoints: string[];
+  resources: {
+    label: string;
+    href: string;
+  }[];
 };
 
 export type AppEntry = {
@@ -62,6 +90,7 @@ export type AppEntry = {
     alt: string;
     caption: string;
   }[];
+  aiIntegration: AIIntegration;
   platformsInfo: Partial<Record<PlatformId, PlatformInstructions>>;
   availabilityNote?: string;
   sourceNote?: string;
@@ -74,6 +103,7 @@ export const sectionLabels: Record<SectionId, string> = {
   run: "Run & rerun",
   uninstall: "Uninstall",
   usage: "Use the app",
+  "ai-integration": "AI Integration",
 };
 
 export const apps: AppEntry[] = [
@@ -143,6 +173,68 @@ export const apps: AppEntry[] = [
         caption: "Add a missed mask, adjust its corners or blur, and re-export only that image.",
       },
     ],
+    aiIntegration: {
+      type: "local",
+      kicker: "Local / offline AI",
+      title: "Find likely badges without sending photos to a remote model.",
+      intro:
+        "Badge Blur uses two pinned, quantized vision models on the computer as a first-pass detector. The models propose masks; the reviewer decides what is correct before the final batch is complete.",
+      overviewTitle: "How the local detection pipeline works",
+      overviewBody:
+        "Grounding DINO Tiny searches each image for likely identification badges. Enhanced detection can use CLIP ViT-B/32 to reject common lookalikes such as shirt details, signs, equipment labels, uniform patches, and clipped objects. Both models run through ONNX Runtime WebAssembly in isolated workers so the interface can remain responsive during a batch.",
+      overviewPoints: [
+        "Setup downloads exact model revisions and verifies their SHA-256 checksums.",
+        "Remote model loading is disabled; model, tokenizer, and ONNX runtime files are read locally.",
+        "One or two detector workers are selected conservatively from local processor, memory, and benchmark signals.",
+        "The AI proposes badge regions only. It does not approve a redaction or replace a source photo.",
+      ],
+      setupTitle: "What needs internet access—and what does not",
+      setupIntro:
+        "The first setup or a later update needs internet access to retrieve the application source, runtime, dependencies, and pinned model files. Normal detection, review, correction, recovery, and export then work locally without a model-service connection.",
+      setupSteps: [
+        "Run the normal Badge Blur setup and allow it to finish downloading and verifying both model packages.",
+        "Launch Badge Blur through its checked-in start script so Electron can enforce the local-only runtime policy.",
+        "Wait for the local model status to report ready before starting the batch.",
+        "Keep source photos in an approved local folder and choose an appropriate local export location.",
+      ],
+      examples: [
+        {
+          title: "First-pass detection",
+          body: "Let the local detector find likely badge regions across the selected folder while the originals remain read-only.",
+        },
+        {
+          title: "Enhanced filtering",
+          body: "Use the enhanced local path when likely shirt details, signs, patches, or equipment labels need a second classification pass.",
+        },
+        {
+          title: "Review-led correction",
+          body: "Treat the mask as a starting point: add missed badges, remove false detections, move corners, and adjust blur before confirming the image.",
+        },
+      ],
+      reviewTitle: "Validate every AI-proposed redaction",
+      reviewSteps: [
+        "Open Review photos and inspect the full image at a useful zoom.",
+        "Compare Before and After; look specifically for missed badges and important content hidden by a false mask.",
+        "Add or remove masks, move all four mask corners, and adjust blur or mosaic settings when needed.",
+        "Choose Save, review & next only after the current image is correct. Export all requires explicit review confirmation for every processed image.",
+        "Open a sample of the saved files from the run folder and confirm the final pixels match the reviewed view.",
+      ],
+      boundaryTitle: "Why offline processing matters",
+      boundaryBody:
+        "Photos that contain identification badges can also contain people, facilities, screens, equipment, or other sensitive context. Keeping inference and image processing on the workstation reduces unnecessary transfer, but it does not make every photo approved for use.",
+      boundaryPoints: [
+        "The Electron app permits normal network reads only to its private loopback service and blocks remote model loading.",
+        "Source images are not overwritten or copied into the export folder; only redacted outputs and local recovery records are written.",
+        "Reviewed corrections are saved as local annotations and do not retrain or silently change the bundled models.",
+        "Detection can miss a badge or flag the wrong object. Human review remains required, and local handling rules still apply.",
+      ],
+      resources: [
+        {
+          label: "Badge Blur model and security notes",
+          href: "https://github.com/adammalin/Badge-Blur#model-download",
+        },
+      ],
+    },
     platformsInfo: {
       mac: {
         label: "macOS",
@@ -241,6 +333,81 @@ export const apps: AppEntry[] = [
           "Synthetic preview: edit a structured hierarchy, inspect save state, and move between governance workspaces.",
       },
     ],
+    aiIntegration: {
+      type: "mcp",
+      kicker: "AI integration / MCP server",
+      title: "Let a desktop AI prepare chart changes for human review.",
+      intro:
+        "OrgChart Studio includes an optional local Model Context Protocol companion. It gives ChatGPT desktop or Codex a bounded set of chart tools while the app remains the review and approval surface.",
+      overviewTitle: "What the MCP server does",
+      overviewBody:
+        "Model Context Protocol, or MCP, is an open standard that lets an AI client discover named tools with structured inputs. OrgChart Studio's on-demand STDIO server connects only to the running Electron app through a loopback address and a new private token for each launch.",
+      overviewPoints: [
+        "Read tools can list charts, read an allowed chart, inspect versions, and run validation without changing data.",
+        "Write tools can stage a reviewed import or a proposed change to an existing working draft.",
+        "The app exposes pause, chart-scope, retained-source permission, and session-receipt controls.",
+        "No MCP tool can delete charts, restore backups, retrieve backup passphrases, change storage locations, or publish an output.",
+      ],
+      setupTitle: "Connect ChatGPT desktop or Codex",
+      setupIntro:
+        "The macOS and Windows setup scripts can register the local server in the shared desktop MCP configuration. The ChatGPT desktop app, Codex app, Codex CLI, and Codex IDE extension can use that local configuration; an ordinary ChatGPT web chat cannot reach this private desktop bridge.",
+      setupSteps: [
+        "During setup, type y at Install the local MCP integration? [y/N]. If the app is already installed, open AI & MCP control and choose Install local AI integration.",
+        "Restart ChatGPT desktop or Codex once after registration.",
+        "Open OrgChart Studio before asking the AI to use a chart tool.",
+        "In AI & MCP control, resume MCP only for the intended session and allow all charts or select only the approved chart IDs.",
+        "Leave retained-source extraction off unless the files and the selected AI environment are approved for one another.",
+        "Type /mcp in ChatGPT desktop or Codex and confirm orgchart_studio is enabled.",
+      ],
+      examples: [
+        {
+          title: "Start with a read-only inventory",
+          body: "Resolve the stable chart ID before requesting any change.",
+          prompt:
+            "Use orgchart_studio to list available charts. Return titles and stable chart IDs only. Do not read full chart contents and do not change anything.",
+        },
+        {
+          title: "Validate an approved chart",
+          body: "Ask for findings before asking the AI to prepare a fix.",
+          prompt:
+            "Read only chart [CHART ID], run its validation, and summarize blocking and advisory findings. Do not stage, apply, save, or publish changes.",
+        },
+        {
+          title: "Stage one bounded change",
+          body: "Name the invariant fields so the proposal stays narrow.",
+          prompt:
+            "For chart [CHART ID], change only [EXACT FIELD AND VALUE]. Preserve chart identity, card IDs, reporting relationships, layout, connector pins, source fields, and all other content. Stage the result with replace_chart_draft for review. Do not apply or save it.",
+        },
+      ],
+      reviewTitle: "Validate the proposal inside OrgChart Studio",
+      reviewSteps: [
+        "Confirm the app shows AI preparing changes and names the expected operation.",
+        "Choose Review changes. Inspect the read-only proposed canvas and every Before and After field.",
+        "Check added or changed cards, reporting connectors, layout, pins, current/planned state, source certainty, locators, and review notes.",
+        "Choose Reject proposal if anything is broader or less certain than requested. The saved chart remains unchanged.",
+        "If the proposal is correct, choose Apply reviewed changes, run validation again, and resolve any Source review queue items.",
+        "Save a named version to create an immutable checkpoint and link the accepted AI-assisted activity record to it.",
+      ],
+      boundaryTitle: "Keep chart access deliberate",
+      boundaryBody:
+        "Local transport does not mean chart data stays out of the AI conversation. Any chart fields or extracted source content returned by an allowed read tool are shared with the selected AI client.",
+      boundaryPoints: [
+        "Use only charts and retained sources approved for the selected ChatGPT or Codex environment.",
+        "Prefer Selected charts over All charts for routine work, and pause MCP when the session ends.",
+        "Retained-source extraction is separately controlled, off by default, and resets off when the app restarts.",
+        "Ask the AI to stage proposals only. Apply, version, export, and backup remain explicit human actions in the app.",
+      ],
+      resources: [
+        {
+          label: "OrgChart Studio Codex handoff",
+          href: "https://github.com/adammalin/Org-Chart-Studio/blob/main/docs/CODEX-HANDOFF.md",
+        },
+        {
+          label: "OpenAI Model Context Protocol guide",
+          href: "https://learn.chatgpt.com/docs/extend/mcp",
+        },
+      ],
+    },
     platformsInfo: {
       mac: {
         label: "macOS",
@@ -357,6 +524,80 @@ export const apps: AppEntry[] = [
           "The Locations workspace combines searchable rows, the live map, layer-aware controls, and a selected-pin inspector.",
       },
     ],
+    aiIntegration: {
+      type: "mcp",
+      kicker: "AI integration / MCP server",
+      title: "Turn a map request into a visible, reviewable proposal.",
+      intro:
+        "USA Map Studio includes a local Model Context Protocol server for ChatGPT desktop, Codex, and other compatible desktop clients. The AI can inspect the open project and stage one change; a person decides whether it reaches the working map.",
+      overviewTitle: "What the MCP server does",
+      overviewBody:
+        "Model Context Protocol, or MCP, is an open standard for presenting app functions as structured AI tools. USA Map Studio's on-demand STDIO server connects to the open Electron app through a loopback-only bridge, an ephemeral port, and a new private token for every launch.",
+      overviewPoints: [
+        "Read tools report app status, the current project, layers, locations, and validation results.",
+        "Stage tools prepare layer, location, CSV, pin, visibility, and map-style changes without applying them.",
+        "Every write creates one visible proposal and checks the project's exact updatedAt value to prevent stale changes.",
+        "Removing a layer, removing locations, and replacing a project are flagged as destructive even though they still stop at human review.",
+      ],
+      setupTitle: "Connect ChatGPT desktop or Codex",
+      setupIntro:
+        "The normal macOS and Windows setup registers usa_map_studio automatically unless that optional step was skipped. The ChatGPT desktop app, Codex app, Codex CLI, and Codex IDE extension can use the local server; an ordinary ChatGPT web chat cannot reach the private desktop bridge.",
+      setupSteps: [
+        "Complete the normal USA Map Studio setup. If you previously skipped MCP registration, rerun the normal setup without the skip option so it can register the connection.",
+        "Restart ChatGPT desktop or Codex after the configuration changes.",
+        "Open USA Map Studio and open or create the project you intend to change.",
+        "Type /mcp in ChatGPT desktop or Codex and confirm usa_map_studio is enabled.",
+        "Ask the AI to call get_app_status first, then read only the project, layers, or locations needed for the request.",
+      ],
+      examples: [
+        {
+          title: "Inspect the open map first",
+          body: "Establish the project ID, update timestamp, and stable layer IDs before staging a change.",
+          prompt:
+            "Use usa_map_studio to check app status and summarize the current project and layer IDs. Do not change, stage, apply, save, or export anything.",
+        },
+        {
+          title: "Stage locations from CSV",
+          body: "Target one stable layer ID and ask for unresolved rows explicitly.",
+          prompt:
+            "Read the current project, then stage these cleared CSV locations into layer [LAYER ID] using add mode and the app's offline place lookup. Report every unresolved row. Do not apply or save the proposal.",
+        },
+        {
+          title: "Stage a narrow style change",
+          body: "State which map properties must remain unchanged.",
+          prompt:
+            "Stage only this map-style change: [EXACT CHANGE]. Preserve every layer, location, coordinate, label, pin override, custom SVG, pan, zoom, and all unspecified style values. Do not apply, save, or export it.",
+        },
+      ],
+      reviewTitle: "Validate the proposal inside USA Map Studio",
+      reviewSteps: [
+        "Open Local AI control or the proposal banner and confirm the operation matches the request.",
+        "Compare Before and After. Verify the project ID, target layer ID, location counts, unresolved CSV rows, coordinates, visibility, labels, pins, and style values.",
+        "Inspect the live map for misplaced pins, unexpected layer changes, label collisions, and altered pan or zoom.",
+        "Choose Reject proposal if anything is wrong or broader than requested; the project remains unchanged.",
+        "If correct, choose Apply to working map, inspect the canvas again, and watch the autosave status. Undo remains available.",
+        "Export a proof when the output matters and inspect the SVG, PNG, or PowerPoint separately from the working-map review.",
+      ],
+      boundaryTitle: "Know when map data enters the AI conversation",
+      boundaryBody:
+        "Normal map editing, offline place lookup, rendering, and export remain local. Project or CSV-derived content becomes part of the AI conversation only when an MCP read tool returns it or when the user supplies it in a prompt.",
+      boundaryPoints: [
+        "Use the integration only with project and CSV content approved for the selected AI environment.",
+        "The runtime token exists only while USA Map Studio is open and should never be copied into a permanent configuration file.",
+        "Stable project and layer IDs plus the exact updatedAt value protect against changing the wrong or stale project.",
+        "The AI stages; the person reviews, applies or rejects, verifies autosave, and decides whether to export.",
+      ],
+      resources: [
+        {
+          label: "USA Map Studio MCP guide",
+          href: "https://github.com/adammalin/Map-Maker-Studio/blob/main/docs/MCP.md",
+        },
+        {
+          label: "OpenAI Model Context Protocol guide",
+          href: "https://learn.chatgpt.com/docs/extend/mcp",
+        },
+      ],
+    },
     platformsInfo: {
       mac: {
         label: "macOS",

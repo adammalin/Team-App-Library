@@ -15,16 +15,19 @@ const exportedPages = [
   "out/apps/badge-blur/run/index.html",
   "out/apps/badge-blur/uninstall/index.html",
   "out/apps/badge-blur/usage/index.html",
+  "out/apps/badge-blur/ai-integration/index.html",
   "out/apps/orgchart-studio/install/index.html",
   "out/apps/orgchart-studio/update/index.html",
   "out/apps/orgchart-studio/run/index.html",
   "out/apps/orgchart-studio/uninstall/index.html",
   "out/apps/orgchart-studio/usage/index.html",
+  "out/apps/orgchart-studio/ai-integration/index.html",
   "out/apps/usa-map-studio/install/index.html",
   "out/apps/usa-map-studio/update/index.html",
   "out/apps/usa-map-studio/run/index.html",
   "out/apps/usa-map-studio/uninstall/index.html",
   "out/apps/usa-map-studio/usage/index.html",
+  "out/apps/usa-map-studio/ai-integration/index.html",
 ];
 
 test("exports every catalog and documentation route", async () => {

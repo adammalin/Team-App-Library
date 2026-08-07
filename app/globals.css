@@ -1025,6 +1025,96 @@ img {
   width: 30px;
 }
 
+.ai-overview {
+  background: color-mix(in srgb, var(--ornl-graphite) 22%, var(--ornl-polar));
+  border-left: 6px solid var(--ornl-green);
+  padding: 1.8rem 2rem;
+}
+
+.ai-overview .supporting-copy,
+#connect > .supporting-copy {
+  font-size: 1rem;
+  margin: 0 0 1.5rem;
+  max-width: 800px;
+}
+
+.ai-setup-list,
+.ai-review-list {
+  margin-top: 1.6rem;
+}
+
+.ai-example-list {
+  border-top: 1px solid var(--ornl-graphite);
+  display: grid;
+}
+
+.ai-example-list article {
+  border-bottom: 1px solid var(--ornl-graphite);
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 48px minmax(0, 1fr);
+  padding: 1.5rem 0;
+}
+
+.ai-example-list article > span {
+  color: var(--ornl-green);
+  font-size: 1.35rem;
+  font-weight: 300;
+}
+
+.ai-example-list h3 {
+  color: var(--ornl-hale-navy);
+  font-size: 1.12rem;
+  margin: 0 0 0.4rem;
+}
+
+.ai-example-list p {
+  margin: 0;
+}
+
+.ai-example-list .code-block {
+  margin-top: 1rem;
+}
+
+.ai-boundary-list {
+  margin: 1.6rem 0 2.4rem;
+}
+
+.ai-resources {
+  border-top: 1px solid var(--ornl-graphite);
+  display: grid;
+  gap: 0;
+  padding-top: 1.3rem;
+}
+
+.ai-resources .nav-label {
+  margin-left: 0;
+}
+
+.ai-resources a {
+  align-items: center;
+  border-bottom: 1px solid var(--ornl-graphite);
+  color: var(--ornl-hale-navy);
+  display: flex;
+  font-size: 0.9rem;
+  font-weight: 800;
+  gap: 1rem;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 0.65rem 0;
+}
+
+.ai-resources a:hover {
+  color: var(--ornl-green);
+}
+
+.ai-resources svg {
+  color: var(--ornl-green);
+  flex: 0 0 18px;
+  height: 18px;
+  width: 18px;
+}
+
 .uninstall-section {
   border-top: 5px solid var(--ornl-hale-navy);
   padding-top: 1.4rem;

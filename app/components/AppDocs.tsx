@@ -55,6 +55,13 @@ const pageAnchors: Record<SectionId, { id: string; label: string }[]> = {
     { id: "screens", label: "Interface" },
     { id: "privacy", label: "Local data boundary" },
   ],
+  "ai-integration": [
+    { id: "how", label: "How it works" },
+    { id: "connect", label: "Setup or connect" },
+    { id: "use", label: "Ways to use it" },
+    { id: "review", label: "Review the output" },
+    { id: "boundary", label: "Data boundary" },
+  ],
 };
 
 function PlatformIcon({ platform }: { platform: PlatformId }) {
@@ -458,12 +465,115 @@ function Usage({ app }: { app: AppEntry }) {
   );
 }
 
+function AIIntegration({ app }: { app: AppEntry }) {
+  const integration = app.aiIntegration;
+  const isMcp = integration.type === "mcp";
+
+  return (
+    <>
+      <section id="how" className="lead-section">
+        <span className="eyebrow">{integration.kicker}</span>
+        <h1>{integration.title}</h1>
+        <p>{integration.intro}</p>
+        <div className="inline-badges" aria-label="AI integration characteristics">
+          <span className="platform-badge">
+            <HardDrives />
+            Local runtime
+          </span>
+          <span className="version-badge">
+            <ShieldCheck />
+            Human review required
+          </span>
+        </div>
+      </section>
+
+      <section className="content-block ai-overview">
+        <span className="eyebrow">{isMcp ? "Local tool connection" : "Local model pipeline"}</span>
+        <h2>{integration.overviewTitle}</h2>
+        <p className="supporting-copy">{integration.overviewBody}</p>
+        <ul className="check-list">
+          {integration.overviewPoints.map((point) => (
+            <li key={point}>
+              <CheckCircle weight="fill" />
+              {point}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="connect" className="content-block">
+        <span className="eyebrow">{isMcp ? "Desktop connection" : "Offline readiness"}</span>
+        <h2>{integration.setupTitle}</h2>
+        <p className="supporting-copy">{integration.setupIntro}</p>
+        <ol className="numbered-list ai-setup-list">
+          {integration.setupSteps.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="use" className="content-block">
+        <span className="eyebrow">{isMcp ? "Prompt patterns" : "Where the AI helps"}</span>
+        <h2>{isMcp ? "Ask for narrow, reviewable work." : "Use detection as a first pass."}</h2>
+        <div className="ai-example-list">
+          {integration.examples.map((example, index) => (
+            <article key={example.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <div>
+                <h3>{example.title}</h3>
+                <p>{example.body}</p>
+                {example.prompt ? (
+                  <CodeBlock code={example.prompt} label="Example request" />
+                ) : null}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="review" className="content-block">
+        <span className="eyebrow">Human decision point</span>
+        <h2>{integration.reviewTitle}</h2>
+        <ol className="numbered-list ai-review-list">
+          {integration.reviewSteps.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="boundary" className="content-block">
+        <Note tone="warning" title={integration.boundaryTitle}>
+          {integration.boundaryBody}
+        </Note>
+        <ul className="check-list ai-boundary-list">
+          {integration.boundaryPoints.map((point) => (
+            <li key={point}>
+              <ShieldCheck weight="fill" />
+              {point}
+            </li>
+          ))}
+        </ul>
+        <div className="ai-resources" aria-label="AI integration resources">
+          <span className="nav-label">Reference material</span>
+          {integration.resources.map((resource) => (
+            <a href={resource.href} target="_blank" rel="noreferrer" key={resource.href}>
+              {resource.label}
+              <ArrowRight aria-hidden="true" />
+            </a>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
 function SectionContent({ app, section }: { app: AppEntry; section: SectionId }) {
   if (section === "install") return <Install app={app} />;
   if (section === "update") return <Update app={app} />;
   if (section === "run") return <Run app={app} />;
   if (section === "uninstall") return <Uninstall app={app} />;
   if (section === "usage") return <Usage app={app} />;
+  if (section === "ai-integration") return <AIIntegration app={app} />;
   return <Overview app={app} />;
 }
 

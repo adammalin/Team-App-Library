@@ -49,6 +49,9 @@ test("server-renders app-specific documentation routes", async () => {
     ["/apps/orgchart-studio/update", "orgchart-studio-install.zsh"],
     ["/apps/usa-map-studio/usage", "What the app looks like"],
     ["/apps/usa-map-studio/uninstall", "What stays behind"],
+    ["/apps/badge-blur/ai-integration", "Grounding DINO Tiny"],
+    ["/apps/orgchart-studio/ai-integration", "replace_chart_draft"],
+    ["/apps/usa-map-studio/ai-integration", "get_app_status"],
   ];
 
   for (const [pathname, expected] of routes) {
@@ -58,6 +61,32 @@ test("server-renders app-specific documentation routes", async () => {
     assert.match(html, new RegExp(expected, "i"), pathname);
     assert.match(html, /Draft internal documentation/i, pathname);
   }
+});
+
+test("distinguishes offline AI from review-first MCP control", async () => {
+  const [badge, orgchart, map] = await Promise.all([
+    render("/apps/badge-blur/ai-integration"),
+    render("/apps/orgchart-studio/ai-integration"),
+    render("/apps/usa-map-studio/ai-integration"),
+  ]);
+
+  const [badgeHtml, orgchartHtml, mapHtml] = await Promise.all([
+    badge.text(),
+    orgchart.text(),
+    map.text(),
+  ]);
+
+  assert.match(badgeHtml, /Local \/ offline AI/i);
+  assert.match(badgeHtml, /Remote model loading is disabled/i);
+  assert.match(badgeHtml, /Human review remains required/i);
+
+  assert.match(orgchartHtml, /Model Context Protocol/i);
+  assert.match(orgchartHtml, /orgchart_studio/i);
+  assert.match(orgchartHtml, /saved chart remains unchanged/i);
+
+  assert.match(mapHtml, /usa_map_studio/i);
+  assert.match(mapHtml, /get_app_status/i);
+  assert.match(mapHtml, /Apply to working map/i);
 });
 
 test("ships the supplied PDFs and removes starter preview content", async () => {

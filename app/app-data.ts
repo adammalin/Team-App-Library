@@ -10,6 +10,12 @@ export const sectionOrder = [
 export type SectionId = (typeof sectionOrder)[number];
 export type PlatformId = "mac" | "windows";
 
+const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "";
+
+function assetPath(path: string): string {
+  return siteBasePath + path;
+}
+
 export type PlatformInstructions = {
   label: string;
   requirements: string[];
@@ -80,15 +86,15 @@ export const apps: AppEntry[] = [
     description:
       "Detect likely identification badges, review every mask, and save redacted copies while keeping originals unchanged.",
     repository: "https://github.com/adammalin/Badge-Blur",
-    icon: "/assets/icons/badge-blur.png",
+    icon: assetPath("/assets/icons/badge-blur.png"),
     iconKind: "image",
     platforms: ["mac"],
     platformSummary: "Apple silicon · macOS 13+",
     guide: {
-      href: "/assets/guides/Badge-Blur-macOS-Quick-Start.pdf",
+      href: assetPath("/assets/guides/Badge-Blur-macOS-Quick-Start.pdf"),
       label: "Badge Blur macOS Quick Start",
       note: "1-page supplied guide · printable PDF",
-      preview: "/assets/guide-previews/badge-blur.png",
+      preview: assetPath("/assets/guide-previews/badge-blur.png"),
     },
     highlights: [
       "Runs badge detection and image processing locally after setup",
@@ -127,12 +133,12 @@ export const apps: AppEntry[] = [
     ],
     screenshots: [
       {
-        src: "/assets/screenshots/badge-blur-review.png",
+        src: assetPath("/assets/screenshots/badge-blur-review.png"),
         alt: "Badge Blur review interface showing a synthetic photo and review controls",
         caption: "Inspect the full photo, compare Before and After, then confirm the review.",
       },
       {
-        src: "/assets/screenshots/badge-blur-correct.png",
+        src: assetPath("/assets/screenshots/badge-blur-correct.png"),
         alt: "Badge Blur mask correction interface over a synthetic badge photo",
         caption: "Add a missed mask, adjust its corners or blur, and re-export only that image.",
       },
@@ -175,19 +181,19 @@ export const apps: AppEntry[] = [
     description:
       "Create, review, version, back up, and export structured organization charts in a local Electron workspace.",
     repository: "https://github.com/adammalin/Org-Chart-Studio",
-    icon: "/assets/icons/orgchart-studio-topbar.svg",
+    icon: assetPath("/assets/icons/orgchart-studio-topbar.svg"),
     iconKind: "image",
     platforms: ["mac", "windows"],
     platformSummary: "macOS 13+ · Windows 10/11",
     guide: {
-      href: "/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf",
+      href: assetPath("/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf"),
       label: "OrgChart Studio macOS Quick Start",
       note: "2-page supplied guide · August 4, 2026",
-      preview: "/assets/guide-previews/orgchart-studio.png",
+      preview: assetPath("/assets/guide-previews/orgchart-studio.png"),
     },
     additionalGuides: [
       {
-        href: "/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start.pdf",
+        href: assetPath("/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start.pdf"),
         label: "Current Mac & Windows Quick Start",
         note: "3-page repository guide · August 6, 2026",
       },
@@ -229,7 +235,7 @@ export const apps: AppEntry[] = [
     ],
     screenshots: [
       {
-        src: "/assets/screenshots/orgchart-studio-editor.png",
+        src: assetPath("/assets/screenshots/orgchart-studio-editor.png"),
         alt: "OrgChart Studio interface containing a synthetic example organization with vacant positions",
         caption:
           "Synthetic preview: edit a structured hierarchy, inspect save state, and move between governance workspaces.",
@@ -303,10 +309,10 @@ export const apps: AppEntry[] = [
     platforms: ["mac", "windows"],
     platformSummary: "macOS 12+ · Windows 10/11",
     guide: {
-      href: "/assets/guides/USA-Map-Studio-User-Guide.pdf",
+      href: assetPath("/assets/guides/USA-Map-Studio-User-Guide.pdf"),
       label: "USA Map Studio User Guide",
       note: "6-page supplied guide · installation and usage",
-      preview: "/assets/guide-previews/usa-map-studio.png",
+      preview: assetPath("/assets/guide-previews/usa-map-studio.png"),
     },
     highlights: [
       "Uses bundled 2025 Census geometry and place coordinates offline",
@@ -345,7 +351,7 @@ export const apps: AppEntry[] = [
     ],
     screenshots: [
       {
-        src: "/assets/screenshots/usa-map-studio-overview.png",
+        src: assetPath("/assets/screenshots/usa-map-studio-overview.png"),
         alt: "USA Map Studio interface showing the locations workspace and a map with sample cities",
         caption:
           "The Locations workspace combines searchable rows, the live map, layer-aware controls, and a selected-pin inspector.",

@@ -467,7 +467,7 @@ export const apps: AppEntry[] = [
     slug: "usa-map-studio",
     name: "USA Map Studio",
     shortName: "USA Map Studio",
-    version: "0.5.1",
+    version: "0.8.0",
     kicker: "Accurate local map editing",
     description:
       "Build data-driven maps of the United States with offline Census geography, editable projects, named layers, and export tools.",
@@ -476,15 +476,15 @@ export const apps: AppEntry[] = [
     platforms: ["mac", "windows"],
     platformSummary: "macOS 12+ · Windows 10/11",
     guide: {
-      href: assetPath("/assets/guides/USA-Map-Studio-User-Guide.pdf"),
+      href: assetPath("/assets/guides/USA-Map-Studio-User-Guide-v0.8.0.pdf"),
       label: "USA Map Studio User Guide",
-      note: "6-page supplied guide · installation and usage",
+      note: "6-page v0.8.0 guide · installation, labels, recovery, and export",
       preview: assetPath("/assets/guide-previews/usa-map-studio.png"),
     },
     highlights: [
       "Uses bundled 2025 Census geometry and place coordinates offline",
-      "Imports CSV data into named layers and saves complete .usmap.json projects",
-      "Exports SVG, PNG, and editable one-slide PowerPoint compositions",
+      "Builds named layers with unique visible-city counts, multi-row callouts, and embedded custom SVG pins",
+      "Autosaves complete .usmap.json projects with recovery history, export preflight, and editable PowerPoint output",
     ],
     quickStart:
       "Clone the public repository, run the platform setup script, and use the checked-in Start file for later launches.",
@@ -493,27 +493,27 @@ export const apps: AppEntry[] = [
     usageSteps: [
       {
         title: "Start a project",
-        body: "Open the Map editor, set the visible canvas, and save a .usmap.json project path early.",
+        body: "Open the Map editor, set the visible canvas, and save a .usmap.json path early. Autosave and rotating recovery points protect later changes.",
       },
       {
         title: "Bring in locations",
-        body: "Add pins one at a time or import CSV rows with city and state, plus optional coordinates and visual fields.",
+        body: "Add pins one at a time or import CSV rows with city, state, optional coordinates, Company, and additional label columns.",
       },
       {
         title: "Organize layers",
-        body: "Name, reorder, show, hide, and count independent location groups. Apply shared pin styling or one-off exceptions.",
+        body: "Name, reorder, show, and hide independent location groups. Legends report each layer's unique visible-city count and pin design.",
       },
       {
         title: "Style the map",
-        body: "Control state fills, boundaries, county lines, labels, halo, legend, custom SVG pins, and ORNL draft swatches.",
+        body: "Control state fills, boundaries, county lines, label typography, callout leaders, halo, legend, custom SVG pins, and ORNL draft swatches.",
       },
       {
         title: "Navigate precisely",
-        body: "Hold Space and drag to pan, scroll to zoom, drag pins to refine coordinates, and use 0 for Fit or 1 for 100%.",
+        body: "Hold Space and drag to pan, scroll to zoom, drag pins or callouts, arrange labels, and use 0 for Fit or 1 for 100%.",
       },
       {
         title: "Export the visible composition",
-        body: "Export SVG, 2400 × 1440 PNG, or editable PowerPoint using the current layers, pin size, zoom, and pan.",
+        body: "Review export preflight, then create SVG, 2400 × 1440 PNG, or editable PowerPoint with the active layers, labels, legend, pin size, zoom, and pan.",
       },
     ],
     screenshots: [
@@ -617,7 +617,7 @@ export const apps: AppEntry[] = [
           "You can also double-click Start-USA-Map-Studio.command in the cloned folder.",
         uninstall: [
           "Save any project you want to keep as a .usmap.json file.",
-          "If the optional local AI connection is installed, run npm run mcp:remove from the Map-Maker-Studio folder before deleting it.",
+          "If the optional local AI connection is installed, double-click Remove-USA-Map-Studio-MCP.command or run /bin/zsh \"$HOME/Map-Maker-Studio/Remove-USA-Map-Studio-MCP.command\" before deleting the folder.",
           "Quit USA Map Studio.",
           "In Finder, move Map-Maker-Studio from your home folder to the Trash.",
         ],
@@ -642,7 +642,7 @@ export const apps: AppEntry[] = [
           "You can also double-click Start-USA-Map-Studio.cmd in the cloned folder.",
         uninstall: [
           "Save any project you want to keep as a .usmap.json file.",
-          "If the optional local AI connection is installed, run npm run mcp:remove from the Map-Maker-Studio folder before deleting it.",
+          "If the optional local AI connection is installed, double-click Remove-USA-Map-Studio-MCP.cmd or run & \"$env:USERPROFILE\\Map-Maker-Studio\\Remove-USA-Map-Studio-MCP.cmd\" before deleting the folder.",
           "Quit USA Map Studio.",
           "In File Explorer, move Map-Maker-Studio from your user folder to the Recycle Bin.",
         ],

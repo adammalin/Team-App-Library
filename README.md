@@ -41,4 +41,4 @@ Keep commands aligned with each application's current README and source scripts.
 
 ## Publishing status
 
-This project is a local draft. Hosting, access controls, and publication are separate decisions and are intentionally not configured here.
+The public catalog is deployed to GitHub Pages by `.github/workflows/deploy-pages.yml` after changes reach `main`. Validate the Pages export locally before publishing, then confirm the workflow and public routes after the push.

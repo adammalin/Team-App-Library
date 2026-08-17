@@ -89,11 +89,31 @@ test("distinguishes offline AI from review-first MCP control", async () => {
   assert.match(mapHtml, /Apply to working map/i);
 });
 
+test("publishes the current USA Map Studio release and portable cleanup commands", async () => {
+  const [overview, macUninstall, windowsUninstall] = await Promise.all([
+    render("/apps/usa-map-studio"),
+    render("/apps/usa-map-studio/uninstall?platform=mac"),
+    render("/apps/usa-map-studio/uninstall?platform=windows"),
+  ]);
+
+  const [overviewHtml, macHtml, windowsHtml] = await Promise.all([
+    overview.text(),
+    macUninstall.text(),
+    windowsUninstall.text(),
+  ]);
+
+  assert.match(overviewHtml, /0\.8\.0/);
+  assert.match(overviewHtml, /USA-Map-Studio-User-Guide-v0\.8\.0\.pdf/);
+  assert.match(macHtml, /Remove-USA-Map-Studio-MCP\.command/);
+  assert.match(windowsHtml, /Remove-USA-Map-Studio-MCP\.cmd/);
+  assert.doesNotMatch(`${macHtml}\n${windowsHtml}`, /npm run mcp:remove/);
+});
+
 test("ships the supplied PDFs and removes starter preview content", async () => {
   const files = [
     "public/assets/guides/Badge-Blur-macOS-Quick-Start.pdf",
     "public/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf",
-    "public/assets/guides/USA-Map-Studio-User-Guide.pdf",
+    "public/assets/guides/USA-Map-Studio-User-Guide-v0.8.0.pdf",
     "public/assets/icons/badge-blur.png",
     "public/assets/icons/orgchart-studio-topbar.svg",
     "public/assets/screenshots/orgchart-studio-editor.png",

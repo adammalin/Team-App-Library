@@ -85,7 +85,7 @@ test("copies downloadable files and disables Jekyll processing", async () => {
     "out/assets/icons/orgchart-studio-topbar.svg",
     "out/assets/guides/Badge-Blur-macOS-Quick-Start.pdf",
     "out/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf",
-    "out/assets/guides/USA-Map-Studio-User-Guide.pdf",
+    "out/assets/guides/USA-Map-Studio-User-Guide-v0.8.0.pdf",
   ];
 
   await Promise.all(files.map((file) => access(new URL(file, projectRoot))));

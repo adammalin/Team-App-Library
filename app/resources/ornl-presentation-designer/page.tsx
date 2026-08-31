@@ -80,7 +80,8 @@ export default function OrnlPresentationDesignerPage() {
             <p>
               One downloadable plugin gives Codex two separate, purpose-built workflows: create
               a new ORNL presentation from approved sources, or carefully clean up an existing
-              PowerPoint while protecting its content and native structure.
+              PowerPoint while protecting its content and native structure—including protected
+              decks that must be edited inside Microsoft PowerPoint itself.
             </p>
             <div className="resource-actions">
               <a className="resource-action resource-action--primary" href="#install">
@@ -266,10 +267,20 @@ export default function OrnlPresentationDesignerPage() {
                             </td>
                           </tr>
                           <tr>
+                            <th scope="row">Native PowerPoint fallback</th>
+                            <td>
+                              A tested workflow for PowerPoint-native Save a Copy, semantic
+                              preservation comparison, native editing, close/reopen checks, and
+                              final visual QA when another PPTX writer cannot preserve the file.
+                            </td>
+                          </tr>
+                          <tr>
                             <th scope="row">Validation</th>
                             <td>
-                              A package verification script, versioned manifests, agent metadata,
-                              installation instructions, and separate skill instructions.
+                              Package verification, a protected-PPTX semantic comparator with
+                              safe-native and unsafe-writer regression tests, versioned manifests,
+                              agent metadata, installation instructions, and separate skill
+                              instructions.
                             </td>
                           </tr>
                         </tbody>
@@ -330,14 +341,15 @@ export default function OrnlPresentationDesignerPage() {
                   questions needed to confirm the cleanup boundary before editing.
                 </p>
                 <CodeBlock code={cleanUpDeckPrompt} label="Copy the guided cleanup prompt" />
-                <Callout tone="warning" title="A cleanup can correctly return HOLD">
+                <Callout tone="warning" title="An unsafe writer now routes through PowerPoint">
                   <p>
                     PowerPoint files can contain classification labels, custom XML, comments,
                     notes, themes, hyperlinks, media relationships, animations, and timing that
-                    some editing pipelines cannot safely preserve. If the no-edit canary changes
-                    protected structure, the skill stops and returns a precise report plus a
-                    manual PowerPoint edit specification. That is a safety result—not an
-                    installation failure.
+                    some editing pipelines cannot safely preserve. The skill stops that writer and,
+                    when authorized and available, uses Microsoft PowerPoint itself for the copy,
+                    edits, saves, reopen checks, semantic preservation comparison, and visual QA.
+                    It returns <code>HOLD</code> only when no available authorized route can
+                    preserve the protected deck.
                   </p>
                 </Callout>
               </div>

@@ -63,12 +63,12 @@ test("prefixes routes and assets for the GitHub project site", async () => {
   assert.match(
     presentationGuide,
     new RegExp(
-      `${basePath}/assets/downloads/ornl-presentation-designer-1\\.1\\.2\\.zip`,
+      `${basePath}/assets/downloads/ornl-presentation-designer-1\\.1\\.4\\.zip`,
     ),
   );
   assert.match(
     presentationGuide,
-    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ornl-presentation-designer-1\.1\.2\.zip/,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ornl-presentation-designer-1\.1\.4\.zip/,
   );
   assert.doesNotMatch(presentationGuide, /ABSOLUTE PATH TO ornl-presentation-designer/i);
   assert.match(presentationGuide, /Files first\. Questions second\. Slides third\./i);
@@ -116,7 +116,7 @@ test("copies downloadable files and disables Jekyll processing", async () => {
     "out/assets/guides/Badge-Blur-macOS-Quick-Start.pdf",
     "out/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf",
     "out/assets/guides/USA-Map-Studio-User-Guide-v0.8.0.pdf",
-    "out/assets/downloads/ornl-presentation-designer-1.1.2.zip",
+    "out/assets/downloads/ornl-presentation-designer-1.1.4.zip",
   ];
 
   await Promise.all(files.map((file) => access(new URL(file, projectRoot))));

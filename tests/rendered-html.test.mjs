@@ -66,15 +66,20 @@ test("server-renders the complete ORNL Presentation Designer resource", async ()
   assert.match(html, /Support-Assertion-Evidence-Model-Examples\.potx/i);
   assert.match(html, /No font installers are included/i);
   assert.match(html, /No separate production ORNL logo file is included/i);
-  assert.match(html, /A cleanup can correctly return HOLD/i);
+  assert.match(html, /An unsafe writer now routes through PowerPoint/i);
+  assert.match(html, /Native PowerPoint fallback/i);
   assert.match(
     html,
-    /fd5d87bb980de5938eaed63e76a1a38a8cd2c90c2d8ef363b73c429a693ff27f/,
+    /only if both the ordinary path and the authorized PowerPoint-native path are unavailable or fail/i,
   );
-  assert.match(html, /ornl-presentation-designer-1\.1\.2\.zip/);
   assert.match(
     html,
-    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ornl-presentation-designer-1\.1\.2\.zip/,
+    /be1944a7d3bcb9cd2be32b53f2ac6231ec290b56d259865b9d8ab4df2f7216ca/,
+  );
+  assert.match(html, /ornl-presentation-designer-1\.1\.4\.zip/);
+  assert.match(
+    html,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ornl-presentation-designer-1\.1\.4\.zip/,
   );
   assert.doesNotMatch(html, /ABSOLUTE PATH TO ornl-presentation-designer/i);
   assert.doesNotMatch(html, /APPROVED SOURCE FILES:/i);
@@ -155,7 +160,7 @@ test("ships the supplied PDFs and removes starter preview content", async () => 
     "public/assets/icons/badge-blur.png",
     "public/assets/icons/orgchart-studio-topbar.svg",
     "public/assets/screenshots/orgchart-studio-editor.png",
-    "public/assets/downloads/ornl-presentation-designer-1.1.2.zip",
+    "public/assets/downloads/ornl-presentation-designer-1.1.4.zip",
   ];
 
   await Promise.all(files.map((file) => access(new URL(file, projectRoot))));

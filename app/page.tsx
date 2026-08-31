@@ -11,6 +11,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { apps } from "./app-data";
 import { AppIcon } from "./components/AppIcon";
+import { presentationPlugin } from "./presentation-plugin-data";
 import { SiteHeader } from "./components/SiteHeader";
 
 export const metadata: Metadata = {
@@ -120,11 +121,14 @@ export default function Home() {
               <FilePpt weight="duotone" />
             </div>
             <div className="resource-card__body">
-              <span className="eyebrow">Agent Plugin · PowerPoint · v1.1.2</span>
+              <span className="eyebrow">
+                Agent Plugin · PowerPoint · v{presentationPlugin.version}
+              </span>
               <h3>ORNL Presentation Designer</h3>
               <p>
                 Create a new editable ORNL deck from approved sources or clean up an existing
-                PowerPoint with a separate preservation-first workflow.
+                PowerPoint with a separate preservation-first workflow and a tested native
+                PowerPoint fallback for protected files.
               </p>
               <div className="resource-card__skills">
                 <span>Create new presentations</span>

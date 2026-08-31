@@ -71,6 +71,13 @@ test("prefixes routes and assets for the GitHub project site", async () => {
     /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ornl-presentation-designer-1\.1\.2\.zip/,
   );
   assert.doesNotMatch(presentationGuide, /ABSOLUTE PATH TO ornl-presentation-designer/i);
+  assert.match(presentationGuide, /Files first\. Questions second\. Slides third\./i);
+  assert.match(
+    presentationGuide,
+    /Deck first\. Inspection second\. Questions third\. Edits last\./i,
+  );
+  assert.doesNotMatch(presentationGuide, /APPROVED SOURCE FILES:/i);
+  assert.doesNotMatch(presentationGuide, /SOURCE PPTX:/i);
   assert.doesNotMatch(home, /(?:href|src)="\/(?:apps|assets|resources|_next)\//);
 });
 

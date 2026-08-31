@@ -55,6 +55,11 @@ test("server-renders the complete ORNL Presentation Designer resource", async ()
   assert.match(html, /You are authorized to download that exact public ZIP/i);
   assert.match(html, /\$create-ornl-presentations/);
   assert.match(html, /\$clean-up-ornl-presentations/);
+  assert.match(html, /Files first\. Questions second\. Slides third\./i);
+  assert.match(html, /Deck first\. Inspection second\. Questions third\. Edits last\./i);
+  assert.match(html, /Ask no more than three questions at a time/i);
+  assert.match(html, /Do not begin authoring slides until the minimum viable brief is confirmed/i);
+  assert.match(html, /Do not begin mutation until it is confirmed/i);
   assert.match(html, /A cleanup can correctly return HOLD/i);
   assert.match(
     html,
@@ -66,6 +71,8 @@ test("server-renders the complete ORNL Presentation Designer resource", async ()
     /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ornl-presentation-designer-1\.1\.2\.zip/,
   );
   assert.doesNotMatch(html, /ABSOLUTE PATH TO ornl-presentation-designer/i);
+  assert.doesNotMatch(html, /APPROVED SOURCE FILES:/i);
+  assert.doesNotMatch(html, /SOURCE PPTX:/i);
 });
 
 test("server-renders app-specific documentation routes", async () => {

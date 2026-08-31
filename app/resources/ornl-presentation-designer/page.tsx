@@ -221,10 +221,11 @@ export default function OrnlPresentationDesignerPage() {
                 <span className="eyebrow">Prompt A · New deck</span>
                 <h2>Create a new editable ORNL presentation.</h2>
                 <p className="resource-intro">
-                  Replace every bracketed field that applies, delete unused bracketed lines, and
-                  paste the complete prompt into a fresh task after installing the plugin.
+                  Paste this prompt as written. Codex asks for the approved files first, reads
+                  them, asks a few consequential questions at a time, and confirms a concise
+                  production brief before creating slide content.
                 </p>
-                <CodeBlock code={createDeckPrompt} label="Copy the new-presentation prompt" />
+                <CodeBlock code={createDeckPrompt} label="Copy the guided new-presentation prompt" />
               </div>
             </section>
 
@@ -234,11 +235,11 @@ export default function OrnlPresentationDesignerPage() {
                 <span className="eyebrow">Prompt B · Existing deck</span>
                 <h2>Clean up a PowerPoint with a preservation-first process.</h2>
                 <p className="resource-intro">
-                  Name any content or template changes explicitly. If none are authorized, enter
-                  <strong> NONE</strong> and <strong>NO</strong> so the preservation boundary is
-                  unambiguous.
+                  Paste this prompt as written. Codex asks for the deck, runs a read-only
+                  preservation check, inspects what is actually there, and then asks only the
+                  questions needed to confirm the cleanup boundary before editing.
                 </p>
-                <CodeBlock code={cleanUpDeckPrompt} label="Copy the cleanup prompt" />
+                <CodeBlock code={cleanUpDeckPrompt} label="Copy the guided cleanup prompt" />
                 <Callout tone="warning" title="A cleanup can correctly return HOLD">
                   <p>
                     PowerPoint files can contain classification labels, custom XML, comments,

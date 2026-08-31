@@ -10,18 +10,18 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
         </span>
         <span>
           <strong>Team App Library</strong>
-          <small>Source-based Electron tools</small>
+          <small>Apps and Codex resources</small>
         </span>
       </Link>
       {compact ? (
         <Link className="header-action" href="/">
           <ArrowLeft />
-          All apps
+          All tools
         </Link>
       ) : (
         <span className="header-status">
           <i aria-hidden="true" />
-          Local install guides
+          Local guides and downloads
         </span>
       )}
     </header>

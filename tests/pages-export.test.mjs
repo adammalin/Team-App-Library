@@ -28,6 +28,7 @@ const exportedPages = [
   "out/apps/usa-map-studio/uninstall/index.html",
   "out/apps/usa-map-studio/usage/index.html",
   "out/apps/usa-map-studio/ai-integration/index.html",
+  "out/resources/ornl-presentation-designer/index.html",
 ];
 
 test("exports every catalog and documentation route", async () => {
@@ -35,9 +36,13 @@ test("exports every catalog and documentation route", async () => {
 });
 
 test("prefixes routes and assets for the GitHub project site", async () => {
-  const [home, badgeGuide] = await Promise.all([
+  const [home, badgeGuide, presentationGuide] = await Promise.all([
     readFile(new URL("out/index.html", projectRoot), "utf8"),
     readFile(new URL("out/apps/badge-blur/index.html", projectRoot), "utf8"),
+    readFile(
+      new URL("out/resources/ornl-presentation-designer/index.html", projectRoot),
+      "utf8",
+    ),
   ]);
 
   assert.match(home, new RegExp(`href="${basePath}/apps/badge-blur/"`));
@@ -51,7 +56,17 @@ test("prefixes routes and assets for the GitHub project site", async () => {
     badgeGuide,
     new RegExp(`${basePath}/assets/guides/Badge-Blur-macOS-Quick-Start\\.pdf`),
   );
-  assert.doesNotMatch(home, /(?:href|src)="\/(?:apps|assets|_next)\//);
+  assert.match(
+    home,
+    new RegExp(`href="${basePath}/resources/ornl-presentation-designer/"`),
+  );
+  assert.match(
+    presentationGuide,
+    new RegExp(
+      `${basePath}/assets/downloads/ornl-presentation-designer-1\\.1\\.2\\.zip`,
+    ),
+  );
+  assert.doesNotMatch(home, /(?:href|src)="\/(?:apps|assets|resources|_next)\//);
 });
 
 test("all exported local links resolve inside the Pages artifact", async () => {
@@ -86,6 +101,7 @@ test("copies downloadable files and disables Jekyll processing", async () => {
     "out/assets/guides/Badge-Blur-macOS-Quick-Start.pdf",
     "out/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf",
     "out/assets/guides/USA-Map-Studio-User-Guide-v0.8.0.pdf",
+    "out/assets/downloads/ornl-presentation-designer-1.1.2.zip",
   ];
 
   await Promise.all(files.map((file) => access(new URL(file, projectRoot))));

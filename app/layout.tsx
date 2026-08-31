@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Source-based setup and usage guides for the team's Electron desktop apps.",
+    "Setup and usage guides for the team's local desktop apps and Codex resources.",
   openGraph: {
     title: "Team App Library",
     description:
-      "Install, update, launch, and learn the team's Electron desktop apps.",
+      "Install and learn the team's local desktop apps and Codex resources.",
     images: [
       {
         url: new URL("og.png", normalizedSiteUrl).toString(),

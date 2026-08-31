@@ -4,7 +4,9 @@ import {
   ArrowRight,
   CheckCircle,
   DownloadSimple,
+  FilePpt,
   HardDrives,
+  Package,
   TerminalWindow,
 } from "@phosphor-icons/react/dist/ssr";
 import { apps } from "./app-data";
@@ -14,7 +16,7 @@ import { SiteHeader } from "./components/SiteHeader";
 export const metadata: Metadata = {
   title: "Team App Library",
   description:
-    "Install, update, launch, uninstall, and learn the team's source-based Electron desktop apps.",
+    "Install and learn the team's local desktop apps and Codex resources.",
 };
 
 export default function Home() {
@@ -24,18 +26,18 @@ export default function Home() {
       <main>
         <section className="home-hero">
           <div className="home-hero__copy">
-            <span className="eyebrow">Local tools · One clear starting point</span>
+            <span className="eyebrow">Local tools · Codex resources · One clear starting point</span>
             <h1>
-              Choose an app.
+              Choose a tool.
               <br />
-              Get it running.
+              Get to work.
             </h1>
             <p>
-              Source-based setup guides for the team&apos;s Electron desktop tools—plus
-              update, relaunch, removal, printable docs, and real interface walkthroughs.
+              Setup and usage guides for the team&apos;s desktop tools and Codex resources—
+              including downloads, checked prompts, printable docs, and review guidance.
             </p>
-            <a className="primary-action" href="#apps">
-              Browse the apps
+            <a className="primary-action" href="#tools">
+              Browse the tools
               <ArrowRight />
             </a>
           </div>
@@ -43,8 +45,8 @@ export default function Home() {
             <span>03</span>
             <strong>Local desktop apps</strong>
             <hr />
-            <span>02</span>
-            <strong>Operating systems</strong>
+            <span>01</span>
+            <strong>Codex presentation plugin</strong>
             <hr />
             <span>01</span>
             <strong>Shared help center</strong>
@@ -62,11 +64,11 @@ export default function Home() {
           </span>
           <span>
             <CheckCircle weight="fill" />
-            App-specific instructions
+            App and plugin guidance
           </span>
         </section>
 
-        <section id="apps" className="catalog-section">
+        <section id="tools" className="catalog-section">
           <div className="section-heading">
             <div>
               <span className="eyebrow">Available now</span>
@@ -105,23 +107,61 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="resource-catalog" aria-labelledby="codex-resources-title">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">Codex resources</span>
+              <h2 id="codex-resources-title">Build better ORNL presentations.</h2>
+            </div>
+            <p>Download the plugin, install it safely, and copy the right prompt for the job.</p>
+          </div>
+          <article className="resource-card">
+            <div className="resource-card__mark" aria-hidden="true">
+              <FilePpt weight="duotone" />
+            </div>
+            <div className="resource-card__body">
+              <span className="eyebrow">Agent Plugin · PowerPoint · v1.1.2</span>
+              <h3>ORNL Presentation Designer</h3>
+              <p>
+                Create a new editable ORNL deck from approved sources or clean up an existing
+                PowerPoint with a separate preservation-first workflow.
+              </p>
+              <div className="resource-card__skills">
+                <span>Create new presentations</span>
+                <span>Clean up existing decks</span>
+                <span>ORNL template and brand references included</span>
+              </div>
+            </div>
+            <div className="resource-card__actions">
+              <Link href="/resources/ornl-presentation-designer">
+                Open complete guide
+                <ArrowRight />
+              </Link>
+              <Link href="/resources/ornl-presentation-designer#download">
+                <Package />
+                Download details
+              </Link>
+            </div>
+          </article>
+        </section>
+
         <section className="how-section">
           <span className="eyebrow">How this library works</span>
           <div className="how-grid">
             <article>
               <span>01</span>
-              <h3>Pick the right app</h3>
-              <p>Start with the product icon, supported platform, and short capability summary.</p>
+              <h3>Pick the right tool</h3>
+              <p>Start with the app or Codex resource that matches the work you need to do.</p>
             </article>
             <article>
               <span>02</span>
-              <h3>Copy the checked command</h3>
-              <p>Each platform keeps its install, update, and everyday launch commands together.</p>
+              <h3>Follow the checked setup</h3>
+              <p>Keep the download, installation steps, and everyday instructions together.</p>
             </article>
             <article>
               <span>03</span>
               <h3>Learn in context</h3>
-              <p>Use the interface images and printable PDF when you need the full workflow.</p>
+              <p>Use the interface images, prompts, and review notes when you need the full workflow.</p>
             </article>
           </div>
         </section>

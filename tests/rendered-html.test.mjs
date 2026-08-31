@@ -35,12 +35,30 @@ test("server-renders the app catalog", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Team App Library<\/title>/i);
-  assert.match(html, /Choose an app\./);
+  assert.match(html, /Choose a tool\./);
   assert.match(html, /Badge Blur/);
   assert.match(html, /src="\/assets\/icons\/badge-blur\.png"/);
   assert.match(html, /ORNL OrgChart Studio/);
   assert.match(html, /USA Map Studio/);
+  assert.match(html, /ORNL Presentation Designer/);
+  assert.match(html, /Codex resources/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
+});
+
+test("server-renders the complete ORNL Presentation Designer resource", async () => {
+  const response = await render("/resources/ornl-presentation-designer");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /One plugin\. Two presentation skills\./i);
+  assert.match(html, /\$create-ornl-presentations/);
+  assert.match(html, /\$clean-up-ornl-presentations/);
+  assert.match(html, /A cleanup can correctly return HOLD/i);
+  assert.match(
+    html,
+    /fd5d87bb980de5938eaed63e76a1a38a8cd2c90c2d8ef363b73c429a693ff27f/,
+  );
+  assert.match(html, /ornl-presentation-designer-1\.1\.2\.zip/);
 });
 
 test("server-renders app-specific documentation routes", async () => {
@@ -117,6 +135,7 @@ test("ships the supplied PDFs and removes starter preview content", async () => 
     "public/assets/icons/badge-blur.png",
     "public/assets/icons/orgchart-studio-topbar.svg",
     "public/assets/screenshots/orgchart-studio-editor.png",
+    "public/assets/downloads/ornl-presentation-designer-1.1.2.zip",
   ];
 
   await Promise.all(files.map((file) => access(new URL(file, projectRoot))));

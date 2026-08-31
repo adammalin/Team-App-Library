@@ -127,12 +127,12 @@ export default function Home() {
               <h3>ORNL Presentation Designer</h3>
               <p>
                 Create a new editable ORNL deck from approved sources or clean up an existing
-                PowerPoint with a separate preservation-first workflow and a tested native
-                PowerPoint fallback for protected files.
+                PowerPoint with a confident-redesign workflow, visible before/after quality gate,
+                and a tested native PowerPoint fallback for protected files.
               </p>
               <div className="resource-card__skills">
                 <span>Create new presentations</span>
-                <span>Clean up existing decks</span>
+                <span>Confidently redesign existing decks</span>
                 <span>ORNL template and brand references included</span>
               </div>
             </div>

@@ -56,10 +56,14 @@ test("server-renders the complete ORNL Presentation Designer resource", async ()
   assert.match(html, /\$create-ornl-presentations/);
   assert.match(html, /\$clean-up-ornl-presentations/);
   assert.match(html, /Files first\. Questions second\. Slides third\./i);
-  assert.match(html, /Deck first\. Inspection second\. Questions third\. Edits last\./i);
+  assert.match(html, /Deck first\. Inspection second\. Design decisions third\. Edits last\./i);
   assert.match(html, /Ask no more than three questions at a time/i);
   assert.match(html, /Do not begin authoring slides until the minimum viable brief is confirmed/i);
-  assert.match(html, /Do not begin mutation until it is confirmed/i);
+  assert.match(html, /Confident redesign is the default/i);
+  assert.match(html, /Treat the source as content to preserve, not a layout to imitate/i);
+  assert.match(html, /complete a second design pass before propagation/i);
+  assert.match(html, /Light polish/i);
+  assert.match(html, /Transformative/i);
   assert.match(html, /<details class="plugin-inventory">/i);
   assert.match(html, /What’s included in the plugin\?/i);
   assert.match(html, /ORNL-Presentation-16x9-Template\.potx/i);
@@ -74,12 +78,12 @@ test("server-renders the complete ORNL Presentation Designer resource", async ()
   );
   assert.match(
     html,
-    /be1944a7d3bcb9cd2be32b53f2ac6231ec290b56d259865b9d8ab4df2f7216ca/,
+    /60c45d99d259f18e211a0ed90dee33566086e6dccd00513821fe312894920b78/,
   );
-  assert.match(html, /ornl-presentation-designer-1\.1\.4\.zip/);
+  assert.match(html, /ornl-presentation-designer-1\.2\.0\.zip/);
   assert.match(
     html,
-    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ornl-presentation-designer-1\.1\.4\.zip/,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ornl-presentation-designer-1\.2\.0\.zip/,
   );
   assert.doesNotMatch(html, /ABSOLUTE PATH TO ornl-presentation-designer/i);
   assert.doesNotMatch(html, /APPROVED SOURCE FILES:/i);
@@ -160,7 +164,7 @@ test("ships the supplied PDFs and removes starter preview content", async () => 
     "public/assets/icons/badge-blur.png",
     "public/assets/icons/orgchart-studio-topbar.svg",
     "public/assets/screenshots/orgchart-studio-editor.png",
-    "public/assets/downloads/ornl-presentation-designer-1.1.4.zip",
+    "public/assets/downloads/ornl-presentation-designer-1.2.0.zip",
   ];
 
   await Promise.all(files.map((file) => access(new URL(file, projectRoot))));

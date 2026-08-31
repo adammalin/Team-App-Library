@@ -63,19 +63,21 @@ test("prefixes routes and assets for the GitHub project site", async () => {
   assert.match(
     presentationGuide,
     new RegExp(
-      `${basePath}/assets/downloads/ornl-presentation-designer-1\\.1\\.4\\.zip`,
+      `${basePath}/assets/downloads/ornl-presentation-designer-1\\.2\\.0\\.zip`,
     ),
   );
   assert.match(
     presentationGuide,
-    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ornl-presentation-designer-1\.1\.4\.zip/,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ornl-presentation-designer-1\.2\.0\.zip/,
   );
   assert.doesNotMatch(presentationGuide, /ABSOLUTE PATH TO ornl-presentation-designer/i);
   assert.match(presentationGuide, /Files first\. Questions second\. Slides third\./i);
   assert.match(
     presentationGuide,
-    /Deck first\. Inspection second\. Questions third\. Edits last\./i,
+    /Deck first\. Inspection second\. Design decisions third\. Edits last\./i,
   );
+  assert.match(presentationGuide, /Confident redesign is the default/i);
+  assert.match(presentationGuide, /complete a second design pass before propagation/i);
   assert.match(presentationGuide, /What’s included in the plugin\?/i);
   assert.match(presentationGuide, /ORNL-Presentation-16x9-Template\.potx/i);
   assert.match(presentationGuide, /No font installers are included/i);
@@ -116,7 +118,7 @@ test("copies downloadable files and disables Jekyll processing", async () => {
     "out/assets/guides/Badge-Blur-macOS-Quick-Start.pdf",
     "out/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf",
     "out/assets/guides/USA-Map-Studio-User-Guide-v0.8.0.pdf",
-    "out/assets/downloads/ornl-presentation-designer-1.1.4.zip",
+    "out/assets/downloads/ornl-presentation-designer-1.2.0.zip",
   ];
 
   await Promise.all(files.map((file) => access(new URL(file, projectRoot))));

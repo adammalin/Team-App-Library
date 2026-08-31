@@ -79,9 +79,10 @@ export default function OrnlPresentationDesignerPage() {
             <h1>Make stronger ORNL presentations without giving up editability or control.</h1>
             <p>
               One downloadable plugin gives Codex two separate, purpose-built workflows: create
-              a new ORNL presentation from approved sources, or carefully clean up an existing
-              PowerPoint while protecting its content and native structure—including protected
-              decks that must be edited inside Microsoft PowerPoint itself.
+              a new ORNL presentation from approved sources, or confidently redesign an existing
+              PowerPoint while preserving approved content, meaning, governance, and
+              editability—including protected decks that must be edited inside Microsoft
+              PowerPoint itself.
             </p>
             <div className="resource-actions">
               <a className="resource-action resource-action--primary" href="#install">
@@ -100,7 +101,7 @@ export default function OrnlPresentationDesignerPage() {
             <strong>One plugin. Two presentation skills.</strong>
             <ul>
               <li>Create new ORNL decks</li>
-              <li>Clean up existing decks</li>
+              <li>Confident redesign by default</li>
               <li>Keep PowerPoint content editable</li>
               <li>Require human review before release</li>
             </ul>
@@ -255,7 +256,8 @@ export default function OrnlPresentationDesignerPage() {
                           <tr>
                             <th scope="row">Cleanup references</th>
                             <td>
-                              Preservation envelope, cleanup process, improvement rubric, and a
+                              Three design-freedom modes, content/governance envelope, cleanup
+                              process, visible-improvement rubric, second-pass trigger, and a
                               cleanup-specific QA checklist.
                             </td>
                           </tr>
@@ -308,9 +310,9 @@ export default function OrnlPresentationDesignerPage() {
                 </details>
                 <Callout title="Do not combine the workflows by default">
                   <p>
-                    Use one skill for each request. A cleanup should become a structural rebuild
-                    only when the audit finds that rescue is necessary and the requester
-                    explicitly authorizes it.
+                    Use one skill for each request. Confident redesign can substantially recompose
+                    slides inside the active deck. Use Transformative mode or the creation skill
+                    only when the requester explicitly authorizes structural or narrative changes.
                   </p>
                 </Callout>
               </div>
@@ -334,12 +336,20 @@ export default function OrnlPresentationDesignerPage() {
               <span className="section-index">05</span>
               <div>
                 <span className="eyebrow">Prompt B · Existing deck</span>
-                <h2>Clean up a PowerPoint with a preservation-first process.</h2>
+                <h2>Confidently redesign an existing PowerPoint.</h2>
                 <p className="resource-intro">
-                  Paste this prompt as written. Codex asks for the deck, runs a read-only
-                  preservation check, inspects what is actually there, and then asks only the
-                  questions needed to confirm the cleanup boundary before editing.
+                  Paste this prompt as written. Codex treats the deck as content to preserve—not a
+                  layout to imitate—then substantially improves weak slides and runs a second
+                  design pass when the before/after difference is not obvious.
                 </p>
+                <Callout tone="success" title="Confident redesign is the default">
+                  <p>
+                    Codex may replace weak layouts, rebuild hierarchy, recrop imagery, restyle data
+                    displays, and reconstruct diagrams as editable PowerPoint objects. Light polish
+                    remains available, while slide splitting, merging, reordering, and rewriting
+                    require explicit Transformative authorization.
+                  </p>
+                </Callout>
                 <CodeBlock code={cleanUpDeckPrompt} label="Copy the guided cleanup prompt" />
                 <Callout tone="warning" title="An unsafe writer now routes through PowerPoint">
                   <p>

@@ -76,6 +76,9 @@ test("prefixes routes and assets for the GitHub project site", async () => {
     presentationGuide,
     /Deck first\. Inspection second\. Questions third\. Edits last\./i,
   );
+  assert.match(presentationGuide, /What’s included in the plugin\?/i);
+  assert.match(presentationGuide, /ORNL-Presentation-16x9-Template\.potx/i);
+  assert.match(presentationGuide, /No font installers are included/i);
   assert.doesNotMatch(presentationGuide, /APPROVED SOURCE FILES:/i);
   assert.doesNotMatch(presentationGuide, /SOURCE PPTX:/i);
   assert.doesNotMatch(home, /(?:href|src)="\/(?:apps|assets|resources|_next)\//);

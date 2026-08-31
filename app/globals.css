@@ -949,6 +949,115 @@ img {
   padding: 0.5rem 0.6rem;
 }
 
+.plugin-inventory {
+  background: var(--ornl-polar);
+  border: 1px solid var(--ornl-graphite);
+  border-left: 6px solid var(--ornl-green);
+  margin-top: 1rem;
+}
+
+.plugin-inventory summary {
+  align-items: center;
+  color: var(--ornl-hale-navy);
+  cursor: pointer;
+  display: flex;
+  font-size: 0.95rem;
+  font-weight: 850;
+  justify-content: space-between;
+  list-style: none;
+  min-height: 58px;
+  padding: 0.9rem 1rem;
+}
+
+.plugin-inventory summary::-webkit-details-marker {
+  display: none;
+}
+
+.plugin-inventory summary::after {
+  color: var(--ornl-green);
+  content: "+";
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-left: 1rem;
+}
+
+.plugin-inventory[open] summary {
+  border-bottom: 1px solid var(--ornl-graphite);
+}
+
+.plugin-inventory[open] summary::after {
+  content: "−";
+}
+
+.plugin-inventory__content {
+  padding: 1.2rem;
+}
+
+.plugin-inventory__content > p {
+  margin: 0 0 1rem;
+  max-width: 760px;
+}
+
+.plugin-inventory__table-wrap {
+  overflow-x: auto;
+}
+
+.plugin-inventory table {
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  min-width: 640px;
+  width: 100%;
+}
+
+.plugin-inventory th,
+.plugin-inventory td {
+  border-bottom: 1px solid var(--ornl-graphite);
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.plugin-inventory thead th {
+  background: var(--ornl-hale-navy);
+  color: var(--ornl-polar);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.plugin-inventory tbody th {
+  color: var(--ornl-hale-navy);
+  width: 31%;
+}
+
+.plugin-inventory code {
+  overflow-wrap: anywhere;
+}
+
+.plugin-inventory__limits {
+  background: color-mix(in srgb, var(--ornl-graphite) 26%, var(--ornl-polar));
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.plugin-inventory__limits > strong {
+  color: var(--ornl-hale-navy);
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.plugin-inventory__limits ul {
+  margin: 0.7rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.plugin-inventory__limits li + li {
+  margin-top: 0.45rem;
+}
+
 .resource-section--prompt .code-block pre {
   max-height: 680px;
   overflow: auto;

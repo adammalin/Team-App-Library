@@ -60,6 +60,12 @@ test("server-renders the complete ORNL Presentation Designer resource", async ()
   assert.match(html, /Ask no more than three questions at a time/i);
   assert.match(html, /Do not begin authoring slides until the minimum viable brief is confirmed/i);
   assert.match(html, /Do not begin mutation until it is confirmed/i);
+  assert.match(html, /<details class="plugin-inventory">/i);
+  assert.match(html, /What’s included in the plugin\?/i);
+  assert.match(html, /ORNL-Presentation-16x9-Template\.potx/i);
+  assert.match(html, /Support-Assertion-Evidence-Model-Examples\.potx/i);
+  assert.match(html, /No font installers are included/i);
+  assert.match(html, /No separate production ORNL logo file is included/i);
   assert.match(html, /A cleanup can correctly return HOLD/i);
   assert.match(
     html,

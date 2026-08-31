@@ -205,6 +205,96 @@ export default function OrnlPresentationDesignerPage() {
                     <code>$clean-up-ornl-presentations</code>
                   </a>
                 </div>
+                <details className="plugin-inventory">
+                  <summary>What’s included in the plugin?</summary>
+                  <div className="plugin-inventory__content">
+                    <p>
+                      The download is self-contained: both skills install with the ORNL source
+                      material, templates, examples, and validation guidance they need.
+                    </p>
+                    <div className="plugin-inventory__table-wrap">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th scope="col">Included</th>
+                            <th scope="col">What it provides</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">ORNL brand guidance</th>
+                            <td>
+                              <em>OurBrand.pdf</em>, the official color palette, source hierarchy,
+                              brand tokens, and layout catalog.
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Official PowerPoint template</th>
+                            <td>
+                              <code>ORNL-Presentation-16x9-Template.potx</code> with one master,
+                              30 layouts, six guidance slides, Aptos theme styles, and inherited
+                              footer and logo furniture.
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Assertion-evidence examples</th>
+                            <td>
+                              <code>Support-Assertion-Evidence-Model-Examples.potx</code> with 41
+                              example slides and 31 layouts.
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">New-deck references</th>
+                            <td>
+                              Presentation design standards, assertion-evidence guidance,
+                              exemplar analysis, native authoring notes, production workflow, and
+                              QA checklist.
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Cleanup references</th>
+                            <td>
+                              Preservation envelope, cleanup process, improvement rubric, and a
+                              cleanup-specific QA checklist.
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Visual references</th>
+                            <td>
+                              Contact sheets for the official template, assertion-evidence
+                              examples, and communications-workshop deck examples.
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Validation</th>
+                            <td>
+                              A package verification script, versioned manifests, agent metadata,
+                              installation instructions, and separate skill instructions.
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className="plugin-inventory__limits">
+                      <strong>Intentionally not packaged</strong>
+                      <ul>
+                        <li>
+                          No font installers are included. The PowerPoint templates specify Aptos;
+                          Mulish and restricted Indivisible or Have Heart fonts are not required or
+                          distributed.
+                        </li>
+                        <li>
+                          No separate production ORNL logo file is included. Approved logo and
+                          footer furniture are inherited from the official template master.
+                        </li>
+                        <li>
+                          Template and example imagery is provided as design reference—not as a
+                          reusable, rights-cleared image library.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </details>
                 <Callout title="Do not combine the workflows by default">
                   <p>
                     Use one skill for each request. A cleanup should become a structural rebuild

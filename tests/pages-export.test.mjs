@@ -66,6 +66,11 @@ test("prefixes routes and assets for the GitHub project site", async () => {
       `${basePath}/assets/downloads/ornl-presentation-designer-1\\.1\\.2\\.zip`,
     ),
   );
+  assert.match(
+    presentationGuide,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ornl-presentation-designer-1\.1\.2\.zip/,
+  );
+  assert.doesNotMatch(presentationGuide, /ABSOLUTE PATH TO ornl-presentation-designer/i);
   assert.doesNotMatch(home, /(?:href|src)="\/(?:apps|assets|resources|_next)\//);
 });
 

@@ -51,6 +51,8 @@ test("server-renders the complete ORNL Presentation Designer resource", async ()
 
   const html = await response.text();
   assert.match(html, /One plugin\. Two presentation skills\./i);
+  assert.match(html, /Paste one prompt\. Codex handles the download and installation\./i);
+  assert.match(html, /You are authorized to download that exact public ZIP/i);
   assert.match(html, /\$create-ornl-presentations/);
   assert.match(html, /\$clean-up-ornl-presentations/);
   assert.match(html, /A cleanup can correctly return HOLD/i);
@@ -59,6 +61,11 @@ test("server-renders the complete ORNL Presentation Designer resource", async ()
     /fd5d87bb980de5938eaed63e76a1a38a8cd2c90c2d8ef363b73c429a693ff27f/,
   );
   assert.match(html, /ornl-presentation-designer-1\.1\.2\.zip/);
+  assert.match(
+    html,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ornl-presentation-designer-1\.1\.2\.zip/,
+  );
+  assert.doesNotMatch(html, /ABSOLUTE PATH TO ornl-presentation-designer/i);
 });
 
 test("server-renders app-specific documentation routes", async () => {

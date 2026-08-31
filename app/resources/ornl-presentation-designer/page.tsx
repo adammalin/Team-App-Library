@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ArrowRight,
   CheckCircle,
   DownloadSimple,
   FilePpt,
@@ -84,13 +83,13 @@ export default function OrnlPresentationDesignerPage() {
               PowerPoint while protecting its content and native structure.
             </p>
             <div className="resource-actions">
-              <a className="resource-action resource-action--primary" href={pluginDownload} download>
-                <DownloadSimple aria-hidden="true" />
-                Download plugin · {presentationPlugin.downloadSize}
+              <a className="resource-action resource-action--primary" href="#install">
+                <Package aria-hidden="true" />
+                Install with Codex
               </a>
-              <a className="resource-action" href="#install">
-                View installation steps
-                <ArrowRight aria-hidden="true" />
+              <a className="resource-action" href={pluginDownload} download>
+                <DownloadSimple aria-hidden="true" />
+                Manual ZIP download · {presentationPlugin.downloadSize}
               </a>
             </div>
           </div>
@@ -131,7 +130,7 @@ export default function OrnlPresentationDesignerPage() {
                     <h3>What you need</h3>
                     <ul>
                       <li>A current Codex desktop app or Codex CLI</li>
-                      <li>The downloaded plugin ZIP saved locally</li>
+                      <li>One-time access to the Team Apps download link</li>
                       <li>Approved source files or an existing PPTX</li>
                       <li>Microsoft PowerPoint when available for final native QA</li>
                     </ul>
@@ -162,19 +161,19 @@ export default function OrnlPresentationDesignerPage() {
               <span className="section-index">02</span>
               <div>
                 <span className="eyebrow">One-time setup</span>
-                <h2>Download the ZIP, then let Codex verify and install it.</h2>
+                <h2>Paste one prompt. Codex handles the download and installation.</h2>
                 <ol className="numbered-list resource-steps">
-                  <li>Download the plugin ZIP and save it in a local folder you can find again.</li>
                   <li>Open a Codex task and copy the complete installation prompt below.</li>
-                  <li>Replace the bracketed ZIP path with the file&apos;s absolute local path.</li>
-                  <li>Let Codex verify the checksum, package, installed version, and both skills.</li>
+                  <li>Paste it without editing—the verified download link and checksum are included.</li>
+                  <li>Codex downloads the ZIP, verifies it, and installs the complete plugin.</li>
+                  <li>Codex confirms both skills, their references and assets, and the installed version.</li>
                   <li>After installation succeeds, open a fresh Codex task for presentation work.</li>
                 </ol>
                 <CodeBlock code={installPrompt} label="Copy the complete installation prompt" />
                 <p className="resource-tip">
-                  Tip: on macOS, drag the ZIP from Finder into the Codex prompt to insert its full
-                  path. Restart the desktop app only if the plugin is missing from a new task or
-                  the Plugins Directory.
+                  If local IT blocks the download, Codex will stop and return the same direct link
+                  for a manual download. Restart the desktop app only if the plugin is missing from
+                  a new task or the Plugins Directory.
                 </p>
               </div>
             </section>

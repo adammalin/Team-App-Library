@@ -538,6 +538,26 @@ img {
   padding: 7rem 7vw;
 }
 
+.resource-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0 auto;
+  max-width: 1320px;
+}
+
+.resource-grid .resource-card {
+  margin: 0;
+  max-width: none;
+}
+
+.resource-grid .resource-card:nth-child(2) {
+  border-top-color: var(--ornl-infinity);
+}
+
+.resource-grid .resource-card:nth-child(2) .resource-card__mark {
+  background: linear-gradient(145deg, var(--ornl-infinity), var(--ornl-hale-navy));
+}
+
 .resource-card {
   background: var(--ornl-polar);
   border: 1px solid var(--ornl-graphite);
@@ -821,6 +841,10 @@ img {
   padding-top: 0;
 }
 
+.resource-section > div {
+  min-width: 0;
+}
+
 .resource-section h2 {
   color: var(--ornl-hale-navy);
   font-size: clamp(2rem, 4vw, 3.5rem);
@@ -1065,6 +1089,26 @@ img {
 
 .resource-review-list {
   margin-top: 0.5rem;
+}
+
+.figure-preview {
+  background: color-mix(in srgb, var(--ornl-graphite) 24%, var(--ornl-polar));
+  border-left: 6px solid var(--ornl-green);
+  margin: 1.5rem 0;
+  padding: 1rem;
+}
+
+.figure-preview img {
+  background: var(--ornl-polar);
+  border: 1px solid var(--ornl-graphite);
+  height: auto;
+  width: 100%;
+}
+
+.figure-preview figcaption {
+  color: color-mix(in srgb, var(--ornl-dark-matter) 70%, var(--ornl-polar));
+  font-size: 0.82rem;
+  margin-top: 0.8rem;
 }
 
 .download-panel {
@@ -1458,6 +1502,8 @@ img {
   background: var(--ornl-hale-navy);
   border-left: 6px solid var(--ornl-energy);
   color: var(--ornl-polar);
+  max-width: 100%;
+  min-width: 0;
   overflow: hidden;
 }
 

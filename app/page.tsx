@@ -6,12 +6,14 @@ import {
   DownloadSimple,
   FilePpt,
   HardDrives,
+  ImageSquare,
   Package,
   TerminalWindow,
 } from "@phosphor-icons/react/dist/ssr";
 import { apps } from "./app-data";
 import { AppIcon } from "./components/AppIcon";
 import { presentationPlugin } from "./presentation-plugin-data";
+import { ercpProposalFiguresPlugin } from "./ercp-proposal-figures-data";
 import { SiteHeader } from "./components/SiteHeader";
 
 export const metadata: Metadata = {
@@ -46,8 +48,8 @@ export default function Home() {
             <span>03</span>
             <strong>Local desktop apps</strong>
             <hr />
-            <span>01</span>
-            <strong>Codex presentation plugin</strong>
+            <span>02</span>
+            <strong>Codex resources</strong>
             <hr />
             <span>01</span>
             <strong>Shared help center</strong>
@@ -112,41 +114,75 @@ export default function Home() {
           <div className="section-heading">
             <div>
               <span className="eyebrow">Codex resources</span>
-              <h2 id="codex-resources-title">Build better ORNL presentations.</h2>
+              <h2 id="codex-resources-title">Extend Codex with purpose-built workflows.</h2>
             </div>
-            <p>Download the plugin, install it safely, and copy the right prompt for the job.</p>
+            <p>Browse Agent Plugins, specialist skills, checked prompts, and future Codex resources.</p>
           </div>
-          <article className="resource-card">
-            <div className="resource-card__mark" aria-hidden="true">
-              <FilePpt weight="duotone" />
-            </div>
-            <div className="resource-card__body">
-              <span className="eyebrow">
-                Agent Plugin · PowerPoint · v{presentationPlugin.version}
-              </span>
-              <h3>ORNL Presentation Designer</h3>
-              <p>
-                Create a new editable ORNL deck from approved sources or clean up an existing
-                PowerPoint with a confident-redesign workflow, visible before/after quality gate,
-                and a tested native PowerPoint fallback for protected files.
-              </p>
-              <div className="resource-card__skills">
-                <span>Create new presentations</span>
-                <span>Confidently redesign existing decks</span>
-                <span>ORNL template and brand references included</span>
+          <div className="resource-grid">
+            <article className="resource-card">
+              <div className="resource-card__mark" aria-hidden="true">
+                <FilePpt weight="duotone" />
               </div>
-            </div>
-            <div className="resource-card__actions">
-              <Link href="/resources/ornl-presentation-designer">
-                Open complete guide
-                <ArrowRight />
-              </Link>
-              <Link href="/resources/ornl-presentation-designer#download">
-                <Package />
-                Download details
-              </Link>
-            </div>
-          </article>
+              <div className="resource-card__body">
+                <span className="eyebrow">
+                  Agent Plugin · PowerPoint · v{presentationPlugin.version}
+                </span>
+                <h3>ORNL Presentation Designer</h3>
+                <p>
+                  Create a new editable ORNL deck from approved sources or clean up an existing
+                  PowerPoint with a confident-redesign workflow, visible before/after quality gate,
+                  and a tested native PowerPoint fallback for protected files.
+                </p>
+                <div className="resource-card__skills">
+                  <span>Create new presentations</span>
+                  <span>Confidently redesign existing decks</span>
+                  <span>ORNL template and brand references included</span>
+                </div>
+              </div>
+              <div className="resource-card__actions">
+                <Link href="/resources/ornl-presentation-designer">
+                  Open complete guide
+                  <ArrowRight />
+                </Link>
+                <Link href="/resources/ornl-presentation-designer#download">
+                  <Package />
+                  Download details
+                </Link>
+              </div>
+            </article>
+
+            <article className="resource-card">
+              <div className="resource-card__mark" aria-hidden="true">
+                <ImageSquare weight="duotone" />
+              </div>
+              <div className="resource-card__body">
+                <span className="eyebrow">
+                  Beta · Agent Plugin · Scientific Figure 1 · v{ercpProposalFiguresPlugin.version}
+                </span>
+                <h3>DOE Proposal Figure 1</h3>
+                <p>
+                  Turn a substantive ERCP or ECRP proposal into one source-grounded, completely
+                  label-free raster Figure 1 collaboration draft, with proposal, science, visual,
+                  OCR, and handoff quality gates built into the workflow.
+                </p>
+                <div className="resource-card__skills">
+                  <span>Reads the attached proposal in full</span>
+                  <span>Creates label-free PNG collaboration drafts</span>
+                  <span>Packages style references and repeatable QA</span>
+                </div>
+              </div>
+              <div className="resource-card__actions">
+                <Link href="/resources/ercp-proposal-figures">
+                  Open beta guide
+                  <ArrowRight />
+                </Link>
+                <Link href="/resources/ercp-proposal-figures#download">
+                  <Package />
+                  Download details
+                </Link>
+              </div>
+            </article>
+          </div>
         </section>
 
         <section className="how-section">

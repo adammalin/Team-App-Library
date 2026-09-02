@@ -41,8 +41,36 @@ test("server-renders the app catalog", async () => {
   assert.match(html, /ORNL OrgChart Studio/);
   assert.match(html, /USA Map Studio/);
   assert.match(html, /ORNL Presentation Designer/);
+  assert.match(html, /DOE Proposal Figure 1/);
+  assert.match(html, /Extend Codex with purpose-built workflows\./);
   assert.match(html, /Codex resources/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
+});
+
+test("server-renders the complete beta DOE Proposal Figure 1 resource", async () => {
+  const response = await render("/resources/ercp-proposal-figures");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Beta · Codex Agent Plugin · Scientific Figure 1/i);
+  assert.match(html, /One plugin\. One evidence-gated Figure 1 workflow\./i);
+  assert.match(html, /Paste one checked prompt to install the complete plugin\./i);
+  assert.match(html, /\$create-ercp-proposal-figures/);
+  assert.match(html, /completely label-free Figure 1 collaboration draft/i);
+  assert.match(html, /one opaque 1536 × 1024 raster PNG/i);
+  assert.match(html, /Version 1\.0\.0/i);
+  assert.match(html, /ercp-proposal-figures-1\.0\.0\.zip/);
+  assert.match(
+    html,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.0\.0\.zip/,
+  );
+  assert.match(
+    html,
+    /e03379249be98871b622cafc198f40c9d2c27001a319ce46ec71564e3050ee7b/,
+  );
+  assert.match(html, /ercp-proposal-figures-beta-preview\.png/);
+  assert.match(html, /Version 1\.0\.0 creates Figure 1 collaboration drafts only/i);
+  assert.doesNotMatch(html, /placeholder|lorem ipsum/i);
 });
 
 test("server-renders the complete ORNL Presentation Designer resource", async () => {

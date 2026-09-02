@@ -29,6 +29,7 @@ const exportedPages = [
   "out/apps/usa-map-studio/usage/index.html",
   "out/apps/usa-map-studio/ai-integration/index.html",
   "out/resources/ornl-presentation-designer/index.html",
+  "out/resources/ercp-proposal-figures/index.html",
 ];
 
 test("exports every catalog and documentation route", async () => {
@@ -36,11 +37,15 @@ test("exports every catalog and documentation route", async () => {
 });
 
 test("prefixes routes and assets for the GitHub project site", async () => {
-  const [home, badgeGuide, presentationGuide] = await Promise.all([
+  const [home, badgeGuide, presentationGuide, figureGuide] = await Promise.all([
     readFile(new URL("out/index.html", projectRoot), "utf8"),
     readFile(new URL("out/apps/badge-blur/index.html", projectRoot), "utf8"),
     readFile(
       new URL("out/resources/ornl-presentation-designer/index.html", projectRoot),
+      "utf8",
+    ),
+    readFile(
+      new URL("out/resources/ercp-proposal-figures/index.html", projectRoot),
       "utf8",
     ),
   ]);
@@ -70,6 +75,29 @@ test("prefixes routes and assets for the GitHub project site", async () => {
     presentationGuide,
     /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ornl-presentation-designer-1\.2\.0\.zip/,
   );
+  assert.match(
+    home,
+    new RegExp(`href="${basePath}/resources/ercp-proposal-figures/"`),
+  );
+  assert.match(
+    figureGuide,
+    new RegExp(
+      `${basePath}/assets/downloads/ercp-proposal-figures-1\\.0\\.0\\.zip`,
+    ),
+  );
+  assert.match(
+    figureGuide,
+    new RegExp(
+      `${basePath}/assets/screenshots/ercp-proposal-figures-beta-preview\\.png`,
+    ),
+  );
+  assert.match(
+    figureGuide,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.0\.0\.zip/,
+  );
+  assert.match(figureGuide, /Beta[\s\S]{0,80}Version[\s\S]{0,80}1\.0\.0/i);
+  assert.match(figureGuide, /completely label-free Figure 1 collaboration draft/i);
+  assert.match(figureGuide, /e03379249be98871b622cafc198f40c9d2c27001a319ce46ec71564e3050ee7b/);
   assert.doesNotMatch(presentationGuide, /ABSOLUTE PATH TO ornl-presentation-designer/i);
   assert.match(presentationGuide, /Files first\. Questions second\. Slides third\./i);
   assert.match(
@@ -119,6 +147,8 @@ test("copies downloadable files and disables Jekyll processing", async () => {
     "out/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf",
     "out/assets/guides/USA-Map-Studio-User-Guide-v0.8.0.pdf",
     "out/assets/downloads/ornl-presentation-designer-1.2.0.zip",
+    "out/assets/downloads/ercp-proposal-figures-1.0.0.zip",
+    "out/assets/screenshots/ercp-proposal-figures-beta-preview.png",
   ];
 
   await Promise.all(files.map((file) => access(new URL(file, projectRoot))));

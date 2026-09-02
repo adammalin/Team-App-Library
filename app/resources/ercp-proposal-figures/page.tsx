@@ -82,8 +82,9 @@ export default function ErcpProposalFiguresPage() {
             <p>
               This source-grounded Codex workflow reads a substantive DOE Office of Science ERCP
               or ECRP proposal, locks its science and sponsor-impact logic, creates two label-free
-              raster candidates, inspects the actual images, and returns the strongest Figure 1
-              collaboration draft for scientist and graphic-designer review.
+              brand-neutral raster candidates with stable proposal-role colors, inspects the actual
+              images, and returns the strongest Figure 1 collaboration draft for scientist and
+              graphic-designer review.
             </p>
             <div className="resource-actions">
               <a className="resource-action resource-action--primary" href="#install">
@@ -103,6 +104,7 @@ export default function ErcpProposalFiguresPage() {
             <ul>
               <li>Reads the attached proposal in full</li>
               <li>Generates label-free raster PNG drafts</li>
+              <li>Uses stable colors for five proposal roles</li>
               <li>Checks source, science, composition, and labels</li>
               <li>Archives prompts, candidates, and QA evidence</li>
             </ul>
@@ -195,7 +197,7 @@ export default function ErcpProposalFiguresPage() {
                 <ol className="numbered-list resource-steps">
                   <li>Read the proposal itself and freeze a source lock with exact supporting excerpts.</li>
                   <li>Reduce the case to one proposal-native funding argument—not a methods inventory or Roadmap.</li>
-                  <li>Assign visible carriers for Vision, Gap, Objectives, Approach, and Impact.</li>
+                  <li>Assign visible carriers and fixed colors for Vision, Gap, Objectives, Approach, and Impact.</li>
                   <li>Select a bundled visual family only after the proposal-native topology is fixed.</li>
                   <li>Generate two internal label-free PNG candidates and inspect the returned rasters.</li>
                   <li>Permit at most one focused repair, then return only the strongest usable draft.</li>
@@ -236,8 +238,8 @@ export default function ErcpProposalFiguresPage() {
                             <td>Source lock, funding argument, science verification, and visual-role mapping.</td>
                           </tr>
                           <tr>
-                            <th scope="row">Four style references</th>
-                            <td>Approved flat scientific visual families used for style—not scientific content.</td>
+                            <th scope="row">Seven style references</th>
+                            <td>Approved flat scientific visual families used for style—not scientific content, palette, or branding.</td>
                           </tr>
                           <tr>
                             <th scope="row">Image-execution rules</th>
@@ -295,6 +297,7 @@ export default function ErcpProposalFiguresPage() {
                       <li>Actual-raster inspection finds no meaningful text or label-like marks</li>
                       <li>One dominant reading path and one primary visual claim are visible</li>
                       <li>Vision, Gap, Objectives, Approach, and Impact remain distinguishable</li>
+                      <li>The fixed five-role colors remain stable and the output stays brand-neutral</li>
                       <li>The result is a PNG draft that a graphic designer can interpret and redraw</li>
                     </ul>
                   </article>
@@ -304,6 +307,15 @@ export default function ErcpProposalFiguresPage() {
                     Color roles, scientific caveats, and review notes appear in the Codex chat.
                     They are never embedded as labels, captions, paragraphs, legends, or title text
                     inside the generated figure.
+                  </p>
+                </Callout>
+                <Callout title="Brand-neutral by design">
+                  <p>
+                    Version 1.1.0 keeps the proposal semantics stable: Vision uses pale sage
+                    (#C6DCCC), Gap orange-red (#FE5000), Objectives purple (#B36CFF), Approach
+                    warm orange/gold (#FF9E1B), and Impact pale cyan/teal (#BFD1D3). These are
+                    collaboration-draft roles—not ORNL or sponsor branding—and no logo, brand
+                    typography, branded geometry, or organization-recognition palette is applied.
                   </p>
                 </Callout>
               </div>
@@ -338,7 +350,7 @@ export default function ErcpProposalFiguresPage() {
                 </ul>
                 <Callout tone="warning" title="Current beta boundary">
                   <p>
-                    Version 1.0.0 creates Figure 1 collaboration drafts only. It does not create a
+                    Version 1.1.0 creates Figure 1 collaboration drafts only. It does not create a
                     proposal Roadmap, edit the source proposal, produce vector artwork, or deliver a
                     submission-ready final figure.
                   </p>
@@ -370,7 +382,7 @@ export default function ErcpProposalFiguresPage() {
                 </div>
                 <p className="resource-intro">
                   The archive includes both Agent Plugins 1.0 and Codex manifests, the complete
-                  Figure 1 skill, four style-reference images, fictional qualification fixtures,
+                  Figure 1 skill, seven style-reference images, fictional qualification fixtures,
                   analysis and evaluation references, and deterministic validation scripts.
                 </p>
               </div>

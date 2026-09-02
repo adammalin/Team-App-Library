@@ -82,7 +82,7 @@ test("prefixes routes and assets for the GitHub project site", async () => {
   assert.match(
     figureGuide,
     new RegExp(
-      `${basePath}/assets/downloads/ercp-proposal-figures-1\\.0\\.0\\.zip`,
+      `${basePath}/assets/downloads/ercp-proposal-figures-1\\.1\\.0\\.zip`,
     ),
   );
   assert.match(
@@ -93,11 +93,13 @@ test("prefixes routes and assets for the GitHub project site", async () => {
   );
   assert.match(
     figureGuide,
-    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.0\.0\.zip/,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.1\.0\.zip/,
   );
-  assert.match(figureGuide, /Beta[\s\S]{0,80}Version[\s\S]{0,80}1\.0\.0/i);
+  assert.match(figureGuide, /Beta[\s\S]{0,80}Version[\s\S]{0,80}1\.1\.0/i);
   assert.match(figureGuide, /completely label-free Figure 1 collaboration draft/i);
-  assert.match(figureGuide, /e03379249be98871b622cafc198f40c9d2c27001a319ce46ec71564e3050ee7b/);
+  assert.match(figureGuide, /brand-neutral/i);
+  assert.match(figureGuide, /Seven style references/i);
+  assert.match(figureGuide, /4e69b6c275aa58e3c063bada0ac6226bb7b3f1c14606aafa70274c2b9193aef3/);
   assert.doesNotMatch(presentationGuide, /ABSOLUTE PATH TO ornl-presentation-designer/i);
   assert.match(presentationGuide, /Files first\. Questions second\. Slides third\./i);
   assert.match(
@@ -147,7 +149,7 @@ test("copies downloadable files and disables Jekyll processing", async () => {
     "out/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf",
     "out/assets/guides/USA-Map-Studio-User-Guide-v0.8.0.pdf",
     "out/assets/downloads/ornl-presentation-designer-1.2.0.zip",
-    "out/assets/downloads/ercp-proposal-figures-1.0.0.zip",
+    "out/assets/downloads/ercp-proposal-figures-1.1.0.zip",
     "out/assets/screenshots/ercp-proposal-figures-beta-preview.png",
   ];
 

@@ -58,18 +58,20 @@ test("server-renders the complete beta DOE Proposal Figure 1 resource", async ()
   assert.match(html, /\$create-ercp-proposal-figures/);
   assert.match(html, /completely label-free Figure 1 collaboration draft/i);
   assert.match(html, /one opaque 1536 × 1024 raster PNG/i);
-  assert.match(html, /Version 1\.0\.0/i);
-  assert.match(html, /ercp-proposal-figures-1\.0\.0\.zip/);
+  assert.match(html, /Version 1\.1\.0/i);
+  assert.match(html, /ercp-proposal-figures-1\.1\.0\.zip/);
   assert.match(
     html,
-    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.0\.0\.zip/,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.1\.0\.zip/,
   );
   assert.match(
     html,
-    /e03379249be98871b622cafc198f40c9d2c27001a319ce46ec71564e3050ee7b/,
+    /4e69b6c275aa58e3c063bada0ac6226bb7b3f1c14606aafa70274c2b9193aef3/,
   );
   assert.match(html, /ercp-proposal-figures-beta-preview\.png/);
-  assert.match(html, /Version 1\.0\.0 creates Figure 1 collaboration drafts only/i);
+  assert.match(html, /Version 1\.1\.0 creates Figure 1 collaboration drafts only/i);
+  assert.match(html, /Seven style references/i);
+  assert.match(html, /brand-neutral/i);
   assert.doesNotMatch(html, /placeholder|lorem ipsum/i);
 });
 

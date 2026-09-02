@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 
 const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "";
 const pluginDownload = `${siteBasePath}/assets/downloads/${ercpProposalFiguresPlugin.downloadFile}`;
-const previewImage = `${siteBasePath}/assets/screenshots/ercp-proposal-figures-beta-preview.png`;
+const previewImage = `${siteBasePath}/assets/screenshots/ercp-proposal-figures-1.2.0-beta.1-preview.png`;
 
 function Callout({
   tone = "info",
@@ -81,8 +81,8 @@ export default function ErcpProposalFiguresPage() {
             <h1>Turn a proposal draft into a clearer “Why fund this?” visual argument.</h1>
             <p>
               This source-grounded Codex workflow reads a substantive DOE Office of Science ERCP
-              or ECRP proposal, locks its science and sponsor-impact logic, creates two label-free
-              brand-neutral raster candidates with stable proposal-role colors, inspects the actual
+              or ECRP proposal, locks its science and sponsor-impact logic, compares proposal-native
+              structures, creates two label-free brand-neutral raster candidates, inspects the actual
               images, and returns the strongest Figure 1 collaboration draft for scientist and
               graphic-designer review.
             </p>
@@ -104,7 +104,7 @@ export default function ErcpProposalFiguresPage() {
             <ul>
               <li>Reads the attached proposal in full</li>
               <li>Generates label-free raster PNG drafts</li>
-              <li>Uses stable colors for five proposal roles</li>
+              <li>Uses recognizable proposal-specific visual elements</li>
               <li>Checks source, science, composition, and labels</li>
               <li>Archives prompts, candidates, and QA evidence</li>
             </ul>
@@ -161,9 +161,9 @@ export default function ErcpProposalFiguresPage() {
                 </Callout>
                 <Callout title="This is a beta collaboration tool">
                   <p>
-                    The package passed deterministic checks and a live fictional-proposal
-                    qualification, but image generation remains variable. A scientist and graphic
-                    designer must verify and finish every result.
+                    The package passed deterministic checks and three cleared real-proposal
+                    benchmarks with a mean selected score of 4.64/5. Image generation remains
+                    variable, so a scientist and graphic designer must verify and finish every result.
                   </p>
                 </Callout>
               </div>
@@ -197,7 +197,7 @@ export default function ErcpProposalFiguresPage() {
                 <ol className="numbered-list resource-steps">
                   <li>Read the proposal itself and freeze a source lock with exact supporting excerpts.</li>
                   <li>Reduce the case to one proposal-native funding argument—not a methods inventory or Roadmap.</li>
-                  <li>Assign visible carriers and fixed colors for Vision, Gap, Objectives, Approach, and Impact.</li>
+                  <li>Turn the proposal’s important nouns into recognizable visual carriers and use color consistently.</li>
                   <li>Select a bundled visual family only after the proposal-native topology is fixed.</li>
                   <li>Generate two internal label-free PNG candidates and inspect the returned rasters.</li>
                   <li>Permit at most one focused repair, then return only the strongest usable draft.</li>
@@ -209,11 +209,11 @@ export default function ErcpProposalFiguresPage() {
                     src={previewImage}
                     width="1536"
                     height="1024"
-                    alt="Label-free flat scientific illustration produced from the fictional FluxWeave proposal during beta qualification"
+                    alt="Label-free flat scientific illustration selected during the version 1.2 beta qualification"
                   />
                   <figcaption>
-                    Beta qualification example made from a fictional proposal. The visual uses no
-                    client science, labels, legend, or submission copy.
+                    Selected version 1.2 qualification output from a cleared proposal benchmark.
+                    The image remains a collaboration draft requiring scientist and designer review.
                   </figcaption>
                 </figure>
                 <details className="plugin-inventory">
@@ -238,8 +238,8 @@ export default function ErcpProposalFiguresPage() {
                             <td>Source lock, funding argument, science verification, and visual-role mapping.</td>
                           </tr>
                           <tr>
-                            <th scope="row">Seven style references</th>
-                            <td>Approved flat scientific visual families used for style—not scientific content, palette, or branding.</td>
+                            <th scope="row">Eight style references</th>
+                            <td>Expected-quality scientific visual families used for layout and illustration style—not scientific content or branding.</td>
                           </tr>
                           <tr>
                             <th scope="row">Image-execution rules</th>
@@ -296,8 +296,8 @@ export default function ErcpProposalFiguresPage() {
                     <ul>
                       <li>Actual-raster inspection finds no meaningful text or label-like marks</li>
                       <li>One dominant reading path and one primary visual claim are visible</li>
-                      <li>Vision, Gap, Objectives, Approach, and Impact remain distinguishable</li>
-                      <li>The fixed five-role colors remain stable and the output stays brand-neutral</li>
+                      <li>The system, gap, capability, decisive relationship, endpoint, and DOE payoff remain recognizable</li>
+                      <li>Color distinguishes proposal elements consistently while the output stays brand-neutral</li>
                       <li>The result is a PNG draft that a graphic designer can interpret and redraw</li>
                     </ul>
                   </article>
@@ -311,11 +311,11 @@ export default function ErcpProposalFiguresPage() {
                 </Callout>
                 <Callout title="Brand-neutral by design">
                   <p>
-                    Version 1.1.0 keeps the proposal semantics stable: Vision uses pale sage
-                    (#C6DCCC), Gap orange-red (#FE5000), Objectives purple (#B36CFF), Approach
-                    warm orange/gold (#FF9E1B), and Impact pale cyan/teal (#BFD1D3). These are
-                    collaboration-draft roles—not ORNL or sponsor branding—and no logo, brand
-                    typography, branded geometry, or organization-recognition palette is applied.
+                    Version 1.2.0-beta.1 uses Vision, Gap, Objectives, Approach, and Impact as
+                    internal wireframe roles without forcing five literal regions or a fixed final-art
+                    palette. The proposal and selected reference guide a cohesive palette, while no
+                    logo, brand typography, branded geometry, or organization-recognition palette
+                    is applied.
                   </p>
                 </Callout>
               </div>
@@ -350,7 +350,7 @@ export default function ErcpProposalFiguresPage() {
                 </ul>
                 <Callout tone="warning" title="Current beta boundary">
                   <p>
-                    Version 1.1.0 creates Figure 1 collaboration drafts only. It does not create a
+                    Version 1.2.0-beta.1 creates Figure 1 collaboration drafts only. It does not create a
                     proposal Roadmap, edit the source proposal, produce vector artwork, or deliver a
                     submission-ready final figure.
                   </p>
@@ -382,7 +382,7 @@ export default function ErcpProposalFiguresPage() {
                 </div>
                 <p className="resource-intro">
                   The archive includes both Agent Plugins 1.0 and Codex manifests, the complete
-                  Figure 1 skill, seven style-reference images, fictional qualification fixtures,
+                  Figure 1 skill, eight style-reference images, fictional qualification fixtures,
                   analysis and evaluation references, and deterministic validation scripts.
                 </p>
               </div>

@@ -1,13 +1,13 @@
 export const ercpProposalFiguresPlugin = {
   name: "DOE Proposal Figure 1",
   packageName: "ercp-proposal-figures",
-  version: "1.1.0",
+  version: "1.2.0-beta.1",
   status: "Beta",
-  downloadFile: "ercp-proposal-figures-1.1.0.zip",
-  downloadSize: "6.9 MB",
+  downloadFile: "ercp-proposal-figures-1.2.0-beta.1.zip",
+  downloadSize: "8.1 MB",
   publicDownloadUrl:
-    "https://adammalin.github.io/Team-App-Library/assets/downloads/ercp-proposal-figures-1.1.0.zip",
-  sha256: "4e69b6c275aa58e3c063bada0ac6226bb7b3f1c14606aafa70274c2b9193aef3",
+    "https://adammalin.github.io/Team-App-Library/assets/downloads/ercp-proposal-figures-1.2.0-beta.1.zip",
+  sha256: "b7437165390ca75539c44f8a4467642bf199b695637bdb06b9f20def9da4909b",
 } as const;
 
 export const ercpInstallPrompt = `Download, verify, and install or update the DOE Proposal Figure 1 Agent Plugin from this exact URL:
@@ -31,7 +31,7 @@ Before installation:
 - validate the root \`plugin.json\` and the existing \`.codex-plugin/plugin.json\` rather than replacing either authored manifest with a generic scaffold;
 - run \`python3 skills/create-ercp-proposal-figures/scripts/self_test.py\` from the extracted plugin;
 - install the complete plugin directory, including both manifests and the full \`skills/create-ercp-proposal-figures/\` folder with its agents, assets, style references, fictional fixtures, references, and scripts—do not copy only \`SKILL.md\`.
-- confirm that all seven bundled style-reference PNGs are present and that the fixed Vision, Gap, Objectives, Approach, and Impact color system is included;
+- confirm that all eight bundled style-reference PNGs are present and that the proposal-native layout, recognizable-object inventory, flexible color semantics, and blind image-only QA rules are included;
 
 If this plugin is already installed, make a recoverable local backup of that plugin only, then use the plugin-creator cachebuster and reinstall flow. Do not hand-edit marketplace configuration. If it is not installed, add it to the default personal marketplace without disturbing existing entries and install and enable it from the personal source.
 
@@ -47,6 +47,6 @@ export const ercpStartPrompt = `Use \`$create-ercp-proposal-figures\` on the sub
 
 Create one source-grounded, brand-neutral, completely label-free Figure 1 collaboration draft that makes the proposal's \"Why fund this?\" argument visible. Return one opaque 1536 × 1024 raster PNG—never SVG, vector artwork, PowerPoint, or PDF—and keep every color-role explanation and remaining science-review note in chat.
 
-Use the plugin's fixed proposal-role colors: Vision pale sage, Gap orange-red, Objectives purple, Approach warm orange/gold, and Impact pale cyan/teal. Do not imitate ORNL or any other organization brand, logo, typography, geometry, or recognition palette.
+Use Vision, Gap, Objectives, Approach, and Impact as internal planning roles, not as five mandatory labeled zones or a fixed final-art palette. Choose a cohesive proposal-appropriate palette and use color consistently to distinguish the depicted scientific elements. Do not imitate ORNL or any other organization brand, logo, typography, geometry, or recognition palette.
 
-If I attached an existing Figure 1, Roadmap, sketch, or style reference, use only its non-color visual system. Do not import its science, claims, labels, palette, branding, or structure unless the proposal itself supports them.`;
+If I attached an existing Figure 1, Roadmap, sketch, or style reference, use it as relevant visual-system context. Do not import its science, claims, labels, branding, or structure unless the proposal itself supports them. Use the bundled expected-quality images as references for layout grammar, connector language, color rhythm, restrained dimensionality, and illustration finish—not as scientific source material.`;

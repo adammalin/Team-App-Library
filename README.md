@@ -8,6 +8,12 @@ A local-first app catalog and documentation site for the team's unsigned Electro
 - ORNL OrgChart Studio
 - USA Map Studio
 
+## Included Codex resources
+
+- ORNL Presentation Designer
+- DOE Proposal Figure 1
+- 3D Modeling Agent
+
 The site packages the supplied PDF guides as unchanged downloads and includes current, source-repository-backed commands. It does not distribute unsigned installers or app bundles.
 
 ## Run locally
@@ -36,6 +42,7 @@ npm run lint
 - Site layout and styling: `app/`
 - App icons and screenshots: `public/assets/`
 - Downloadable guides: `public/assets/guides/`
+- Downloadable Agent Plugins: `public/assets/downloads/`
 
 Keep commands aligned with each application's current README and source scripts. Preserve supplied PDFs unchanged; add a newly versioned guide when documentation is revised.
 

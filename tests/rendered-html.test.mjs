@@ -42,9 +42,37 @@ test("server-renders the app catalog", async () => {
   assert.match(html, /USA Map Studio/);
   assert.match(html, /ORNL Presentation Designer/);
   assert.match(html, /DOE Proposal Figure 1/);
+  assert.match(html, /3D Modeling Agent/);
   assert.match(html, /Extend Codex with purpose-built workflows\./);
   assert.match(html, /Codex resources/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
+});
+
+test("server-renders the complete beta 3D Modeling Agent resource", async () => {
+  const response = await render("/resources/3d-modeling-agent");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Beta · Codex Agent Plugin · 3D production/i);
+  assert.match(html, /One skill\. Six representation-aware routes\./i);
+  assert.match(html, /Build 3D assets as editable systems/i);
+  assert.match(html, /\$3d-modeling-agent/);
+  assert.match(html, /Deterministic procedural/i);
+  assert.match(html, /Parametric CAD/i);
+  assert.match(html, /Measured reconstruction/i);
+  assert.match(html, /A beautiful render is evidence/i);
+  assert.match(html, /Version 0\.1\.0/i);
+  assert.match(html, /3d-modeling-agent-0\.1\.0\.zip/);
+  assert.match(
+    html,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/3d-modeling-agent-0\.1\.0\.zip/,
+  );
+  assert.match(
+    html,
+    /298f00a1ac92eb8aaaee849e7b0d231536be8152e8c405f03e3050f77857e821/,
+  );
+  assert.match(html, /seven-case self-test/i);
+  assert.doesNotMatch(html, /placeholder|lorem ipsum/i);
 });
 
 test("server-renders the complete beta DOE Proposal Figure 1 resource", async () => {

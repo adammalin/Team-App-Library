@@ -30,6 +30,7 @@ const exportedPages = [
   "out/apps/usa-map-studio/ai-integration/index.html",
   "out/resources/ornl-presentation-designer/index.html",
   "out/resources/ercp-proposal-figures/index.html",
+  "out/resources/3d-modeling-agent/index.html",
 ];
 
 test("exports every catalog and documentation route", async () => {
@@ -37,7 +38,7 @@ test("exports every catalog and documentation route", async () => {
 });
 
 test("prefixes routes and assets for the GitHub project site", async () => {
-  const [home, badgeGuide, presentationGuide, figureGuide] = await Promise.all([
+  const [home, badgeGuide, presentationGuide, figureGuide, modelingGuide] = await Promise.all([
     readFile(new URL("out/index.html", projectRoot), "utf8"),
     readFile(new URL("out/apps/badge-blur/index.html", projectRoot), "utf8"),
     readFile(
@@ -46,6 +47,10 @@ test("prefixes routes and assets for the GitHub project site", async () => {
     ),
     readFile(
       new URL("out/resources/ercp-proposal-figures/index.html", projectRoot),
+      "utf8",
+    ),
+    readFile(
+      new URL("out/resources/3d-modeling-agent/index.html", projectRoot),
       "utf8",
     ),
   ]);
@@ -100,6 +105,21 @@ test("prefixes routes and assets for the GitHub project site", async () => {
   assert.match(figureGuide, /brand-neutral/i);
   assert.match(figureGuide, /Seven style references/i);
   assert.match(figureGuide, /4e69b6c275aa58e3c063bada0ac6226bb7b3f1c14606aafa70274c2b9193aef3/);
+  assert.match(
+    home,
+    new RegExp(`href="${basePath}/resources/3d-modeling-agent/"`),
+  );
+  assert.match(
+    modelingGuide,
+    new RegExp(`${basePath}/assets/downloads/3d-modeling-agent-0\\.1\\.0\\.zip`),
+  );
+  assert.match(
+    modelingGuide,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/3d-modeling-agent-0\.1\.0\.zip/,
+  );
+  assert.match(modelingGuide, /Beta[\s\S]{0,80}Version[\s\S]{0,80}0\.1\.0/i);
+  assert.match(modelingGuide, /One skill\. Six representation-aware routes\./i);
+  assert.match(modelingGuide, /298f00a1ac92eb8aaaee849e7b0d231536be8152e8c405f03e3050f77857e821/);
   assert.doesNotMatch(presentationGuide, /ABSOLUTE PATH TO ornl-presentation-designer/i);
   assert.match(presentationGuide, /Files first\. Questions second\. Slides third\./i);
   assert.match(
@@ -150,6 +170,7 @@ test("copies downloadable files and disables Jekyll processing", async () => {
     "out/assets/guides/USA-Map-Studio-User-Guide-v0.8.0.pdf",
     "out/assets/downloads/ornl-presentation-designer-1.2.0.zip",
     "out/assets/downloads/ercp-proposal-figures-1.1.0.zip",
+    "out/assets/downloads/3d-modeling-agent-0.1.0.zip",
     "out/assets/screenshots/ercp-proposal-figures-beta-preview.png",
   ];
 

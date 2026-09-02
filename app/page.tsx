@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle,
+  Cube,
   DownloadSimple,
   FilePpt,
   HardDrives,
@@ -14,6 +15,7 @@ import { apps } from "./app-data";
 import { AppIcon } from "./components/AppIcon";
 import { presentationPlugin } from "./presentation-plugin-data";
 import { ercpProposalFiguresPlugin } from "./ercp-proposal-figures-data";
+import { threeDModelingAgentPlugin } from "./three-d-modeling-agent-data";
 import { SiteHeader } from "./components/SiteHeader";
 
 export const metadata: Metadata = {
@@ -48,7 +50,7 @@ export default function Home() {
             <span>03</span>
             <strong>Local desktop apps</strong>
             <hr />
-            <span>02</span>
+            <span>03</span>
             <strong>Codex resources</strong>
             <hr />
             <span>01</span>
@@ -177,6 +179,38 @@ export default function Home() {
                   <ArrowRight />
                 </Link>
                 <Link href="/resources/ercp-proposal-figures#download">
+                  <Package />
+                  Download details
+                </Link>
+              </div>
+            </article>
+
+            <article className="resource-card">
+              <div className="resource-card__mark" aria-hidden="true">
+                <Cube weight="duotone" />
+              </div>
+              <div className="resource-card__body">
+                <span className="eyebrow">
+                  Beta · Agent Plugin · 3D production · v{threeDModelingAgentPlugin.version}
+                </span>
+                <h3>3D Modeling Agent</h3>
+                <p>
+                  Plan, build, audit, validate, and package editable 3D assets with a route-aware
+                  workflow for procedural DCC, CAD, generative, reconstruction, experimental, and
+                  hybrid production.
+                </p>
+                <div className="resource-card__skills">
+                  <span>Chooses the representation by required truth</span>
+                  <span>Preserves authoritative sources and native editability</span>
+                  <span>Validates geometry, appearance, motion, and delivery</span>
+                </div>
+              </div>
+              <div className="resource-card__actions">
+                <Link href="/resources/3d-modeling-agent">
+                  Open beta guide
+                  <ArrowRight />
+                </Link>
+                <Link href="/resources/3d-modeling-agent#download">
                   <Package />
                   Download details
                 </Link>

@@ -87,27 +87,27 @@ test("prefixes routes and assets for the GitHub project site", async () => {
   assert.match(
     figureGuide,
     new RegExp(
-      `${basePath}/assets/downloads/ercp-proposal-figures-1\\.2\\.0-beta\\.2\\.zip`,
+      `${basePath}/assets/downloads/ercp-proposal-figures-1\\.2\\.0-beta\\.3\\.zip`,
     ),
   );
   assert.match(
     figureGuide,
     new RegExp(
-      `${basePath}/assets/screenshots/ercp-proposal-figures-1\\.2\\.0-beta\\.2-preview\\.png`,
+      `${basePath}/assets/screenshots/ercp-proposal-figures-1\\.2\\.0-beta\\.3-preview\\.png`,
     ),
   );
   assert.match(
     figureGuide,
-    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.2\.0-beta\.2\.zip/,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.2\.0-beta\.3\.zip/,
   );
-  assert.match(figureGuide, /Beta[\s\S]{0,80}Version[\s\S]{0,80}1\.2\.0-beta\.2/i);
+  assert.match(figureGuide, /Beta[\s\S]{0,80}Version[\s\S]{0,80}1\.2\.0-beta\.3/i);
   assert.match(figureGuide, /completely label-free Figure 1 collaboration draft/i);
   assert.match(figureGuide, /brand-neutral/i);
   assert.match(figureGuide, /Eight style references/i);
   assert.match(figureGuide, /three cleared real-proposal benchmarks/i);
   assert.match(figureGuide, /mean selected score of 4\.64\/5/i);
   assert.match(figureGuide, /without forcing five literal regions or a fixed final-art palette/i);
-  assert.match(figureGuide, /f26b756f5d0034560f49af503cd4f22314f1ead677ad13d6917fb2e8f9d2d85d/);
+  assert.match(figureGuide, /8fdf024ce30b20a0883d75d3c9ef499b00df6c3aa459f5cd81a0010cd0796097/);
   assert.match(figureGuide, /Apple Vision OCR now passes its availability metadata directly/i);
   assert.doesNotMatch(figureGuide, /fixed proposal-role colors|Vision uses pale sage/i);
   assert.match(
@@ -174,9 +174,9 @@ test("copies downloadable files and disables Jekyll processing", async () => {
     "out/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf",
     "out/assets/guides/USA-Map-Studio-User-Guide-v0.8.0.pdf",
     "out/assets/downloads/ornl-presentation-designer-1.2.0.zip",
-    "out/assets/downloads/ercp-proposal-figures-1.2.0-beta.2.zip",
+    "out/assets/downloads/ercp-proposal-figures-1.2.0-beta.3.zip",
     "out/assets/downloads/3d-modeling-agent-0.1.0.zip",
-    "out/assets/screenshots/ercp-proposal-figures-1.2.0-beta.2-preview.png",
+    "out/assets/screenshots/ercp-proposal-figures-1.2.0-beta.3-preview.png",
   ];
 
   await Promise.all(files.map((file) => access(new URL(file, projectRoot))));

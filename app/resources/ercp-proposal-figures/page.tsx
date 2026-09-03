@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 
 const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "";
 const pluginDownload = `${siteBasePath}/assets/downloads/${ercpProposalFiguresPlugin.downloadFile}`;
-const previewImage = `${siteBasePath}/assets/screenshots/ercp-proposal-figures-1.2.0-beta.1-preview.png`;
+const previewImage = `${siteBasePath}/assets/screenshots/ercp-proposal-figures-1.2.0-beta.2-preview.png`;
 
 function Callout({
   tone = "info",
@@ -164,6 +164,14 @@ export default function ErcpProposalFiguresPage() {
                     The package passed deterministic checks and three cleared real-proposal
                     benchmarks with a mean selected score of 4.64/5. Image generation remains
                     variable, so a scientist and graphic designer must verify and finish every result.
+                  </p>
+                </Callout>
+                <Callout tone="success" title="Version 1.2.0-beta.2 reliability update">
+                  <p>
+                    Apple Vision OCR now passes its availability metadata directly to the
+                    deterministic label verifier, and both Codex starter prompts comply with the
+                    128-character interface limit. The qualified Figure 1 method and visual style
+                    are unchanged from the first 1.2 beta.
                   </p>
                 </Callout>
               </div>
@@ -311,7 +319,7 @@ export default function ErcpProposalFiguresPage() {
                 </Callout>
                 <Callout title="Brand-neutral by design">
                   <p>
-                    Version 1.2.0-beta.1 uses Vision, Gap, Objectives, Approach, and Impact as
+                    Version 1.2.0-beta.2 uses Vision, Gap, Objectives, Approach, and Impact as
                     internal wireframe roles without forcing five literal regions or a fixed final-art
                     palette. The proposal and selected reference guide a cohesive palette, while no
                     logo, brand typography, branded geometry, or organization-recognition palette
@@ -350,7 +358,7 @@ export default function ErcpProposalFiguresPage() {
                 </ul>
                 <Callout tone="warning" title="Current beta boundary">
                   <p>
-                    Version 1.2.0-beta.1 creates Figure 1 collaboration drafts only. It does not create a
+                    Version 1.2.0-beta.2 creates Figure 1 collaboration drafts only. It does not create a
                     proposal Roadmap, edit the source proposal, produce vector artwork, or deliver a
                     submission-ready final figure.
                   </p>

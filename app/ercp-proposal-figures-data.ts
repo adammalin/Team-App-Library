@@ -1,13 +1,13 @@
 export const ercpProposalFiguresPlugin = {
   name: "DOE Proposal Figure 1",
   packageName: "ercp-proposal-figures",
-  version: "1.2.0-beta.1",
+  version: "1.2.0-beta.2",
   status: "Beta",
-  downloadFile: "ercp-proposal-figures-1.2.0-beta.1.zip",
+  downloadFile: "ercp-proposal-figures-1.2.0-beta.2.zip",
   downloadSize: "8.1 MB",
   publicDownloadUrl:
-    "https://adammalin.github.io/Team-App-Library/assets/downloads/ercp-proposal-figures-1.2.0-beta.1.zip",
-  sha256: "b7437165390ca75539c44f8a4467642bf199b695637bdb06b9f20def9da4909b",
+    "https://adammalin.github.io/Team-App-Library/assets/downloads/ercp-proposal-figures-1.2.0-beta.2.zip",
+  sha256: "f26b756f5d0034560f49af503cd4f22314f1ead677ad13d6917fb2e8f9d2d85d",
 } as const;
 
 export const ercpInstallPrompt = `Download, verify, and install or update the DOE Proposal Figure 1 Agent Plugin from this exact URL:

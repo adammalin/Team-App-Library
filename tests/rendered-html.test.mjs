@@ -86,18 +86,20 @@ test("server-renders the complete beta DOE Proposal Figure 1 resource", async ()
   assert.match(html, /\$create-ercp-proposal-figures/);
   assert.match(html, /completely label-free Figure 1 collaboration draft/i);
   assert.match(html, /one opaque 1536 × 1024 raster PNG/i);
-  assert.match(html, /Version 1\.2\.0-beta\.1/i);
-  assert.match(html, /ercp-proposal-figures-1\.2\.0-beta\.1\.zip/);
+  assert.match(html, /Version 1\.2\.0-beta\.2/i);
+  assert.match(html, /ercp-proposal-figures-1\.2\.0-beta\.2\.zip/);
   assert.match(
     html,
-    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.2\.0-beta\.1\.zip/,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.2\.0-beta\.2\.zip/,
   );
   assert.match(
     html,
-    /b7437165390ca75539c44f8a4467642bf199b695637bdb06b9f20def9da4909b/,
+    /f26b756f5d0034560f49af503cd4f22314f1ead677ad13d6917fb2e8f9d2d85d/,
   );
-  assert.match(html, /ercp-proposal-figures-1\.2\.0-beta\.1-preview\.png/);
-  assert.match(html, /Version 1\.2\.0-beta\.1 creates Figure 1 collaboration drafts only/i);
+  assert.match(html, /ercp-proposal-figures-1\.2\.0-beta\.2-preview\.png/);
+  assert.match(html, /Version 1\.2\.0-beta\.2 creates Figure 1 collaboration drafts only/i);
+  assert.match(html, /Apple Vision OCR now passes its availability metadata directly/i);
+  assert.match(html, /128-character interface limit/i);
   assert.match(html, /Eight style references/i);
   assert.match(html, /three cleared real-proposal benchmarks/i);
   assert.match(html, /mean selected score of 4\.64\/5/i);

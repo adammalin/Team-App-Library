@@ -97,6 +97,12 @@ test("server-renders the complete beta DOE Proposal Figure 1 resource", async ()
     /8fdf024ce30b20a0883d75d3c9ef499b00df6c3aa459f5cd81a0010cd0796097/,
   );
   assert.match(html, /ercp-proposal-figures-1\.2\.0-beta\.3-preview\.png/);
+  assert.match(html, /Download PDF guide/i);
+  assert.match(
+    html,
+    /DOE-Proposal-Figure-1-Codex-Skill-Guide-1\.2\.0-beta\.3\.pdf/,
+  );
+  assert.match(html, /complete installation prompt, the complete Figure 1 prompt/i);
   assert.match(html, /Version 1\.2\.0-beta\.3 creates Figure 1 collaboration drafts only/i);
   assert.match(html, /Apple Vision OCR now passes its availability metadata directly/i);
   assert.match(html, /128-character interface limit/i);

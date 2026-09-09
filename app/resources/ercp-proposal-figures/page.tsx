@@ -39,6 +39,7 @@ export const metadata: Metadata = {
 
 const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "";
 const pluginDownload = `${siteBasePath}/assets/downloads/${ercpProposalFiguresPlugin.downloadFile}`;
+const guideDownload = `${siteBasePath}/assets/guides/${ercpProposalFiguresPlugin.guideFile}`;
 const previewImage = `${siteBasePath}/assets/screenshots/ercp-proposal-figures-1.2.0-beta.3-preview.png`;
 
 function Callout({
@@ -95,6 +96,10 @@ export default function ErcpProposalFiguresPage() {
                 <DownloadSimple aria-hidden="true" />
                 Manual ZIP download · {ercpProposalFiguresPlugin.downloadSize}
               </a>
+              <a className="resource-action" href={guideDownload} download>
+                <FileText aria-hidden="true" />
+                Download PDF guide
+              </a>
             </div>
           </div>
           <aside className="resource-hero__summary" aria-label="Plugin summary">
@@ -120,7 +125,8 @@ export default function ErcpProposalFiguresPage() {
             <a href="#create">Create a Figure 1</a>
             <a href="#quality">Quality gates</a>
             <a href="#review">Review and limits</a>
-            <a href="#download">Download details</a>
+            <a href="#guide">PDF guide</a>
+            <a href="#download">Plugin download</a>
           </aside>
 
           <article className="resource-content">
@@ -368,10 +374,34 @@ export default function ErcpProposalFiguresPage() {
               </div>
             </section>
 
-            <section id="download" className="resource-section">
+            <section id="guide" className="resource-section">
               <span className="section-index">07</span>
               <div>
-                <span className="eyebrow">Download details</span>
+                <span className="eyebrow">Printable guide</span>
+                <h2>Keep the complete install and usage workflow at hand.</h2>
+                <p className="resource-intro">
+                  The PDF guide includes the current version and checksum, the complete installation
+                  prompt, the complete Figure 1 prompt, workflow expectations, quality gates,
+                  troubleshooting, and the scientist-and-designer handoff checklist.
+                </p>
+                <div className="download-panel">
+                  <FileText weight="duotone" aria-hidden="true" />
+                  <div>
+                    <strong>{ercpProposalFiguresPlugin.guideFile}</strong>
+                    <span>Install and use guide · PDF · Version {ercpProposalFiguresPlugin.version}</span>
+                  </div>
+                  <a href={guideDownload} download>
+                    <DownloadSimple aria-hidden="true" />
+                    Download guide
+                  </a>
+                </div>
+              </div>
+            </section>
+
+            <section id="download" className="resource-section">
+              <span className="section-index">08</span>
+              <div>
+                <span className="eyebrow">Plugin download</span>
                 <h2>One verified ZIP contains the complete beta plugin.</h2>
                 <div className="download-panel">
                   <Package weight="duotone" aria-hidden="true" />

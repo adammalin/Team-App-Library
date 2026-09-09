@@ -5,6 +5,7 @@ export const ercpProposalFiguresPlugin = {
   status: "Beta",
   downloadFile: "ercp-proposal-figures-1.2.0-beta.3.zip",
   downloadSize: "8.1 MB",
+  guideFile: "DOE-Proposal-Figure-1-Codex-Skill-Guide-1.2.0-beta.3.pdf",
   publicDownloadUrl:
     "https://adammalin.github.io/Team-App-Library/assets/downloads/ercp-proposal-figures-1.2.0-beta.3.zip",
   sha256: "8fdf024ce30b20a0883d75d3c9ef499b00df6c3aa459f5cd81a0010cd0796097",

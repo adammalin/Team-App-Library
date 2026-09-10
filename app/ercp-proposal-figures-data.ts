@@ -1,14 +1,14 @@
 export const ercpProposalFiguresPlugin = {
   name: "DOE Proposal Figure 1",
   packageName: "ercp-proposal-figures",
-  version: "1.2.0-beta.3",
+  version: "1.2.0-beta.4",
   status: "Beta",
-  downloadFile: "ercp-proposal-figures-1.2.0-beta.3.zip",
-  downloadSize: "8.1 MB",
-  guideFile: "DOE-Proposal-Figure-1-Codex-Skill-Guide-1.2.0-beta.3.pdf",
+  downloadFile: "ercp-proposal-figures-1.2.0-beta.4.zip",
+  downloadSize: "8.2 MB",
+  guideFile: "DOE-Proposal-Figure-1-Codex-Skill-Guide-1.2.0-beta.4.pdf",
   publicDownloadUrl:
-    "https://adammalin.github.io/Team-App-Library/assets/downloads/ercp-proposal-figures-1.2.0-beta.3.zip",
-  sha256: "8fdf024ce30b20a0883d75d3c9ef499b00df6c3aa459f5cd81a0010cd0796097",
+    "https://adammalin.github.io/Team-App-Library/assets/downloads/ercp-proposal-figures-1.2.0-beta.4.zip",
+  sha256: "e7df106f9f22a23222b36b73b3e0ebe639af4f701234a711fa6357e5467250e0",
 } as const;
 
 export const ercpInstallPrompt = `Download, verify, and install or update the DOE Proposal Figure 1 Agent Plugin from this exact URL:
@@ -32,7 +32,7 @@ Before installation:
 - validate the root \`plugin.json\` and the existing \`.codex-plugin/plugin.json\` rather than replacing either authored manifest with a generic scaffold;
 - run \`python3 skills/create-ercp-proposal-figures/scripts/self_test.py\` from the extracted plugin;
 - install the complete plugin directory, including both manifests and the full \`skills/create-ercp-proposal-figures/\` folder with its agents, assets, style references, fictional fixtures, references, and scripts—do not copy only \`SKILL.md\`.
-- confirm that all eight bundled style-reference PNGs are present and that the proposal-native layout, recognizable-object inventory, flexible color semantics, and blind image-only QA rules are included;
+- confirm that all eight legacy layout-reference PNGs and the certified flat-style target PNG are present, along with the proposal-native layout, three-to-five required visual-form contract, flexible color semantics, and blind image-only QA rules;
 
 If this plugin is already installed, make a recoverable local backup of that plugin only, then use the plugin-creator cachebuster and reinstall flow. Do not hand-edit marketplace configuration. If it is not installed, add it to the default personal marketplace without disturbing existing entries and install and enable it from the personal source.
 
@@ -50,4 +50,8 @@ Create one source-grounded, brand-neutral, completely label-free Figure 1 collab
 
 Use Vision, Gap, Objectives, Approach, and Impact as internal planning roles, not as five mandatory labeled zones or a fixed final-art palette. Choose a cohesive proposal-appropriate palette and use color consistently to distinguish the depicted scientific elements. Do not imitate ORNL or any other organization brand, logo, typography, geometry, or recognition palette.
 
-If I attached an existing Figure 1, Roadmap, sketch, or style reference, use it as relevant visual-system context. Do not import its science, claims, labels, branding, or structure unless the proposal itself supports them. Use the bundled expected-quality images as references for layout grammar, connector language, color rhythm, restrained dimensionality, and illustration finish—not as scientific source material.`;
+If I attached an existing Figure 1, Roadmap, sketch, or style reference, use it as relevant visual-system context. Do not import its science, claims, labels, branding, or structure unless the proposal itself supports them.
+
+Keep the generation brief simple enough for a lower-cost model: show one dominant "Why fund this?" reading path with only three to five required, proposal-specific visual forms. Do not add an optional inset or secondary pipeline by default.
+
+Use the eight bundled legacy examples only as written planning aids for topology, connectors, negative space, and color rhythm; never attach them to image generation. Attach only the bundled certified flat-2D style target. Keep major objects front-facing, matte, and depthless. Restrained same-hue tonal variation inside a shape is acceptable when it stays visibly flat. Reject perspective, top or side faces, stacked depth, dimensional shading or illumination, gloss, glow, reflections, and cast shadows.`;

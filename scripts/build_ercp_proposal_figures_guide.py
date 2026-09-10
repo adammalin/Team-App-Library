@@ -48,7 +48,7 @@ DEFAULT_OUTPUT = (
     / "public"
     / "assets"
     / "guides"
-    / "DOE-Proposal-Figure-1-Codex-Skill-Guide-1.2.0-beta.3.pdf"
+    / "DOE-Proposal-Figure-1-Codex-Skill-Guide-1.2.0-beta.4.pdf"
 )
 
 PUBLIC_PAGE_URL = (
@@ -689,7 +689,7 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
         bullet_list(
             [
                 f"<b>{escape(data['packageName'])}</b> is installed and enabled at version <b>{version}</b>.",
-                "The installed source and cache contain the complete skill, references, eight style images, fictional fixtures, and validation scripts.",
+                "The installed source and cache contain the complete skill, eight legacy layout references, one certified flat-style target, fictional fixtures, and validation scripts.",
                 "The plugin self-test passed and the reported installed source is the intended personal source.",
                 "No proposal was read and no figure was generated during installation.",
             ],
@@ -718,8 +718,8 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
             [
                 [Paragraph("1", styles["card_number"]), Paragraph("Reads the proposal and freezes exact source support.", styles["table_cell"])],
                 [Paragraph("2", styles["card_number"]), Paragraph("Builds one proposal-native funding argument instead of a methods inventory or Roadmap.", styles["table_cell"])],
-                [Paragraph("3", styles["card_number"]), Paragraph("Maps recognizable visual carriers and a consistent, proposal-appropriate palette.", styles["table_cell"])],
-                [Paragraph("4", styles["card_number"]), Paragraph("Generates two internal label-free PNG candidates and inspects the returned rasters.", styles["table_cell"])],
+                [Paragraph("3", styles["card_number"]), Paragraph("Maps three to five required proposal-specific forms, one dominant funding path, and a consistent palette.", styles["table_cell"])],
+                [Paragraph("4", styles["card_number"]), Paragraph("Uses legacy examples for written layout planning, attaches only the certified flat-style target, and generates two label-free PNG candidates.", styles["table_cell"])],
                 [Paragraph("5", styles["card_number"]), Paragraph("Allows at most one focused repair and returns only the strongest usable draft.", styles["table_cell"])],
             ],
             colWidths=[0.42 * inch, 6.18 * inch],
@@ -763,6 +763,8 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
                 "One dominant reading path and one primary visual claim are visible at full size and thumbnail size.",
                 "The system, gap, capability, decisive relationship, endpoint, and DOE payoff remain recognizable.",
                 "Color consistently distinguishes proposal elements while the output stays brand-neutral.",
+                "Major forms remain front-facing, matte, and depthless. Restrained same-hue tonal variation may remain when it does not imply volume, illumination, gloss, or material realism.",
+                "Perspective, visible top or side faces, stacked depth, dimensional shading or illumination, gloss, glow, reflections, and cast shadows fail the flat-style gate.",
                 "A graphic designer can interpret and redraw the result without treating generated pixels as evidence.",
             ],
             styles,
@@ -795,7 +797,7 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
                 [Paragraph("Plugin is missing", styles["table_cell_bold"]), Paragraph("Open a fresh task. Restart the desktop app only if the plugin is still absent from the Plugins Directory or new task.", styles["table_cell"])],
                 [Paragraph("Source cannot be read", styles["table_cell_bold"]), Paragraph("Stop. Supply a substantive, text-extractable, cleared proposal or an approved substitute.", styles["table_cell"])],
                 [Paragraph("OCR is unavailable", styles["table_cell_bold"]), Paragraph("Require full-size visual inspection and record the limitation. Do not report a false label pass.", styles["table_cell"])],
-                [Paragraph("Draft has a broad defect", styles["table_cell_bold"]), Paragraph("Do not repeatedly regenerate. Record the failed gate and disclose the remaining issue; only one localized repair is permitted.", styles["table_cell"])],
+                [Paragraph("Draft has a broad defect", styles["table_cell_bold"]), Paragraph("Do not repeatedly regenerate. A single controlled whole-image flattening pass is allowed only when science, hierarchy, objects, and every non-style gate already pass; structural defects require fresh generation or a disclosed best-effort handoff.", styles["table_cell"])],
             ],
             colWidths=[1.45 * inch, 5.15 * inch],
             hAlign="LEFT",
@@ -817,7 +819,7 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
         Spacer(1, 15),
         Paragraph("Keep the boundary clear", styles["h2"]),
         body_paragraph(
-            "Version 1.2.0-beta.3 creates Figure 1 collaboration drafts only. It does not "
+            f"Version {version} creates Figure 1 collaboration drafts only. It does not "
             "create a proposal Roadmap, edit the source proposal, produce vector artwork, or "
             "deliver a submission-ready final figure.",
             styles,

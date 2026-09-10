@@ -86,28 +86,29 @@ test("server-renders the complete beta DOE Proposal Figure 1 resource", async ()
   assert.match(html, /\$create-ercp-proposal-figures/);
   assert.match(html, /completely label-free Figure 1 collaboration draft/i);
   assert.match(html, /one opaque 1536 × 1024 raster PNG/i);
-  assert.match(html, /Version 1\.2\.0-beta\.3/i);
-  assert.match(html, /ercp-proposal-figures-1\.2\.0-beta\.3\.zip/);
+  assert.match(html, /Version 1\.2\.0-beta\.4/i);
+  assert.match(html, /ercp-proposal-figures-1\.2\.0-beta\.4\.zip/);
   assert.match(
     html,
-    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.2\.0-beta\.3\.zip/,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.2\.0-beta\.4\.zip/,
   );
   assert.match(
     html,
-    /8fdf024ce30b20a0883d75d3c9ef499b00df6c3aa459f5cd81a0010cd0796097/,
+    /e7df106f9f22a23222b36b73b3e0ebe639af4f701234a711fa6357e5467250e0/,
   );
   assert.match(html, /ercp-proposal-figures-1\.2\.0-beta\.3-preview\.png/);
   assert.match(html, /Download PDF guide/i);
   assert.match(
     html,
-    /DOE-Proposal-Figure-1-Codex-Skill-Guide-1\.2\.0-beta\.3\.pdf/,
+    /DOE-Proposal-Figure-1-Codex-Skill-Guide-1\.2\.0-beta\.4\.pdf/,
   );
   assert.match(html, /complete installation prompt, the complete Figure 1 prompt/i);
-  assert.match(html, /Version 1\.2\.0-beta\.3 creates Figure 1 collaboration drafts only/i);
-  assert.match(html, /Apple Vision OCR now passes its availability metadata directly/i);
-  assert.match(html, /128-character interface limit/i);
-  assert.match(html, /full-size visual inspection instead of reporting a false pass/i);
-  assert.match(html, /Eight style references/i);
+  assert.match(html, /Version 1\.2\.0-beta\.4 creates Figure 1 collaboration drafts only/i);
+  assert.match(html, /three to five required proposal-specific forms/i);
+  assert.match(html, /Restrained same-hue tonal polish is now an advisory note/i);
+  assert.match(html, /beta\.3 OCR and sandbox reliability fixes remain included/i);
+  assert.match(html, /Eight legacy layouts \+ one flat-style target/i);
+  assert.match(html, /never attach them to image generation/i);
   assert.match(html, /three cleared real-proposal benchmarks/i);
   assert.match(html, /mean selected score of 4\.64\/5/i);
   assert.match(html, /without forcing five literal regions or a fixed final-art palette/i);

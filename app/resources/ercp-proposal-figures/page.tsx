@@ -167,19 +167,23 @@ export default function ErcpProposalFiguresPage() {
                 </Callout>
                 <Callout title="This is a beta collaboration tool">
                   <p>
-                    The package passed deterministic checks and three cleared real-proposal
-                    benchmarks with a mean selected score of 4.64/5. Image generation remains
-                    variable, so a scientist and graphic designer must verify and finish every result.
+                    The underlying method passed deterministic checks and three cleared real-proposal
+                    benchmarks with a mean selected score of 4.64/5. The beta.4 refinement also
+                    requalified the exact lower-cost-model draft that motivated this update at 4.15/5,
+                    with one remaining designer-redraw note. Image generation remains variable, so a
+                    scientist and graphic designer must verify and finish every result.
                   </p>
                 </Callout>
-                <Callout tone="success" title="Version 1.2.0-beta.3 reliability update">
+                <Callout tone="success" title="Version 1.2.0-beta.4 lesser-model and draft-handoff update">
                   <p>
-                    Apple Vision OCR now passes its availability metadata directly to the
-                    deterministic label verifier, and both Codex starter prompts comply with the
-                    128-character interface limit. Compiler caches now stay in a disposable writable
-                    directory; if macOS blocks Vision inside a Codex sandbox, QA explicitly requires
-                    full-size visual inspection instead of reporting a false pass. The qualified Figure
-                    1 method and visual style are unchanged from the first 1.2 beta.
+                    Generation prompts now emphasize one dominant funding argument and only three to
+                    five required proposal-specific forms, with no optional inset or secondary pipeline
+                    by default. The eight legacy examples remain layout-only planning aids; generation
+                    receives one certified flat-style target. Restrained same-hue tonal polish is now an
+                    advisory note when forms remain matte, front-facing, and depthless, while perspective,
+                    visible side or top faces, stacked depth, dimensional lighting, gloss, glow,
+                    reflections, and cast shadows still fail the flat-style gate. The beta.3 OCR and
+                    sandbox reliability fixes remain included.
                   </p>
                 </Callout>
               </div>
@@ -214,7 +218,7 @@ export default function ErcpProposalFiguresPage() {
                   <li>Read the proposal itself and freeze a source lock with exact supporting excerpts.</li>
                   <li>Reduce the case to one proposal-native funding argument—not a methods inventory or Roadmap.</li>
                   <li>Turn the proposal’s important nouns into recognizable visual carriers and use color consistently.</li>
-                  <li>Select a bundled visual family only after the proposal-native topology is fixed.</li>
+                  <li>Select a legacy layout family only after the proposal-native topology is fixed, then attach only the certified flat-style target for generation.</li>
                   <li>Generate two internal label-free PNG candidates and inspect the returned rasters.</li>
                   <li>Permit at most one focused repair, then return only the strongest usable draft.</li>
                 </ol>
@@ -254,8 +258,8 @@ export default function ErcpProposalFiguresPage() {
                             <td>Source lock, funding argument, science verification, and visual-role mapping.</td>
                           </tr>
                           <tr>
-                            <th scope="row">Eight style references</th>
-                            <td>Expected-quality scientific visual families used for layout and illustration style—not scientific content or branding.</td>
+                            <th scope="row">Eight legacy layouts + one flat-style target</th>
+                            <td>Planning-only scientific layout families plus the sole certified generation reference—not scientific content or branding.</td>
                           </tr>
                           <tr>
                             <th scope="row">Image-execution rules</th>
@@ -314,6 +318,7 @@ export default function ErcpProposalFiguresPage() {
                       <li>One dominant reading path and one primary visual claim are visible</li>
                       <li>The system, gap, capability, decisive relationship, endpoint, and DOE payoff remain recognizable</li>
                       <li>Color distinguishes proposal elements consistently while the output stays brand-neutral</li>
+                      <li>Major forms stay front-facing, matte, and depthless; subtle same-hue tonal variation may remain when it does not imply volume or light</li>
                       <li>The result is a PNG draft that a graphic designer can interpret and redraw</li>
                     </ul>
                   </article>
@@ -327,7 +332,7 @@ export default function ErcpProposalFiguresPage() {
                 </Callout>
                 <Callout title="Brand-neutral by design">
                   <p>
-                    Version 1.2.0-beta.3 uses Vision, Gap, Objectives, Approach, and Impact as
+                    Version 1.2.0-beta.4 uses Vision, Gap, Objectives, Approach, and Impact as
                     internal wireframe roles without forcing five literal regions or a fixed final-art
                     palette. The proposal and selected reference guide a cohesive palette, while no
                     logo, brand typography, branded geometry, or organization-recognition palette
@@ -366,7 +371,7 @@ export default function ErcpProposalFiguresPage() {
                 </ul>
                 <Callout tone="warning" title="Current beta boundary">
                   <p>
-                    Version 1.2.0-beta.3 creates Figure 1 collaboration drafts only. It does not create a
+                    Version 1.2.0-beta.4 creates Figure 1 collaboration drafts only. It does not create a
                     proposal Roadmap, edit the source proposal, produce vector artwork, or deliver a
                     submission-ready final figure.
                   </p>
@@ -422,7 +427,8 @@ export default function ErcpProposalFiguresPage() {
                 </div>
                 <p className="resource-intro">
                   The archive includes both Agent Plugins 1.0 and Codex manifests, the complete
-                  Figure 1 skill, eight style-reference images, fictional qualification fixtures,
+                  Figure 1 skill, eight legacy layout images, one certified flat-style target,
+                  fictional qualification fixtures,
                   analysis and evaluation references, and deterministic validation scripts.
                 </p>
               </div>

@@ -58,6 +58,16 @@ test("prefixes routes and assets for the GitHub project site", async () => {
   assert.match(home, new RegExp(`href="${basePath}/apps/badge-blur/"`));
   assert.match(home, new RegExp(`src="${basePath}/assets/icons/badge-blur\\.png"`));
   assert.match(home, new RegExp(`${basePath}/_next/static/`));
+  assert.match(home, /https:\/\/adammalin\.github\.io\/QR-code-gen\//);
+  assert.match(
+    home,
+    /https:\/\/chatgpt\.com\/g\/g-6a57d24b2aa48191a15d3be17f6d8651-ornl-brand-agent-v2-3-2/,
+  );
+  assert.match(
+    home,
+    /https:\/\/chatgpt\.com\/g\/g-69f267456cc08191876ba6ffdacb7e40-ornl-brand-visual-design-agent/,
+  );
+  assert.match(home, /Previous versions[\s\S]{0,40}1/);
   assert.match(
     home,
     /https:\/\/adammalin\.github\.io\/Team-App-Library\/og\.png/,

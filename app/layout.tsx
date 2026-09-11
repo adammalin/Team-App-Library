@@ -19,17 +19,17 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Setup and usage guides for the team's local desktop apps and Codex resources.",
+    "Search the team's desktop apps, web apps, Custom GPTs, and Codex plugins.",
   openGraph: {
     title: "Team App Library",
     description:
-      "Install and learn the team's local desktop apps and Codex resources.",
+      "Search the team's desktop apps, web apps, Custom GPTs, and Codex plugins.",
     images: [
       {
         url: new URL("og.png", normalizedSiteUrl).toString(),
         width: 1200,
         height: 630,
-        alt: "Team App Library with Badge Blur, OrgChart Studio, and USA Map Studio",
+        alt: "Team App Library catalog for apps, Custom GPTs, and Codex plugins",
       },
     ],
   },

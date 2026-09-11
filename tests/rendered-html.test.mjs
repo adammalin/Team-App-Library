@@ -35,16 +35,34 @@ test("server-renders the app catalog", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Team App Library<\/title>/i);
-  assert.match(html, /Choose a tool\./);
+  assert.match(html, /Find the right tool\./);
+  assert.match(html, /Search the catalog/);
+  assert.match(html, /Desktop apps/);
+  assert.match(html, /Web apps/);
+  assert.match(html, /Custom GPTs/);
+  assert.match(html, /Codex plugins/);
+  assert.match(html, /Showing[\s\S]{0,40}8[\s\S]{0,40}of[\s\S]{0,40}8[\s\S]{0,40}tools/);
   assert.match(html, /Badge Blur/);
   assert.match(html, /src="\/assets\/icons\/badge-blur\.png"/);
   assert.match(html, /ORNL OrgChart Studio/);
   assert.match(html, /USA Map Studio/);
+  assert.match(html, /QR Studio/);
+  assert.match(html, /https:\/\/adammalin\.github\.io\/QR-code-gen\//);
+  assert.match(html, /fully transparent background/i);
+  assert.match(html, /ORNL Brand Agent/);
+  assert.match(html, /Preferred · v2\.3\.2/);
+  assert.match(html, /Previous versions[\s\S]{0,40}1/);
+  assert.match(
+    html,
+    /https:\/\/chatgpt\.com\/g\/g-6a57d24b2aa48191a15d3be17f6d8651-ornl-brand-agent-v2-3-2/,
+  );
+  assert.match(
+    html,
+    /https:\/\/chatgpt\.com\/g\/g-69f267456cc08191876ba6ffdacb7e40-ornl-brand-visual-design-agent/,
+  );
   assert.match(html, /ORNL Presentation Designer/);
   assert.match(html, /DOE Proposal Figure 1/);
   assert.match(html, /3D Modeling Agent/);
-  assert.match(html, /Extend Codex with purpose-built workflows\./);
-  assert.match(html, /Codex resources/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
 

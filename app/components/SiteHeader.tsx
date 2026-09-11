@@ -10,7 +10,7 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
         </span>
         <span>
           <strong>Team App Library</strong>
-          <small>Apps and Codex resources</small>
+          <small>Apps, GPTs, plugins, and web tools</small>
         </span>
       </Link>
       {compact ? (
@@ -21,7 +21,7 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
       ) : (
         <span className="header-status">
           <i aria-hidden="true" />
-          Local guides and downloads
+          Searchable team tool catalog
         </span>
       )}
     </header>

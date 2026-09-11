@@ -1,12 +1,20 @@
 # Team App Library
 
-A local-first app catalog and documentation site for the team's unsigned Electron apps. Each app has task-focused pages for installing from source, updating, launching again, uninstalling, and learning the interface.
+A searchable catalog for the team's desktop apps, web apps, versioned Custom GPTs, and Codex plugins. Desktop apps retain task-focused documentation for installing from source, updating, launching again, uninstalling, and learning the interface.
 
 ## Included apps
 
 - Badge Blur
 - ORNL OrgChart Studio
 - USA Map Studio
+
+## Included web apps
+
+- QR Studio
+
+## Included Custom GPTs
+
+- ORNL Brand Agent (preferred version plus previous-version links)
 
 ## Included Codex resources
 
@@ -34,11 +42,13 @@ npm test
 npm run lint
 ```
 
-`npm test` builds the site and checks the catalog, documentation routes, downloadable guides, and core presentation constraints.
+`npm test` builds the site and checks the catalog, version-aware external links, documentation routes, downloadable guides, and core presentation constraints. Run `npm run test:pages` before publishing to verify the complete GitHub Pages export.
 
 ## Update the content
 
 - App metadata and instructions: `app/app-data.ts`
+- Unified catalog entries, categories, and GPT version links: `app/tool-catalog-data.ts`
+- Search and category-filter interface: `app/components/ToolCatalog.tsx`
 - Site layout and styling: `app/`
 - App icons and screenshots: `public/assets/`
 - Downloadable guides: `public/assets/guides/`

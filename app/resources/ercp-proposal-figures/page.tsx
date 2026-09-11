@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "";
 const pluginDownload = `${siteBasePath}/assets/downloads/${ercpProposalFiguresPlugin.downloadFile}`;
 const guideDownload = `${siteBasePath}/assets/guides/${ercpProposalFiguresPlugin.guideFile}`;
-const previewImage = `${siteBasePath}/assets/screenshots/ercp-proposal-figures-1.2.0-beta.3-preview.png`;
+const previewImage = `${siteBasePath}/assets/screenshots/ercp-proposal-figures-1.2.0-beta.5-preview.png`;
 
 function Callout({
   tone = "info",
@@ -229,13 +229,22 @@ export default function ErcpProposalFiguresPage() {
                     src={previewImage}
                     width="1536"
                     height="1024"
-                    alt="Label-free flat scientific illustration selected during the version 1.2 beta qualification"
+                    alt="Label-free beta.5 scientific illustration showing detector signals transformed into a reconstructed event"
                   />
                   <figcaption>
-                    Selected version 1.2 qualification output from a cleared proposal benchmark.
-                    The image remains a collaboration draft requiring scientist and designer review.
+                    Unedited beta.5 output from a cleared DUNE qualification benchmark. It shows
+                    detector signals passing through a computational capability into a reconstructed
+                    event. The image remains a collaboration draft requiring scientist and designer review.
                   </figcaption>
                 </figure>
+                <h3>Where it fits in proposal development</h3>
+                <p className="resource-intro">
+                  Use the plugin after the proposal has a substantive scientific story but before final
+                  visual design. It turns source material into a reviewable visual hypothesis so the
+                  proposal team can correct the science, emphasis, and funding logic first. A graphic
+                  designer then redraws or polishes that agreed concept, adds controlled labels and
+                  accessibility, and prepares the final proposal figure.
+                </p>
                 <details className="plugin-inventory">
                   <summary>What’s included in the plugin?</summary>
                   <div className="plugin-inventory__content">

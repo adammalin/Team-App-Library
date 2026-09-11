@@ -93,7 +93,7 @@ test("prefixes routes and assets for the GitHub project site", async () => {
   assert.match(
     figureGuide,
     new RegExp(
-      `${basePath}/assets/screenshots/ercp-proposal-figures-1\\.2\\.0-beta\\.3-preview\\.png`,
+      `${basePath}/assets/screenshots/ercp-proposal-figures-1\\.2\\.0-beta\\.5-preview\\.png`,
     ),
   );
   assert.match(
@@ -187,7 +187,7 @@ test("copies downloadable files and disables Jekyll processing", async () => {
     "out/assets/downloads/ornl-presentation-designer-1.2.0.zip",
     "out/assets/downloads/ercp-proposal-figures-1.2.0-beta.5.zip",
     "out/assets/downloads/3d-modeling-agent-0.1.0.zip",
-    "out/assets/screenshots/ercp-proposal-figures-1.2.0-beta.3-preview.png",
+    "out/assets/screenshots/ercp-proposal-figures-1.2.0-beta.5-preview.png",
   ];
 
   await Promise.all(files.map((file) => access(new URL(file, projectRoot))));

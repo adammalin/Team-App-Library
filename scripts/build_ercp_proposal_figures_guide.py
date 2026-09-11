@@ -41,7 +41,7 @@ PREVIEW_IMAGE = (
     / "public"
     / "assets"
     / "screenshots"
-    / "ercp-proposal-figures-1.2.0-beta.3-preview.png"
+    / "ercp-proposal-figures-1.2.0-beta.5-preview.png"
 )
 DEFAULT_OUTPUT = (
     REPO_ROOT
@@ -526,8 +526,9 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
         Image(str(PREVIEW_IMAGE), width=7.0 * inch, height=4.667 * inch),
         Spacer(1, 7),
         Paragraph(
-            "Example beta output from a cleared qualification proposal. Every generated "
-            "result still requires scientist and graphic-designer review.",
+            "Unedited beta.5 output from a cleared DUNE qualification benchmark. It shows "
+            "detector signals transformed into a reconstructed event; scientist and "
+            "graphic-designer review is still required.",
             styles["small_white"],
         ),
         Spacer(1, 13),
@@ -620,6 +621,16 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
             "local run archive.",
             styles,
             tone="blue",
+        ),
+        Spacer(1, 9),
+        info_box(
+            "Where this fits",
+            "Use the skill after the proposal has a substantive scientific story but before "
+            "final visual design. The team reviews and corrects the generated visual hypothesis; "
+            "a graphic designer then redraws or polishes the agreed concept, adds controlled "
+            "labels and accessibility, and prepares the final proposal figure.",
+            styles,
+            tone="green",
         ),
         Spacer(1, 9),
         info_box(

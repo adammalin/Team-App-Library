@@ -96,7 +96,8 @@ test("server-renders the complete beta DOE Proposal Figure 1 resource", async ()
     html,
     /a11af3c53c6b7eb611f3ad1b0263d992440074d9c82a74049826c63ac2c264c6/,
   );
-  assert.match(html, /ercp-proposal-figures-1\.2\.0-beta\.3-preview\.png/);
+  assert.match(html, /ercp-proposal-figures-1\.2\.0-beta\.5-preview\.png/);
+  assert.match(html, /Where it fits in proposal development/);
   assert.match(html, /Download PDF guide/i);
   assert.match(
     html,

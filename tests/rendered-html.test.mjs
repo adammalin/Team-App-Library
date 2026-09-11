@@ -41,7 +41,7 @@ test("server-renders the app catalog", async () => {
   assert.match(html, /Web apps/);
   assert.match(html, /Custom GPTs/);
   assert.match(html, /Codex plugins/);
-  assert.match(html, /Showing[\s\S]{0,40}8[\s\S]{0,40}of[\s\S]{0,40}8[\s\S]{0,40}tools/);
+  assert.match(html, /Showing[\s\S]{0,40}12[\s\S]{0,40}of[\s\S]{0,40}12[\s\S]{0,40}tools/);
   assert.match(html, /Badge Blur/);
   assert.match(html, /src="\/assets\/icons\/badge-blur\.png"/);
   assert.match(html, /ORNL OrgChart Studio/);
@@ -59,6 +59,31 @@ test("server-renders the app catalog", async () => {
   assert.match(
     html,
     /https:\/\/chatgpt\.com\/g\/g-69f267456cc08191876ba6ffdacb7e40-ornl-brand-visual-design-agent/,
+  );
+  assert.match(html, /Icon Enhancer Agent/);
+  assert.match(html, /Project Summarizer Agent/);
+  assert.match(html, /ORNL WordPress Mockup Assistant/);
+  assert.match(html, /Text Extractor/);
+  assert.match(html, /Recommended · GPT-5\.6 Sol/);
+  assert.match(
+    html,
+    /https:\/\/chatgpt\.com\/g\/g-69f26eaffef081919d05910e460478de-icon-enhancer-agent/,
+  );
+  assert.match(
+    html,
+    /https:\/\/chatgpt\.com\/g\/g-69f253f6e8dc8191a4ffc67040a92bc0-project-summarizer-agent/,
+  );
+  assert.match(
+    html,
+    /https:\/\/chatgpt\.com\/g\/g-6a74f3054b188191b3eb3edd4f1943e5-ornl-wordpress-mockup-assistant-v2/,
+  );
+  assert.match(
+    html,
+    /https:\/\/chatgpt\.com\/g\/g-6a5fd09b18c48191ac155e81c833ea78-ornl-wordpress-mockup-assistant/,
+  );
+  assert.match(
+    html,
+    /https:\/\/chatgpt\.com\/g\/g-69fa3e43c0488191a071b20ca59d5fcd-text-extractor/,
   );
   assert.match(html, /ORNL Presentation Designer/);
   assert.match(html, /DOE Proposal Figure 1/);

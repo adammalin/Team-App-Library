@@ -4,6 +4,17 @@ import { SiteHeader } from "./components/SiteHeader";
 import { ToolCatalog } from "./components/ToolCatalog";
 import { toolCatalogEntries } from "./tool-catalog-data";
 
+const catalogCounts = {
+  desktopApps: toolCatalogEntries.filter((tool) => tool.category === "desktop-app").length,
+  webApps: toolCatalogEntries.filter((tool) => tool.category === "web-app").length,
+  customGpts: toolCatalogEntries.filter((tool) => tool.category === "custom-gpt").length,
+  codexPlugins: toolCatalogEntries.filter((tool) => tool.category === "codex-plugin").length,
+};
+
+function twoDigitCount(value: number) {
+  return String(value).padStart(2, "0");
+}
+
 export const metadata: Metadata = {
   title: "Team App Library",
   description:
@@ -33,16 +44,16 @@ export default function Home() {
             </a>
           </div>
           <div className="home-hero__rail" aria-label="Library summary">
-            <span>03</span>
+            <span>{twoDigitCount(catalogCounts.desktopApps)}</span>
             <strong>Desktop apps</strong>
             <hr />
-            <span>01</span>
-            <strong>Web app</strong>
+            <span>{twoDigitCount(catalogCounts.webApps)}</span>
+            <strong>Web apps</strong>
             <hr />
-            <span>01</span>
-            <strong>Custom GPT · 2 versions</strong>
+            <span>{twoDigitCount(catalogCounts.customGpts)}</span>
+            <strong>Custom GPTs · Version-aware links</strong>
             <hr />
-            <span>03</span>
+            <span>{twoDigitCount(catalogCounts.codexPlugins)}</span>
             <strong>Codex plugins</strong>
           </div>
         </section>

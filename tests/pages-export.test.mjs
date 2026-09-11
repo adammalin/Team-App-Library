@@ -67,6 +67,26 @@ test("prefixes routes and assets for the GitHub project site", async () => {
     home,
     /https:\/\/chatgpt\.com\/g\/g-69f267456cc08191876ba6ffdacb7e40-ornl-brand-visual-design-agent/,
   );
+  assert.match(
+    home,
+    /https:\/\/chatgpt\.com\/g\/g-69f26eaffef081919d05910e460478de-icon-enhancer-agent/,
+  );
+  assert.match(
+    home,
+    /https:\/\/chatgpt\.com\/g\/g-69f253f6e8dc8191a4ffc67040a92bc0-project-summarizer-agent/,
+  );
+  assert.match(
+    home,
+    /https:\/\/chatgpt\.com\/g\/g-6a74f3054b188191b3eb3edd4f1943e5-ornl-wordpress-mockup-assistant-v2/,
+  );
+  assert.match(
+    home,
+    /https:\/\/chatgpt\.com\/g\/g-6a5fd09b18c48191ac155e81c833ea78-ornl-wordpress-mockup-assistant/,
+  );
+  assert.match(
+    home,
+    /https:\/\/chatgpt\.com\/g\/g-69fa3e43c0488191a071b20ca59d5fcd-text-extractor/,
+  );
   assert.match(home, /Previous versions[\s\S]{0,40}1/);
   assert.match(
     home,

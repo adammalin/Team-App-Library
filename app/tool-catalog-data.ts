@@ -123,6 +123,90 @@ const customGpts: ToolCatalogEntry[] = [
       },
     ],
   },
+  {
+    slug: "icon-enhancer-agent",
+    name: "Icon Enhancer Agent",
+    category: "custom-gpt",
+    kicker: "Custom GPT · By Adam Malin",
+    description:
+      "Takes low-quality icons and makes them high quality, then outputs them in a form designed for image tracing.",
+    versionLabel: "Recommended · GPT-5.6 Sol",
+    tags: ["Icon enhancement", "Image tracing", "Raster cleanup", "GPT-5.6 Sol"],
+    actions: [
+      {
+        label: "Open Custom GPT",
+        href: "https://chatgpt.com/g/g-69f26eaffef081919d05910e460478de-icon-enhancer-agent",
+        external: true,
+        kind: "primary",
+      },
+    ],
+  },
+  {
+    slug: "project-summarizer-agent",
+    name: "Project Summarizer Agent",
+    category: "custom-gpt",
+    kicker: "Custom GPT · By Adam Malin",
+    description: "Copy and paste the SCOUT email request chain into this chat.",
+    versionLabel: "Recommended · GPT-5.6 Sol",
+    tags: ["Project summaries", "SCOUT", "Email requests", "GPT-5.6 Sol"],
+    actions: [
+      {
+        label: "Open Custom GPT",
+        href: "https://chatgpt.com/g/g-69f253f6e8dc8191a4ffc67040a92bc0-project-summarizer-agent",
+        external: true,
+        kind: "primary",
+      },
+    ],
+  },
+  {
+    slug: "ornl-wordpress-mockup-assistant",
+    name: "ORNL WordPress Mockup Assistant",
+    category: "custom-gpt",
+    kicker: "Custom GPT · Web mockups · By Adam Malin",
+    description:
+      "Turns cleared ORNL web content, Word files, PowerPoint files, and public ORNL pages into downloadable, self-contained, responsive WordPress draft mockups. It does not edit live sites or original Figma files. v1 remains available for its in-chat HTML Preview workflow.",
+    versionLabel: "Preferred · v2",
+    tags: ["ORNL web", "WordPress", "Responsive mockups", "HTML", "Version history"],
+    actions: [
+      {
+        label: "Open preferred version",
+        href: "https://chatgpt.com/g/g-6a74f3054b188191b3eb3edd4f1943e5-ornl-wordpress-mockup-assistant-v2",
+        external: true,
+        kind: "primary",
+      },
+    ],
+    versions: [
+      {
+        version: "v2",
+        label: "Preferred version",
+        href: "https://chatgpt.com/g/g-6a74f3054b188191b3eb3edd4f1943e5-ornl-wordpress-mockup-assistant-v2",
+        current: true,
+      },
+      {
+        version: "v1",
+        label: "Previous version · In-chat HTML Preview",
+        href: "https://chatgpt.com/g/g-6a5fd09b18c48191ac155e81c833ea78-ornl-wordpress-mockup-assistant",
+        current: false,
+      },
+    ],
+  },
+  {
+    slug: "text-extractor",
+    name: "Text Extractor",
+    category: "custom-gpt",
+    kicker: "Custom GPT · By Adam Malin",
+    description: "Extracts clean, structured text from OCR images and scanned documents.",
+    versionLabel: "Current",
+    tags: ["OCR", "Text extraction", "Scanned documents", "Structured text"],
+    actions: [
+      {
+        label: "Open Custom GPT",
+        href: "https://chatgpt.com/g/g-69fa3e43c0488191a071b20ca59d5fcd-text-extractor",
+        external: true,
+        kind: "primary",
+      },
+    ],
+  },
 ];
 
 const codexPlugins: ToolCatalogEntry[] = [

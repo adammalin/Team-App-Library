@@ -15,6 +15,10 @@ A searchable catalog for the team's desktop apps, web apps, versioned Custom GPT
 ## Included Custom GPTs
 
 - ORNL Brand Agent (preferred version plus previous-version links)
+- Icon Enhancer Agent
+- Project Summarizer Agent
+- ORNL WordPress Mockup Assistant (preferred version plus previous-version links)
+- Text Extractor
 
 ## Included Codex resources
 

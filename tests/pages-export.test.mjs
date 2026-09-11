@@ -106,6 +106,10 @@ test("prefixes routes and assets for the GitHub project site", async () => {
     figureGuide,
     /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.2\.0-beta\.5\.zip/,
   );
+  assert.match(
+    figureGuide,
+    /https:\/\/chatgpt\.com\/plugins\/Plugin_a3d052654ad88191873ab54059f268a4\?open_in_app/,
+  );
   assert.match(figureGuide, /Beta[\s\S]{0,80}Version[\s\S]{0,80}1\.2\.0-beta\.5/i);
   assert.match(figureGuide, /completely label-free Figure 1 collaboration draft/i);
   assert.match(figureGuide, /brand-neutral/i);

@@ -82,7 +82,12 @@ test("server-renders the complete beta DOE Proposal Figure 1 resource", async ()
   const html = await response.text();
   assert.match(html, /Beta · Codex Agent Plugin · Scientific Figure 1/i);
   assert.match(html, /One plugin\. One evidence-gated Figure 1 workflow\./i);
-  assert.match(html, /Paste one checked prompt to install the complete plugin\./i);
+  assert.match(html, /Install from the Plugins Directory, then open a fresh task\./i);
+  assert.match(
+    html,
+    /https:\/\/chatgpt\.com\/plugins\/Plugin_a3d052654ad88191873ab54059f268a4\?open_in_app/,
+  );
+  assert.match(html, /Manual verified installation \(ZIP \+ checksum\)/i);
   assert.match(html, /\$create-ercp-proposal-figures/);
   assert.match(html, /completely label-free Figure 1 collaboration draft/i);
   assert.match(html, /one opaque 1536 × 1024 raster PNG/i);

@@ -6,6 +6,8 @@ export const ercpProposalFiguresPlugin = {
   downloadFile: "ercp-proposal-figures-1.2.0-beta.5.zip",
   downloadSize: "8.2 MB",
   guideFile: "DOE-Proposal-Figure-1-Codex-Skill-Guide-1.2.0-beta.5.pdf",
+  pluginDirectoryUrl:
+    "https://chatgpt.com/plugins/Plugin_a3d052654ad88191873ab54059f268a4?open_in_app",
   publicDownloadUrl:
     "https://adammalin.github.io/Team-App-Library/assets/downloads/ercp-proposal-figures-1.2.0-beta.5.zip",
   sha256: "a11af3c53c6b7eb611f3ad1b0263d992440074d9c82a74049826c63ac2c264c6",

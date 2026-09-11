@@ -54,6 +54,7 @@ DEFAULT_OUTPUT = (
 PUBLIC_PAGE_URL = (
     "https://adammalin.github.io/Team-App-Library/resources/ercp-proposal-figures/"
 )
+OPENAI_PLUGIN_DOCS_URL = "https://learn.chatgpt.com/docs/plugins"
 
 GREEN = colors.HexColor("#00662C")
 HALE_NAVY = colors.HexColor("#00454D")
@@ -106,6 +107,7 @@ def parse_page_data() -> dict[str, str]:
         "status",
         "downloadFile",
         "downloadSize",
+        "pluginDirectoryUrl",
         "publicDownloadUrl",
         "sha256",
     ):
@@ -510,6 +512,7 @@ def draw_body(canvas, doc) -> None:
 
 def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list:
     version = escape(data["version"])
+    plugin_directory_url = escape(data["pluginDirectoryUrl"])
     download_url = escape(data["publicDownloadUrl"])
     checksum = escape(data["sha256"])
     page_url = escape(PUBLIC_PAGE_URL)
@@ -520,7 +523,8 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
         Paragraph(
             "Install and use the <b>$create-ercp-proposal-figures</b> skill to turn a "
             "substantive ERCP or ECRP proposal into a source-grounded, completely "
-            "label-free Figure 1 collaboration draft.",
+            "label-free Figure 1 collaboration draft. Install from ChatGPT Plugins or "
+            "use the checked manual fallback.",
             styles["cover_subtitle"],
         ),
         Image(str(PREVIEW_IMAGE), width=7.0 * inch, height=4.667 * inch),
@@ -576,8 +580,8 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
         two_column_cards(
             step_card(
                 "01",
-                "Install the plugin",
-                "Paste the complete installation prompt from this guide into a Codex task.",
+                "Install from Plugins",
+                "Open the recommended plugin listing and select the plus button to install.",
                 styles,
             ),
             step_card(
@@ -649,18 +653,20 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
         ),
         PageBreak(),
         Paragraph("02 | INSTALL", styles["eyebrow"]),
-        Paragraph("Install the complete plugin with one checked prompt.", styles["h1"]),
+        Paragraph("Install from ChatGPT Plugins.", styles["h1"]),
         body_paragraph(
-            "Open a Codex task, copy the complete prompt below, and paste it without editing. "
-            "The prompt authorizes only the exact public ZIP, checksum, personal-plugin location, "
-            "and marketplace entry needed for this installation.",
+            "For most users, the Plugins Directory is the simplest route. Open the DOE Proposal "
+            "Figure 1 listing, select the plus button, and then begin proposal work in a new "
+            "Codex task. The verified ZIP and checked installation prompt remain available when "
+            "directory access is unavailable or a local audit trail is required.",
             styles,
         ),
         Table(
             [
-                [Paragraph("PACKAGE", styles["table_head"]), Paragraph(data["downloadFile"], styles["table_cell"])],
+                [Paragraph("PLUGIN", styles["table_head"]), Paragraph(data["name"], styles["table_cell"])],
                 [Paragraph("VERSION", styles["table_head"]), Paragraph(version, styles["table_cell"])],
-                [Paragraph("DOWNLOAD", styles["table_head"]), Paragraph(f'<link href="{download_url}" color="#006BA6">{download_url}</link>', styles["table_cell"])],
+                [Paragraph("DIRECTORY", styles["table_head"]), Paragraph(f'<link href="{plugin_directory_url}" color="#006BA6">{plugin_directory_url}</link>', styles["table_cell"])],
+                [Paragraph("MANUAL ZIP", styles["table_head"]), Paragraph(f'<link href="{download_url}" color="#006BA6">{download_url}</link>', styles["table_cell"])],
                 [Paragraph("SHA-256", styles["table_head"]), Paragraph(f'<font name="IBMPlexMono" size="6.4">{checksum}</font>', styles["table_cell"])],
             ],
             colWidths=[0.95 * inch, 5.65 * inch],
@@ -680,15 +686,29 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
             ),
         ),
         Spacer(1, 12),
-        Paragraph("What the checked install protects", styles["h2"]),
+        Paragraph("Recommended steps", styles["h2"]),
         bullet_list(
             [
-                "The exact public ZIP and SHA-256 are verified before extraction.",
-                "Both authored manifests and the complete skill package are preserved.",
-                "Only the plugin's personal source and marketplace entry may change.",
-                "Installation stops before any proposal is read or any image is generated.",
+                "Open the directory link above and sign in or continue in the ChatGPT desktop app.",
+                "Select the plus button to install DOE Proposal Figure 1.",
+                "Start a new Codex task so the installed plugin and its skill are available.",
+                "Attach the substantive proposal and paste the Figure 1 usage prompt from this guide.",
             ],
             styles,
+        ),
+        Spacer(1, 6),
+        info_box(
+            "Manual verified fallback",
+            "Use the complete prompt on the next page when account, workspace, or network rules "
+            "prevent directory installation. It verifies the exact ZIP and checksum, preserves "
+            "the complete plugin package, and stops before reading a proposal or generating a figure.",
+            styles,
+            tone="orange",
+        ),
+        Spacer(1, 10),
+        Paragraph(
+            f'<b>Official plugin help:</b> <link href="{OPENAI_PLUGIN_DOCS_URL}" color="#006BA6">{OPENAI_PLUGIN_DOCS_URL}</link>',
+            styles["small"],
         ),
         PageBreak(),
         *prompt_block(
@@ -806,6 +826,7 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
         Table(
             [
                 [Paragraph("SYMPTOM", styles["table_head"]), Paragraph("WHAT TO DO", styles["table_head"])],
+                [Paragraph("Plugin listing is unavailable", styles["table_cell_bold"]), Paragraph("Confirm that you are signed in and that your workspace permits the plugin. If the listing remains unavailable, use the verified manual installation prompt in this guide.", styles["table_cell"])],
                 [Paragraph("Download is blocked", styles["table_cell_bold"]), Paragraph("Use the same direct ZIP link as a manual-download fallback. Do not use a mirror or a differently named package.", styles["table_cell"])],
                 [Paragraph("Plugin is missing", styles["table_cell_bold"]), Paragraph("Open a fresh task. Restart the desktop app only if the plugin is still absent from the Plugins Directory or new task.", styles["table_cell"])],
                 [Paragraph("Source cannot be read", styles["table_cell_bold"]), Paragraph("Stop. Supply a substantive, text-extractable, cleared proposal or an approved substitute.", styles["table_cell"])],

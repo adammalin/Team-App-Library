@@ -88,9 +88,14 @@ export default function ErcpProposalFiguresPage() {
               graphic-designer review.
             </p>
             <div className="resource-actions">
-              <a className="resource-action resource-action--primary" href="#install">
+              <a
+                className="resource-action resource-action--primary"
+                href={ercpProposalFiguresPlugin.pluginDirectoryUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Package aria-hidden="true" />
-                Install with Codex
+                Install from ChatGPT Plugins
               </a>
               <a className="resource-action" href={pluginDownload} download>
                 <DownloadSimple aria-hidden="true" />
@@ -193,19 +198,43 @@ export default function ErcpProposalFiguresPage() {
               <span className="section-index">02</span>
               <div>
                 <span className="eyebrow">One-time setup</span>
-                <h2>Paste one checked prompt to install the complete plugin.</h2>
+                <h2>Install from the Plugins Directory, then open a fresh task.</h2>
                 <ol className="numbered-list resource-steps">
-                  <li>Open a Codex task and copy the complete installation prompt below.</li>
-                  <li>Paste it without editing—the exact public URL and checksum are included.</li>
-                  <li>Codex downloads, verifies, tests, installs, and enables the complete plugin.</li>
-                  <li>After installation succeeds, open a fresh Codex task for proposal work.</li>
+                  <li>Open the DOE Proposal Figure 1 listing using the recommended button below.</li>
+                  <li>Sign in or continue in the ChatGPT desktop app, then select the plus button to install it.</li>
+                  <li>Start a new Codex task so the installed plugin and its skill are available.</li>
+                  <li>Attach the substantive proposal and paste the Figure 1 usage prompt from this page.</li>
                 </ol>
-                <CodeBlock code={ercpInstallPrompt} label="Copy the complete installation prompt" />
+                <div className="download-panel">
+                  <Package weight="duotone" aria-hidden="true" />
+                  <div>
+                    <strong>DOE Proposal Figure 1</strong>
+                    <span>Recommended install · ChatGPT Plugins · Version {ercpProposalFiguresPlugin.version}</span>
+                  </div>
+                  <a
+                    href={ercpProposalFiguresPlugin.pluginDirectoryUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Package aria-hidden="true" />
+                    Open plugin listing
+                  </a>
+                </div>
                 <p className="resource-tip">
-                  If local IT blocks the download, Codex will stop and return the same direct link
-                  for a manual download. Restart the desktop app only if the plugin is missing from
-                  a new task or the Plugins Directory.
+                  After installation, begin in a new task. Type <code>@</code> if you want to select
+                  the plugin or its bundled skill explicitly before pasting the proposal request.
                 </p>
+                <details className="plugin-inventory">
+                  <summary>Manual verified installation (ZIP + checksum)</summary>
+                  <div className="plugin-inventory__content">
+                    <p>
+                      Use this fallback when the Plugins Directory is unavailable because of account,
+                      workspace, or network restrictions. It verifies the exact beta.5 archive and
+                      preserves a recoverable local installation.
+                    </p>
+                    <CodeBlock code={ercpInstallPrompt} label="Copy the manual installation prompt" />
+                  </div>
+                </details>
               </div>
             </section>
 

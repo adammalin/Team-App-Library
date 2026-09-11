@@ -86,31 +86,32 @@ test("server-renders the complete beta DOE Proposal Figure 1 resource", async ()
   assert.match(html, /\$create-ercp-proposal-figures/);
   assert.match(html, /completely label-free Figure 1 collaboration draft/i);
   assert.match(html, /one opaque 1536 × 1024 raster PNG/i);
-  assert.match(html, /Version 1\.2\.0-beta\.4/i);
-  assert.match(html, /ercp-proposal-figures-1\.2\.0-beta\.4\.zip/);
+  assert.match(html, /Version 1\.2\.0-beta\.5/i);
+  assert.match(html, /ercp-proposal-figures-1\.2\.0-beta\.5\.zip/);
   assert.match(
     html,
-    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.2\.0-beta\.4\.zip/,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.2\.0-beta\.5\.zip/,
   );
   assert.match(
     html,
-    /e7df106f9f22a23222b36b73b3e0ebe639af4f701234a711fa6357e5467250e0/,
+    /a11af3c53c6b7eb611f3ad1b0263d992440074d9c82a74049826c63ac2c264c6/,
   );
   assert.match(html, /ercp-proposal-figures-1\.2\.0-beta\.3-preview\.png/);
   assert.match(html, /Download PDF guide/i);
   assert.match(
     html,
-    /DOE-Proposal-Figure-1-Codex-Skill-Guide-1\.2\.0-beta\.4\.pdf/,
+    /DOE-Proposal-Figure-1-Codex-Skill-Guide-1\.2\.0-beta\.5\.pdf/,
   );
   assert.match(html, /complete installation prompt, the complete Figure 1 prompt/i);
-  assert.match(html, /Version 1\.2\.0-beta\.4 creates Figure 1 collaboration drafts only/i);
-  assert.match(html, /three to five required proposal-specific forms/i);
-  assert.match(html, /Restrained same-hue tonal polish is now an advisory note/i);
-  assert.match(html, /beta\.3 OCR and sandbox reliability fixes remain included/i);
+  assert.match(html, /Version 1\.2\.0-beta\.5 creates Figure 1 collaboration drafts only/i);
+  assert.match(html, /three to five required, proposal-specific visual forms/i);
+  assert.match(html, /source-backed before state, scientific action, changed after/i);
+  assert.match(html, /generic future-benefit substitution/i);
+  assert.match(html, /modest diagrammatic depth is an advisory/i);
   assert.match(html, /Eight legacy layouts \+ one flat-style target/i);
   assert.match(html, /never attach them to image generation/i);
-  assert.match(html, /three cleared real-proposal benchmarks/i);
-  assert.match(html, /mean selected score of 4\.64\/5/i);
+  assert.match(html, /DUNE transformation in 3\/3 images instead of 1\/3/i);
+  assert.match(html, /Lear[\s\S]{0,80}glyph failure from 3\/3 images to 0\/3/i);
   assert.match(html, /without forcing five literal regions or a fixed final-art palette/i);
   assert.match(html, /brand-neutral/i);
   assert.doesNotMatch(html, /fixed proposal-role colors|Vision uses pale sage/i);

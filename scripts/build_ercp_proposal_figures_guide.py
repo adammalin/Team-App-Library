@@ -48,7 +48,7 @@ DEFAULT_OUTPUT = (
     / "public"
     / "assets"
     / "guides"
-    / "DOE-Proposal-Figure-1-Codex-Skill-Guide-1.2.0-beta.4.pdf"
+    / "DOE-Proposal-Figure-1-Codex-Skill-Guide-1.2.0-beta.5.pdf"
 )
 
 PUBLIC_PAGE_URL = (
@@ -717,8 +717,8 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
         Table(
             [
                 [Paragraph("1", styles["card_number"]), Paragraph("Reads the proposal and freezes exact source support.", styles["table_cell"])],
-                [Paragraph("2", styles["card_number"]), Paragraph("Builds one proposal-native funding argument instead of a methods inventory or Roadmap.", styles["table_cell"])],
-                [Paragraph("3", styles["card_number"]), Paragraph("Maps three to five required proposal-specific forms, one dominant funding path, and a consistent palette.", styles["table_cell"])],
+                [Paragraph("2", styles["card_number"]), Paragraph("Freezes one source-backed before/action/after scientific claim and its correct relationship topology instead of a methods inventory or Roadmap.", styles["table_cell"])],
+                [Paragraph("3", styles["card_number"]), Paragraph("Maps three to five proposal-specific forms, one dominant funding path, a science-based payoff, and a consistent palette.", styles["table_cell"])],
                 [Paragraph("4", styles["card_number"]), Paragraph("Uses legacy examples for written layout planning, attaches only the certified flat-style target, and generates two label-free PNG candidates.", styles["table_cell"])],
                 [Paragraph("5", styles["card_number"]), Paragraph("Allows at most one focused repair and returns only the strongest usable draft.", styles["table_cell"])],
             ],
@@ -750,7 +750,8 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
         bullet_list(
             [
                 "Every depicted system, mechanism, relationship, endpoint, and sponsor impact traces to the proposal.",
-                "No generic substitute story overrides the proposal's actual funding case.",
+                "No generic cars, turbines, factories, certificates, checkmarks, globes, lightbulbs, or innovation symbols replace the proposal's scientific payoff.",
+                "The visible before state, scientific action, changed after state, and relationship topology remain faithful to the source.",
                 "The primary capability remains the proposal's capability, not a secondary analysis method.",
                 "The DOE payoff is source-supported rather than invented.",
             ],
@@ -763,8 +764,9 @@ def build_story(data: dict[str, str], styles: dict[str, ParagraphStyle]) -> list
                 "One dominant reading path and one primary visual claim are visible at full size and thumbnail size.",
                 "The system, gap, capability, decisive relationship, endpoint, and DOE payoff remain recognizable.",
                 "Color consistently distinguishes proposal elements while the output stays brand-neutral.",
-                "Major forms remain front-facing, matte, and depthless. Restrained same-hue tonal variation may remain when it does not imply volume, illumination, gloss, or material realism.",
-                "Perspective, visible top or side faces, stacked depth, dimensional shading or illumination, gloss, glow, reflections, and cast shadows fail the flat-style gate.",
+                "The polished flat editorial hierarchy remains clear enough for a designer redraw.",
+                "Modest nonfrontal views, shallow diagrammatic faces, flat layered offsets, and contained tonal variation are advisory redraw notes when they do not imply realistic thickness or lighting.",
+                "Strong perspective, extrusion, dimensional lighting or highlights, gloss, glow, reflections, and cast shadows fail the flat-style gate.",
                 "A graphic designer can interpret and redraw the result without treating generated pixels as evidence.",
             ],
             styles,

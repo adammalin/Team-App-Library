@@ -87,7 +87,7 @@ test("prefixes routes and assets for the GitHub project site", async () => {
   assert.match(
     figureGuide,
     new RegExp(
-      `${basePath}/assets/downloads/ercp-proposal-figures-1\\.2\\.0-beta\\.4\\.zip`,
+      `${basePath}/assets/downloads/ercp-proposal-figures-1\\.2\\.0-beta\\.5\\.zip`,
     ),
   );
   assert.match(
@@ -99,24 +99,25 @@ test("prefixes routes and assets for the GitHub project site", async () => {
   assert.match(
     figureGuide,
     new RegExp(
-      `${basePath}/assets/guides/DOE-Proposal-Figure-1-Codex-Skill-Guide-1\\.2\\.0-beta\\.4\\.pdf`,
+      `${basePath}/assets/guides/DOE-Proposal-Figure-1-Codex-Skill-Guide-1\\.2\\.0-beta\\.5\\.pdf`,
     ),
   );
   assert.match(
     figureGuide,
-    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.2\.0-beta\.4\.zip/,
+    /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.2\.0-beta\.5\.zip/,
   );
-  assert.match(figureGuide, /Beta[\s\S]{0,80}Version[\s\S]{0,80}1\.2\.0-beta\.4/i);
+  assert.match(figureGuide, /Beta[\s\S]{0,80}Version[\s\S]{0,80}1\.2\.0-beta\.5/i);
   assert.match(figureGuide, /completely label-free Figure 1 collaboration draft/i);
   assert.match(figureGuide, /brand-neutral/i);
   assert.match(figureGuide, /Eight legacy layouts \+ one flat-style target/i);
-  assert.match(figureGuide, /three cleared real-proposal benchmarks/i);
-  assert.match(figureGuide, /mean selected score of 4\.64\/5/i);
+  assert.match(figureGuide, /DUNE transformation in 3\/3 images instead of 1\/3/i);
+  assert.match(figureGuide, /Lear[\s\S]{0,80}glyph failure from 3\/3 images to 0\/3/i);
   assert.match(figureGuide, /without forcing five literal regions or a fixed final-art palette/i);
-  assert.match(figureGuide, /e7df106f9f22a23222b36b73b3e0ebe639af4f701234a711fa6357e5467250e0/);
-  assert.match(figureGuide, /three to five required proposal-specific forms/i);
-  assert.match(figureGuide, /Restrained same-hue tonal polish is now an advisory note/i);
-  assert.match(figureGuide, /beta\.3 OCR and sandbox reliability fixes remain included/i);
+  assert.match(figureGuide, /a11af3c53c6b7eb611f3ad1b0263d992440074d9c82a74049826c63ac2c264c6/);
+  assert.match(figureGuide, /three to five required, proposal-specific visual forms/i);
+  assert.match(figureGuide, /source-backed before state, scientific action, changed after/i);
+  assert.match(figureGuide, /generic future-benefit substitution/i);
+  assert.match(figureGuide, /modest diagrammatic depth is an advisory/i);
   assert.match(figureGuide, /never attach them to image generation/i);
   assert.doesNotMatch(figureGuide, /fixed proposal-role colors|Vision uses pale sage/i);
   assert.match(
@@ -182,9 +183,9 @@ test("copies downloadable files and disables Jekyll processing", async () => {
     "out/assets/guides/Badge-Blur-macOS-Quick-Start.pdf",
     "out/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf",
     "out/assets/guides/USA-Map-Studio-User-Guide-v0.8.0.pdf",
-    "out/assets/guides/DOE-Proposal-Figure-1-Codex-Skill-Guide-1.2.0-beta.4.pdf",
+    "out/assets/guides/DOE-Proposal-Figure-1-Codex-Skill-Guide-1.2.0-beta.5.pdf",
     "out/assets/downloads/ornl-presentation-designer-1.2.0.zip",
-    "out/assets/downloads/ercp-proposal-figures-1.2.0-beta.4.zip",
+    "out/assets/downloads/ercp-proposal-figures-1.2.0-beta.5.zip",
     "out/assets/downloads/3d-modeling-agent-0.1.0.zip",
     "out/assets/screenshots/ercp-proposal-figures-1.2.0-beta.3-preview.png",
   ];

@@ -1,14 +1,14 @@
 export const ercpProposalFiguresPlugin = {
   name: "DOE Proposal Figure 1",
   packageName: "ercp-proposal-figures",
-  version: "1.2.0-beta.4",
+  version: "1.2.0-beta.5",
   status: "Beta",
-  downloadFile: "ercp-proposal-figures-1.2.0-beta.4.zip",
+  downloadFile: "ercp-proposal-figures-1.2.0-beta.5.zip",
   downloadSize: "8.2 MB",
-  guideFile: "DOE-Proposal-Figure-1-Codex-Skill-Guide-1.2.0-beta.4.pdf",
+  guideFile: "DOE-Proposal-Figure-1-Codex-Skill-Guide-1.2.0-beta.5.pdf",
   publicDownloadUrl:
-    "https://adammalin.github.io/Team-App-Library/assets/downloads/ercp-proposal-figures-1.2.0-beta.4.zip",
-  sha256: "e7df106f9f22a23222b36b73b3e0ebe639af4f701234a711fa6357e5467250e0",
+    "https://adammalin.github.io/Team-App-Library/assets/downloads/ercp-proposal-figures-1.2.0-beta.5.zip",
+  sha256: "a11af3c53c6b7eb611f3ad1b0263d992440074d9c82a74049826c63ac2c264c6",
 } as const;
 
 export const ercpInstallPrompt = `Download, verify, and install or update the DOE Proposal Figure 1 Agent Plugin from this exact URL:
@@ -32,7 +32,7 @@ Before installation:
 - validate the root \`plugin.json\` and the existing \`.codex-plugin/plugin.json\` rather than replacing either authored manifest with a generic scaffold;
 - run \`python3 skills/create-ercp-proposal-figures/scripts/self_test.py\` from the extracted plugin;
 - install the complete plugin directory, including both manifests and the full \`skills/create-ercp-proposal-figures/\` folder with its agents, assets, style references, fictional fixtures, references, and scripts—do not copy only \`SKILL.md\`.
-- confirm that all eight legacy layout-reference PNGs and the certified flat-style target PNG are present, along with the proposal-native layout, three-to-five required visual-form contract, flexible color semantics, and blind image-only QA rules;
+- confirm that all eight legacy layout-reference PNGs and the certified flat-style target PNG are present, along with the proposal-native layout, source-backed before/action/after claim, relationship-topology contract, three-to-five required visual-form contract, flexible color semantics, and blind image-only QA rules;
 
 If this plugin is already installed, make a recoverable local backup of that plugin only, then use the plugin-creator cachebuster and reinstall flow. Do not hand-edit marketplace configuration. If it is not installed, add it to the default personal marketplace without disturbing existing entries and install and enable it from the personal source.
 
@@ -48,10 +48,14 @@ export const ercpStartPrompt = `Use \`$create-ercp-proposal-figures\` on the sub
 
 Create one source-grounded, brand-neutral, completely label-free Figure 1 collaboration draft that makes the proposal's \"Why fund this?\" argument visible. Return one opaque 1536 × 1024 raster PNG—never SVG, vector artwork, PowerPoint, or PDF—and keep every color-role explanation and remaining science-review note in chat.
 
+Make the source-backed unresolved before state, scientific action, visibly changed after state, correct relationship topology, and scientific payoff readable from the image. Do not merely arrange the correct objects. Preserve parallel, integration, feedback, branching, or transformation relationships exactly as supported by the proposal.
+
+Keep the payoff science-based: show what becomes knowable, measurable, predictable, controllable, validatable, or discoverable. Depict the resulting scientific state, map, relationship, or knowledge rather than generic cars, turbines, factories, certificates, checkmarks, globes, lightbulbs, or innovation symbols.
+
 Use Vision, Gap, Objectives, Approach, and Impact as internal planning roles, not as five mandatory labeled zones or a fixed final-art palette. Choose a cohesive proposal-appropriate palette and use color consistently to distinguish the depicted scientific elements. Do not imitate ORNL or any other organization brand, logo, typography, geometry, or recognition palette.
 
 If I attached an existing Figure 1, Roadmap, sketch, or style reference, use it as relevant visual-system context. Do not import its science, claims, labels, branding, or structure unless the proposal itself supports them.
 
 Keep the generation brief simple enough for a lower-cost model: show one dominant "Why fund this?" reading path with only three to five required, proposal-specific visual forms. Do not add an optional inset or secondary pipeline by default.
 
-Use the eight bundled legacy examples only as written planning aids for topology, connectors, negative space, and color rhythm; never attach them to image generation. Attach only the bundled certified flat-2D style target. Keep major objects front-facing, matte, and depthless. Restrained same-hue tonal variation inside a shape is acceptable when it stays visibly flat. Reject perspective, top or side faces, stacked depth, dimensional shading or illumination, gloss, glow, reflections, and cast shadows.`;
+Use the eight bundled legacy examples only as written planning aids for topology, connectors, negative space, and color rhythm; never attach them to image generation. Attach only the bundled certified flat-2D style target. Preserve the polished flat editorial style and clear hierarchy needed for a designer redraw. Modest nonfrontal views, shallow diagrammatic faces, flat layered offsets, and contained tonal variation may remain as advisory redraw notes when they do not imply realistic thickness or lighting. Reject strong perspective, extrusion, dimensional lighting or highlights, gloss, glow, reflections, and cast shadows.`;

@@ -167,23 +167,23 @@ export default function ErcpProposalFiguresPage() {
                 </Callout>
                 <Callout title="This is a beta collaboration tool">
                   <p>
-                    The underlying method passed deterministic checks and three cleared real-proposal
-                    benchmarks with a mean selected score of 4.64/5. The beta.4 refinement also
-                    requalified the exact lower-cost-model draft that motivated this update at 4.15/5,
-                    with one remaining designer-redraw note. Image generation remains variable, so a
-                    scientist and graphic designer must verify and finish every result.
+                    The package passed deterministic checks and all 18 fresh A/B comparison images
+                    passed the raster-format gates. Compared with beta.4, beta.5 recovered the intended
+                    DUNE transformation in 3/3 images instead of 1/3 and eliminated the repeated Lear
+                    glyph failure from 3/3 images to 0/3. Neither version substituted generic future
+                    imagery for the scientific payoff. Image generation remains variable, so a scientist
+                    and graphic designer must verify and finish every result.
                   </p>
                 </Callout>
-                <Callout tone="success" title="Version 1.2.0-beta.4 lesser-model and draft-handoff update">
+                <Callout tone="success" title="Version 1.2.0-beta.5 visual-action and scientific-payoff update">
                   <p>
-                    Generation prompts now emphasize one dominant funding argument and only three to
-                    five required proposal-specific forms, with no optional inset or secondary pipeline
-                    by default. The eight legacy examples remain layout-only planning aids; generation
-                    receives one certified flat-style target. Restrained same-hue tonal polish is now an
-                    advisory note when forms remain matte, front-facing, and depthless, while perspective,
-                    visible side or top faces, stacked depth, dimensional lighting, gloss, glow,
-                    reflections, and cast shadows still fail the flat-style gate. The beta.3 OCR and
-                    sandbox reliability fixes remain included.
+                    Every run now freezes a source-backed before state, scientific action, changed after
+                    state, scientific payoff, and relationship topology before generation. Compact prompts
+                    require the action and payoff to be visible instead of merely arranging the correct
+                    objects, and QA rejects false sequence and generic future-benefit substitution. The
+                    polished flat editorial style is preserved: modest diagrammatic depth is an advisory
+                    redraw note, while strong perspective, extrusion, dimensional lighting, glow,
+                    reflections, and cast shadows remain failures.
                   </p>
                 </Callout>
               </div>
@@ -216,7 +216,7 @@ export default function ErcpProposalFiguresPage() {
                 <h2>The proposal supplies the science; packaged gates control the translation.</h2>
                 <ol className="numbered-list resource-steps">
                   <li>Read the proposal itself and freeze a source lock with exact supporting excerpts.</li>
-                  <li>Reduce the case to one proposal-native funding argument—not a methods inventory or Roadmap.</li>
+                  <li>Freeze one proposal-native before/action/after scientific claim and its correct relationship topology—not a methods inventory or Roadmap.</li>
                   <li>Turn the proposal’s important nouns into recognizable visual carriers and use color consistently.</li>
                   <li>Select a legacy layout family only after the proposal-native topology is fixed, then attach only the certified flat-style target for generation.</li>
                   <li>Generate two internal label-free PNG candidates and inspect the returned rasters.</li>
@@ -255,7 +255,7 @@ export default function ErcpProposalFiguresPage() {
                         <tbody>
                           <tr>
                             <th scope="row">Proposal-analysis contracts</th>
-                            <td>Source lock, funding argument, science verification, and visual-role mapping.</td>
+                            <td>Source lock, before/action/after visual claim, relationship topology, science verification, and visual-role mapping.</td>
                           </tr>
                           <tr>
                             <th scope="row">Eight legacy layouts + one flat-style target</th>
@@ -318,7 +318,8 @@ export default function ErcpProposalFiguresPage() {
                       <li>One dominant reading path and one primary visual claim are visible</li>
                       <li>The system, gap, capability, decisive relationship, endpoint, and DOE payoff remain recognizable</li>
                       <li>Color distinguishes proposal elements consistently while the output stays brand-neutral</li>
-                      <li>Major forms stay front-facing, matte, and depthless; subtle same-hue tonal variation may remain when it does not imply volume or light</li>
+                      <li>Polished flat editorial hierarchy remains clear enough for a designer redraw</li>
+                      <li>Modest nonfrontal views, shallow diagrammatic faces, flat offsets, and contained tonal variation are advisory; strong perspective, extrusion, realistic lighting, glow, reflections, and cast shadows remain failures</li>
                       <li>The result is a PNG draft that a graphic designer can interpret and redraw</li>
                     </ul>
                   </article>
@@ -332,7 +333,7 @@ export default function ErcpProposalFiguresPage() {
                 </Callout>
                 <Callout title="Brand-neutral by design">
                   <p>
-                    Version 1.2.0-beta.4 uses Vision, Gap, Objectives, Approach, and Impact as
+                    Version 1.2.0-beta.5 uses Vision, Gap, Objectives, Approach, and Impact as
                     internal wireframe roles without forcing five literal regions or a fixed final-art
                     palette. The proposal and selected reference guide a cohesive palette, while no
                     logo, brand typography, branded geometry, or organization-recognition palette
@@ -371,7 +372,7 @@ export default function ErcpProposalFiguresPage() {
                 </ul>
                 <Callout tone="warning" title="Current beta boundary">
                   <p>
-                    Version 1.2.0-beta.4 creates Figure 1 collaboration drafts only. It does not create a
+                    Version 1.2.0-beta.5 creates Figure 1 collaboration drafts only. It does not create a
                     proposal Roadmap, edit the source proposal, produce vector artwork, or deliver a
                     submission-ready final figure.
                   </p>

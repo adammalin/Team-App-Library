@@ -8,6 +8,7 @@ import {
   ImageSquare,
   Package,
   Palette,
+  Presentation,
   ShieldCheck,
   Warning,
 } from "@phosphor-icons/react/dist/ssr";
@@ -40,6 +41,7 @@ export const metadata: Metadata = {
 const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "";
 const pluginDownload = `${siteBasePath}/assets/downloads/${ercpProposalFiguresPlugin.downloadFile}`;
 const guideDownload = `${siteBasePath}/assets/guides/${ercpProposalFiguresPlugin.guideFile}`;
+const presentationDownload = `${siteBasePath}/assets/presentations/${ercpProposalFiguresPlugin.presentationFile}`;
 const previewImage = `${siteBasePath}/assets/screenshots/ercp-proposal-figures-1.2.0-beta.5-preview.png`;
 
 function Callout({
@@ -131,6 +133,7 @@ export default function ErcpProposalFiguresPage() {
             <a href="#quality">Quality gates</a>
             <a href="#review">Review and limits</a>
             <a href="#guide">PDF guide</a>
+            <a href="#presentation">Presentation deck</a>
             <a href="#download">Plugin download</a>
           </aside>
 
@@ -442,8 +445,34 @@ export default function ErcpProposalFiguresPage() {
               </div>
             </section>
 
-            <section id="download" className="resource-section">
+            <section id="presentation" className="resource-section">
               <span className="section-index">08</span>
+              <div>
+                <span className="eyebrow">Presentation deck</span>
+                <h2>Explain the workflow before design begins.</h2>
+                <p className="resource-intro">
+                  This six-slide editable PowerPoint explains how to install and start the plugin,
+                  what the pipeline does, where the draft fits in proposal development, and how
+                  scientists hand the concept to a graphic designer.
+                </p>
+                <div className="download-panel">
+                  <Presentation weight="duotone" aria-hidden="true" />
+                  <div>
+                    <strong>{ercpProposalFiguresPlugin.presentationFile}</strong>
+                    <span>
+                      Editable process overview · PowerPoint · 6 slides · {ercpProposalFiguresPlugin.presentationSize}
+                    </span>
+                  </div>
+                  <a href={presentationDownload} download>
+                    <DownloadSimple aria-hidden="true" />
+                    Download presentation
+                  </a>
+                </div>
+              </div>
+            </section>
+
+            <section id="download" className="resource-section">
+              <span className="section-index">09</span>
               <div>
                 <span className="eyebrow">Plugin download</span>
                 <h2>One verified ZIP contains the complete beta plugin.</h2>

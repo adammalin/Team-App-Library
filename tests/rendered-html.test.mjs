@@ -108,6 +108,12 @@ test("server-renders the complete beta DOE Proposal Figure 1 resource", async ()
     html,
     /DOE-Proposal-Figure-1-Codex-Skill-Guide-1\.2\.0-beta\.5\.pdf/,
   );
+  assert.match(html, /Download presentation/i);
+  assert.match(
+    html,
+    /DOE-Proposal-Figure-1-Process-Overview-Draft-2026-09-11-v2\.pptx/,
+  );
+  assert.match(html, /Editable process overview · PowerPoint · 6 slides/i);
   assert.match(html, /complete installation prompt, the complete Figure 1 prompt/i);
   assert.match(html, /Version 1\.2\.0-beta\.5 creates Figure 1 collaboration drafts only/i);
   assert.match(html, /three to five required, proposal-specific visual forms/i);

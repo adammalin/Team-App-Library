@@ -104,6 +104,12 @@ test("prefixes routes and assets for the GitHub project site", async () => {
   );
   assert.match(
     figureGuide,
+    new RegExp(
+      `${basePath}/assets/presentations/DOE-Proposal-Figure-1-Process-Overview-Draft-2026-09-11-v2\\.pptx`,
+    ),
+  );
+  assert.match(
+    figureGuide,
     /https:\/\/adammalin\.github\.io\/Team-App-Library\/assets\/downloads\/ercp-proposal-figures-1\.2\.0-beta\.5\.zip/,
   );
   assert.match(
@@ -188,6 +194,7 @@ test("copies downloadable files and disables Jekyll processing", async () => {
     "out/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf",
     "out/assets/guides/USA-Map-Studio-User-Guide-v0.8.0.pdf",
     "out/assets/guides/DOE-Proposal-Figure-1-Codex-Skill-Guide-1.2.0-beta.5.pdf",
+    "out/assets/presentations/DOE-Proposal-Figure-1-Process-Overview-Draft-2026-09-11-v2.pptx",
     "out/assets/downloads/ornl-presentation-designer-1.2.0.zip",
     "out/assets/downloads/ercp-proposal-figures-1.2.0-beta.5.zip",
     "out/assets/downloads/3d-modeling-agent-0.1.0.zip",

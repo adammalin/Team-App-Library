@@ -1,6 +1,6 @@
 # Team App Library
 
-A searchable catalog for the team's desktop apps, web apps, versioned Custom GPTs, and Codex plugins. Desktop apps retain task-focused documentation for installing from source, updating, launching again, uninstalling, and learning the interface.
+A searchable catalog for the team's desktop apps, web apps, versioned Custom GPTs, and Codex plugins. Desktop apps retain task-focused documentation for installing from source, updating, launching again, uninstalling, and learning the interface. The site also contains dated API Cost Studies for comparing measured workflow cost, capacity, and outcomes over time.
 
 ## Included apps
 
@@ -25,6 +25,12 @@ A searchable catalog for the team's desktop apps, web apps, versioned Custom GPT
 - ORNL Presentation Designer
 - DOE Proposal Figure 1
 - 3D Modeling Agent
+
+## API Cost Studies
+
+- ORNL Brand Agent V2.3.2 heavy-duty EV graphic baseline (September 11, 2026)
+
+Each study publishes structured datapoints plus downloadable comparison and per-setting PDFs. Public study records contain calculated usage deltas only; cumulative account screenshots remain private. See [`docs/API_COST_STUDIES.md`](docs/API_COST_STUDIES.md) for the repeatable content workflow.
 
 The site packages the supplied PDF guides as unchanged downloads and includes current, source-repository-backed commands. It does not distribute unsigned installers or app bundles.
 
@@ -57,6 +63,8 @@ npm run lint
 - App icons and screenshots: `public/assets/`
 - Downloadable guides: `public/assets/guides/`
 - Downloadable Agent Plugins: `public/assets/downloads/`
+- API cost study records and reports: `public/assets/cost-studies/`
+- API cost study index and detail pages: `app/cost-studies/`
 
 Keep commands aligned with each application's current README and source scripts. Preserve supplied PDFs unchanged; add a newly versioned guide when documentation is revised.
 

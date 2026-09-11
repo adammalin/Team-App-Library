@@ -1,0 +1,219 @@
+{
+  "schemaVersion": "1.0",
+  "studyId": "2026-09-11_ORNL-Brand-Agent-v2.3.2_Heavy-Duty-EV",
+  "slug": "ornl-brand-agent-v2-3-2-heavy-duty-ev-2026-09-11",
+  "title": "ORNL Brand Agent V2.3.2: Heavy-Duty EV Graphic",
+  "date": "2026-09-11",
+  "dateLabel": "September 11, 2026",
+  "status": "Single-run baseline",
+  "assetDirectory": "/assets/cost-studies/2026-09-11-ornl-brand-agent-v2-3-2",
+  "workflow": {
+    "type": "Custom GPT",
+    "name": "ORNL Brand Agent",
+    "version": "2.3.2",
+    "url": "https://chatgpt.com/g/g-6a57d24b2aa48191a15d3be17f6d8651-ornl-brand-agent-v2-3-2",
+    "task": "Create a starting visual concept for a heavy-duty electric-vehicle technology story from the same supplied project brief.",
+    "prompt": "can you produce a draft image generation to help me get started with this project?"
+  },
+  "sourceFiles": [
+    {
+      "label": "Heavy-Duty EV Technology Story Tip Graphic Redesign",
+      "kind": "Exact project brief",
+      "file": "project-brief.md",
+      "size": "7.0 KB",
+      "sha256": "8530ce0d62e283832bcb9678ca0d5b3868c174b377cb2a4b3e6b76f4bc47e795"
+    }
+  ],
+  "measurement": {
+    "billingSystem": "ChatGPT Workspace shared credits",
+    "priceType": "Displayed estimated usage delta",
+    "pricingObservedOn": "2026-09-11",
+    "currency": "USD",
+    "observedUsdPerCredit": 0.04,
+    "monthlyCreditLimitPerUser": 500,
+    "capacityRule": "Floor of 500 credits divided by measured credits per run",
+    "costRule": "Displayed estimate after the request minus displayed estimate before the request",
+    "creditRule": "Credit total after the request minus credit total before the request",
+    "caveat": "These are measured Workspace credit and displayed-dollar deltas for the complete request, including image generation or repair activity. They are not token-metered OpenAI API invoices or a durable public API price list."
+  },
+  "summary": {
+    "datapointCount": 5,
+    "lowestCostPerRunUsd": 0.4,
+    "highestCostPerRunUsd": 2.0,
+    "priceRangeMultiple": 5,
+    "highestMonthlyCapacity": 50,
+    "lowestMonthlyCapacity": 10,
+    "capacityReductionPercent": 80,
+    "scoredSettings": 4,
+    "passingSettings": 0,
+    "unscoredSettings": 1
+  },
+  "findings": [
+    {
+      "title": "The least-expensive settings preserved the most monthly capacity.",
+      "body": "Instant and Thinking - Mini each used 10 credits, or a displayed $0.40, allowing up to 50 comparable runs within a 500-credit monthly limit."
+    },
+    {
+      "title": "More expensive settings did not produce a documented QA pass.",
+      "body": "None of the four scored settings produced a passing output. Instant was not formally scored in its original record, although later visual review found the same unapproved-copy and logo-treatment risk."
+    },
+    {
+      "title": "Thinking - Mini is the stronger value candidate for continued testing.",
+      "body": "It matched Instant's measured cost and monthly capacity, returned two distinct concepts, and explicitly identified its own brand-compliance failure. Instant returned one visually coherent concept but had no formal QA score."
+    },
+    {
+      "title": "Pro consumed five times the credits of the lowest-cost settings.",
+      "body": "At 50 credits, or a displayed $2.00, each Pro run used 10% of the assumed monthly allowance and reduced maximum monthly capacity to 10 runs."
+    }
+  ],
+  "recommendation": "Use Thinking - Mini as the provisional default for early concept exploration, retain deterministic copy and approved-logo controls outside image generation, and repeat the Instant-versus-Mini comparison across three to five matched runs before establishing a production standard.",
+  "datapoints": [
+    {
+      "id": "instant",
+      "label": "Instant",
+      "model": "GPT-5.6 Sol",
+      "mode": "Instant",
+      "thinkingEffort": "Instant",
+      "creditsPerRun": 10,
+      "displayedEstimatedCostPerRunUsd": 0.4,
+      "shareOfMonthlyLimitPercent": 2,
+      "maximumRunsPerMonth": 50,
+      "runsWithHalfBudgetReserved": 25,
+      "elapsedSeconds": null,
+      "returnedOutputCount": 1,
+      "qaStatus": "Not scored in original record",
+      "qaPassingOutputs": null,
+      "resultNote": "One output was supplied. Later visual review found the same unapproved-copy and logo-treatment risk seen in the scored settings.",
+      "reportFile": "ORNL_Brand_Agent_GPT-5.6-Sol_Instant_Cost_Capacity.pdf"
+    },
+    {
+      "id": "thinking-mini",
+      "label": "Thinking - Mini",
+      "model": "GPT-5.6 Sol",
+      "mode": "Thinking",
+      "thinkingEffort": "Mini",
+      "creditsPerRun": 10,
+      "displayedEstimatedCostPerRunUsd": 0.4,
+      "shareOfMonthlyLimitPercent": 2,
+      "maximumRunsPerMonth": 50,
+      "runsWithHalfBudgetReserved": 25,
+      "elapsedSeconds": null,
+      "returnedOutputCount": 2,
+      "qaStatus": "Failed",
+      "qaPassingOutputs": 0,
+      "resultNote": "The model reported unapproved headline and callout copy plus unauthorized ORNL logo treatment and rejected the concept.",
+      "reportFile": "ORNL_Brand_Agent_GPT-5.6-Sol_Thinking-Mini_Cost_Capacity.pdf"
+    },
+    {
+      "id": "light",
+      "label": "Light",
+      "model": "GPT-5.6 Sol",
+      "mode": "Thinking",
+      "thinkingEffort": "Light (lowest thinking effort)",
+      "creditsPerRun": 20,
+      "displayedEstimatedCostPerRunUsd": 0.8,
+      "shareOfMonthlyLimitPercent": 4,
+      "maximumRunsPerMonth": 25,
+      "runsWithHalfBudgetReserved": 12,
+      "elapsedSeconds": 89,
+      "returnedOutputCount": 2,
+      "qaStatus": "Failed after one repair",
+      "qaPassingOutputs": 0,
+      "resultNote": "The intended concept was visible, but exact-copy and logo-like material still required correction after the allowed repair.",
+      "reportFile": "ORNL_Brand_Agent_GPT-5.6-Sol_Light_Cost_Capacity.pdf"
+    },
+    {
+      "id": "thinking-standard",
+      "label": "Thinking - Standard",
+      "model": "GPT-5.6 Sol",
+      "mode": "Thinking",
+      "thinkingEffort": "Standard",
+      "creditsPerRun": 20,
+      "displayedEstimatedCostPerRunUsd": 0.8,
+      "shareOfMonthlyLimitPercent": 4,
+      "maximumRunsPerMonth": 25,
+      "runsWithHalfBudgetReserved": 12,
+      "elapsedSeconds": null,
+      "returnedOutputCount": 2,
+      "qaStatus": "Failed after one repair",
+      "qaPassingOutputs": 0,
+      "resultNote": "The model reported unauthorized slogans, benefit copy, and ORNL-like logo treatment in both attempts.",
+      "reportFile": "ORNL_Brand_Agent_GPT-5.6-Sol_Thinking-Standard_Cost_Capacity.pdf"
+    },
+    {
+      "id": "pro",
+      "label": "Pro + Pro thinking",
+      "model": "GPT-5.6 Sol",
+      "mode": "Pro",
+      "thinkingEffort": "Pro",
+      "creditsPerRun": 50,
+      "displayedEstimatedCostPerRunUsd": 2,
+      "shareOfMonthlyLimitPercent": 10,
+      "maximumRunsPerMonth": 10,
+      "runsWithHalfBudgetReserved": 5,
+      "elapsedSeconds": 131,
+      "returnedOutputCount": 1,
+      "qaStatus": "Failed independent review",
+      "qaPassingOutputs": 0,
+      "resultNote": "The returned image introduced unsupplied slogans and an ORNL-like logo treatment.",
+      "reportFile": "ORNL_Brand_Agent_GPT-5.6-Sol_Pro_Cost_Capacity.pdf"
+    }
+  ],
+  "methodology": [
+    "Use the same Custom GPT version, source brief, and starting request for every model setting.",
+    "Capture the Workspace usage page immediately before and after each complete request.",
+    "Store only the calculated credit and displayed-dollar deltas in the public study; keep cumulative account screenshots private.",
+    "Calculate monthly capacity as the whole number of runs that fit within the stated monthly credit limit.",
+    "Record model, mode, thinking effort, output count, elapsed time when visible, QA status, and evidence report for every datapoint."
+  ],
+  "limitations": [
+    "Each model setting was measured once, so the values are a baseline rather than a stable average.",
+    "Instant was not formally scored in its original test record; its later visual review is reported separately.",
+    "Output counts and repair behavior differed by setting, so this comparison measures the complete observed request rather than a normalized single-image generation.",
+    "Workspace credit rules and displayed dollar estimates can change; future reruns should retain their own observation date and assumptions."
+  ],
+  "downloads": [
+    {
+      "label": "Complete model comparison",
+      "kind": "Comparison PDF",
+      "file": "ORNL_Brand_Agent_Model_Cost_Comparison.pdf",
+      "size": "68 KB",
+      "sha256": "2c58bf79f9e630993073b17ff946387f4bd48a661ef468a9eac2fcb1da15324d"
+    },
+    {
+      "label": "Instant test report",
+      "kind": "Evidence PDF",
+      "file": "ORNL_Brand_Agent_GPT-5.6-Sol_Instant_Cost_Capacity.pdf",
+      "size": "7.0 MB",
+      "sha256": "e7cfb11236204944deee8037cfd6f1c0daa9c79177d2060f922f5ab5f6db1616"
+    },
+    {
+      "label": "Thinking - Mini test report",
+      "kind": "Evidence PDF",
+      "file": "ORNL_Brand_Agent_GPT-5.6-Sol_Thinking-Mini_Cost_Capacity.pdf",
+      "size": "8.6 MB",
+      "sha256": "696842d994db27094114319e7969202833ee1c95c867b45722bb4681eb503239"
+    },
+    {
+      "label": "Light test report",
+      "kind": "Evidence PDF",
+      "file": "ORNL_Brand_Agent_GPT-5.6-Sol_Light_Cost_Capacity.pdf",
+      "size": "5.4 MB",
+      "sha256": "103ac69c1544e9bbb9a82b5ce2ba053294777db4e634b534ade7d82c6fa8dbbb"
+    },
+    {
+      "label": "Thinking - Standard test report",
+      "kind": "Evidence PDF",
+      "file": "ORNL_Brand_Agent_GPT-5.6-Sol_Thinking-Standard_Cost_Capacity.pdf",
+      "size": "8.5 MB",
+      "sha256": "705d3f98777a601b0bc926ae6345ec23e7f77437487ad624f6114eb7138624f8"
+    },
+    {
+      "label": "Pro test report",
+      "kind": "Evidence PDF",
+      "file": "ORNL_Brand_Agent_GPT-5.6-Sol_Pro_Cost_Capacity.pdf",
+      "size": "5.0 MB",
+      "sha256": "c418f2f31373af6a688da6b2a47b61a5d948913187e4fd924857387d790b0915"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
@@ -51,6 +52,9 @@ test("server-renders the app catalog", async () => {
   assert.match(html, /fully transparent background/i);
   assert.match(html, /ORNL Brand Agent/);
   assert.match(html, /Preferred · v2\.3\.2/);
+  assert.match(html, /API cost studies/i);
+  assert.match(html, /Compare AI workflow cost, capacity, and results/i);
+  assert.match(html, /View cost study/i);
   assert.match(html, /Previous versions[\s\S]{0,40}1/);
   assert.match(
     html,
@@ -89,6 +93,107 @@ test("server-renders the app catalog", async () => {
   assert.match(html, /DOE Proposal Figure 1/);
   assert.match(html, /3D Modeling Agent/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
+});
+
+test("server-renders the API cost study archive and dated ORNL Brand Agent study", async () => {
+  const [indexResponse, studyResponse] = await Promise.all([
+    render("/cost-studies"),
+    render("/cost-studies/ornl-brand-agent-v2-3-2-heavy-duty-ev-2026-09-11"),
+  ]);
+
+  assert.equal(indexResponse.status, 200);
+  assert.equal(studyResponse.status, 200);
+
+  const [indexHtml, studyHtml] = await Promise.all([
+    indexResponse.text(),
+    studyResponse.text(),
+  ]);
+
+  assert.match(indexHtml, /API Cost Studies/i);
+  assert.match(indexHtml, /Compare tools over time/i);
+  assert.match(indexHtml, /September 11, 2026/i);
+  assert.match(indexHtml, /ORNL Brand Agent V2\.3\.2/i);
+  assert.match(indexHtml, /5[\s\S]{0,40}model datapoints/i);
+
+  assert.match(studyHtml, /Single-run baseline/i);
+  assert.match(studyHtml, /GPT-5\.6 Sol/i);
+  assert.match(studyHtml, /Instant/i);
+  assert.match(studyHtml, /Thinking - Mini/i);
+  assert.match(studyHtml, /Light \(lowest thinking effort\)/i);
+  assert.match(studyHtml, /Thinking - Standard/i);
+  assert.match(studyHtml, /Pro \+ Pro thinking/i);
+  assert.match(studyHtml, /500 credits/i);
+  assert.match(studyHtml, /\$0\.40/i);
+  assert.match(studyHtml, /\$0\.80/i);
+  assert.match(studyHtml, /\$2\.00/i);
+  assert.match(studyHtml, /50[\s\S]{0,40}runs\/month/i);
+  assert.match(studyHtml, /10[\s\S]{0,40}runs\/month/i);
+  assert.match(studyHtml, /Measured Workspace cost—not a token API invoice/i);
+  assert.match(studyHtml, /Thinking - Mini as the provisional default/i);
+  assert.match(
+    studyHtml,
+    /can you produce a draft image generation to help me get started with this project\?/,
+  );
+  assert.match(studyHtml, /Heavy-Duty EV Technology Story Tip Graphic Redesign/i);
+  assert.match(studyHtml, /Download project brief/i);
+  assert.match(studyHtml, /project-brief\.md/i);
+  assert.match(studyHtml, /ORNL_Brand_Agent_Model_Cost_Comparison\.pdf/i);
+  assert.match(studyHtml, /study-data\.json/i);
+  assert.doesNotMatch(studyHtml, /106,6\d{2}|107,\d{3}|4,2\d{2}\.\d{2}/i);
+});
+
+test("validates the public cost-study datapoints and evidence hashes", async () => {
+  const studyDirectory = new URL(
+    "../public/assets/cost-studies/2026-09-11-ornl-brand-agent-v2-3-2/",
+    import.meta.url,
+  );
+  const rawRecord = await readFile(new URL("study-data.json", studyDirectory), "utf8");
+  const study = JSON.parse(rawRecord);
+
+  assert.equal(study.date, "2026-09-11");
+  assert.equal(study.workflow.name, "ORNL Brand Agent");
+  assert.equal(study.workflow.version, "2.3.2");
+  assert.equal(
+    study.workflow.prompt,
+    "can you produce a draft image generation to help me get started with this project?",
+  );
+  assert.equal(study.sourceFiles.length, 1);
+  assert.equal(study.sourceFiles[0].file, "project-brief.md");
+  assert.equal(
+    study.sourceFiles[0].sha256,
+    "8530ce0d62e283832bcb9678ca0d5b3868c174b377cb2a4b3e6b76f4bc47e795",
+  );
+  assert.equal(study.measurement.monthlyCreditLimitPerUser, 500);
+  assert.equal(study.measurement.observedUsdPerCredit, 0.04);
+  assert.equal(study.datapoints.length, 5);
+  assert.equal(study.downloads.length, 6);
+  assert.doesNotMatch(rawRecord, /106,6\d{2}|107,\d{3}|4,2\d{2}\.\d{2}/i);
+
+  let priorCost = Number.NEGATIVE_INFINITY;
+  for (const datapoint of study.datapoints) {
+    assert.ok(datapoint.displayedEstimatedCostPerRunUsd >= priorCost);
+    priorCost = datapoint.displayedEstimatedCostPerRunUsd;
+    assert.equal(
+      datapoint.displayedEstimatedCostPerRunUsd,
+      datapoint.creditsPerRun * study.measurement.observedUsdPerCredit,
+    );
+    assert.equal(
+      datapoint.maximumRunsPerMonth,
+      Math.floor(study.measurement.monthlyCreditLimitPerUser / datapoint.creditsPerRun),
+    );
+  }
+
+  for (const download of study.downloads) {
+    const contents = await readFile(new URL(download.file, studyDirectory));
+    const hash = createHash("sha256").update(contents).digest("hex");
+    assert.equal(hash, download.sha256, download.file);
+  }
+
+  for (const sourceFile of study.sourceFiles) {
+    const contents = await readFile(new URL(sourceFile.file, studyDirectory));
+    const hash = createHash("sha256").update(contents).digest("hex");
+    assert.equal(hash, sourceFile.sha256, sourceFile.file);
+  }
 });
 
 test("server-renders the complete beta 3D Modeling Agent resource", async () => {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ArrowRight, ChatCircleDots, MagnifyingGlass, SquaresFour } from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
+import { ArrowRight, ChartBar, ChatCircleDots, MagnifyingGlass, SquaresFour } from "@phosphor-icons/react/dist/ssr";
 import { SiteHeader } from "./components/SiteHeader";
 import { ToolCatalog } from "./components/ToolCatalog";
 import { toolCatalogEntries } from "./tool-catalog-data";
@@ -74,6 +75,25 @@ export default function Home() {
         </section>
 
         <ToolCatalog tools={toolCatalogEntries} />
+
+        <section className="cost-study-promo">
+          <div className="cost-study-promo__mark" aria-hidden="true">
+            <ChartBar weight="duotone" />
+          </div>
+          <div>
+            <span className="eyebrow">New evidence archive</span>
+            <h2>Compare AI workflow cost, capacity, and results.</h2>
+            <p>
+              API Cost Studies turns repeated tool tests into dated datapoints with exact model
+              settings, measured credit deltas, monthly capacity assumptions, findings, and
+              downloadable reports.
+            </p>
+          </div>
+          <Link href="/cost-studies">
+            Browse cost studies
+            <ArrowRight aria-hidden="true" />
+          </Link>
+        </section>
 
         <section className="how-section">
           <span className="eyebrow">How this library works</span>

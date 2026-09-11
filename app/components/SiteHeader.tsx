@@ -1,7 +1,15 @@
 import Link from "next/link";
-import { ArrowLeft, SquaresFour } from "@phosphor-icons/react/dist/ssr";
+import { ArrowLeft, ChartBar, SquaresFour } from "@phosphor-icons/react/dist/ssr";
 
-export function SiteHeader({ compact = false }: { compact?: boolean }) {
+export function SiteHeader({
+  compact = false,
+  backHref = "/",
+  backLabel = "All tools",
+}: {
+  compact?: boolean;
+  backHref?: string;
+  backLabel?: string;
+}) {
   return (
     <header className="site-header">
       <Link className="site-mark" href="/">
@@ -14,15 +22,21 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
         </span>
       </Link>
       {compact ? (
-        <Link className="header-action" href="/">
+        <Link className="header-action" href={backHref}>
           <ArrowLeft />
-          All tools
+          {backLabel}
         </Link>
       ) : (
-        <span className="header-status">
-          <i aria-hidden="true" />
-          Searchable team tool catalog
-        </span>
+        <div className="site-header__actions">
+          <Link className="header-action" href="/cost-studies">
+            <ChartBar aria-hidden="true" />
+            API cost studies
+          </Link>
+          <span className="header-status">
+            <i aria-hidden="true" />
+            Searchable team tool catalog
+          </span>
+        </div>
       )}
     </header>
   );

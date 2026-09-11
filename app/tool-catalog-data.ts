@@ -107,6 +107,11 @@ const customGpts: ToolCatalogEntry[] = [
         external: true,
         kind: "primary",
       },
+      {
+        label: "View cost study",
+        href: "/cost-studies/ornl-brand-agent-v2-3-2-heavy-duty-ev-2026-09-11",
+        kind: "secondary",
+      },
     ],
     versions: [
       {

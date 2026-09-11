@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Search the team's desktop apps, web apps, Custom GPTs, and Codex plugins.",
+    "Search the team's apps, Custom GPTs, and Codex plugins, and compare dated AI workflow cost studies.",
   openGraph: {
     title: "Team App Library",
     description:
-      "Search the team's desktop apps, web apps, Custom GPTs, and Codex plugins.",
+      "Search the team's tools and compare dated AI workflow cost studies.",
     images: [
       {
         url: new URL("og.png", normalizedSiteUrl).toString(),

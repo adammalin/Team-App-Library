@@ -31,6 +31,8 @@ const exportedPages = [
   "out/resources/ornl-presentation-designer/index.html",
   "out/resources/ercp-proposal-figures/index.html",
   "out/resources/3d-modeling-agent/index.html",
+  "out/cost-studies/index.html",
+  "out/cost-studies/ornl-brand-agent-v2-3-2-heavy-duty-ev-2026-09-11/index.html",
 ];
 
 test("exports every catalog and documentation route", async () => {
@@ -38,7 +40,7 @@ test("exports every catalog and documentation route", async () => {
 });
 
 test("prefixes routes and assets for the GitHub project site", async () => {
-  const [home, badgeGuide, presentationGuide, figureGuide, modelingGuide] = await Promise.all([
+  const [home, badgeGuide, presentationGuide, figureGuide, modelingGuide, costIndex, costStudy] = await Promise.all([
     readFile(new URL("out/index.html", projectRoot), "utf8"),
     readFile(new URL("out/apps/badge-blur/index.html", projectRoot), "utf8"),
     readFile(
@@ -51,6 +53,14 @@ test("prefixes routes and assets for the GitHub project site", async () => {
     ),
     readFile(
       new URL("out/resources/3d-modeling-agent/index.html", projectRoot),
+      "utf8",
+    ),
+    readFile(new URL("out/cost-studies/index.html", projectRoot), "utf8"),
+    readFile(
+      new URL(
+        "out/cost-studies/ornl-brand-agent-v2-3-2-heavy-duty-ev-2026-09-11/index.html",
+        projectRoot,
+      ),
       "utf8",
     ),
   ]);
@@ -175,6 +185,31 @@ test("prefixes routes and assets for the GitHub project site", async () => {
   assert.match(modelingGuide, /Beta[\s\S]{0,80}Version[\s\S]{0,80}0\.1\.0/i);
   assert.match(modelingGuide, /One skill\. Six representation-aware routes\./i);
   assert.match(modelingGuide, /298f00a1ac92eb8aaaee849e7b0d231536be8152e8c405f03e3050f77857e821/);
+  assert.match(home, new RegExp(`href="${basePath}/cost-studies/"`));
+  assert.match(
+    costIndex,
+    new RegExp(
+      `href="${basePath}/cost-studies/ornl-brand-agent-v2-3-2-heavy-duty-ev-2026-09-11/"`,
+    ),
+  );
+  assert.match(
+    costStudy,
+    new RegExp(
+      `${basePath}/assets/cost-studies/2026-09-11-ornl-brand-agent-v2-3-2/ORNL_Brand_Agent_Model_Cost_Comparison\\.pdf`,
+    ),
+  );
+  assert.match(
+    costStudy,
+    new RegExp(
+      `${basePath}/assets/cost-studies/2026-09-11-ornl-brand-agent-v2-3-2/study-data\\.json`,
+    ),
+  );
+  assert.match(
+    costStudy,
+    new RegExp(
+      `${basePath}/assets/cost-studies/2026-09-11-ornl-brand-agent-v2-3-2/project-brief\\.md`,
+    ),
+  );
   assert.doesNotMatch(presentationGuide, /ABSOLUTE PATH TO ornl-presentation-designer/i);
   assert.match(presentationGuide, /Files first\. Questions second\. Slides third\./i);
   assert.match(
@@ -229,6 +264,14 @@ test("copies downloadable files and disables Jekyll processing", async () => {
     "out/assets/downloads/ercp-proposal-figures-1.2.0-beta.5.zip",
     "out/assets/downloads/3d-modeling-agent-0.1.0.zip",
     "out/assets/screenshots/ercp-proposal-figures-1.2.0-beta.5-preview.png",
+    "out/assets/cost-studies/2026-09-11-ornl-brand-agent-v2-3-2/study-data.json",
+    "out/assets/cost-studies/2026-09-11-ornl-brand-agent-v2-3-2/project-brief.md",
+    "out/assets/cost-studies/2026-09-11-ornl-brand-agent-v2-3-2/ORNL_Brand_Agent_Model_Cost_Comparison.pdf",
+    "out/assets/cost-studies/2026-09-11-ornl-brand-agent-v2-3-2/ORNL_Brand_Agent_GPT-5.6-Sol_Instant_Cost_Capacity.pdf",
+    "out/assets/cost-studies/2026-09-11-ornl-brand-agent-v2-3-2/ORNL_Brand_Agent_GPT-5.6-Sol_Thinking-Mini_Cost_Capacity.pdf",
+    "out/assets/cost-studies/2026-09-11-ornl-brand-agent-v2-3-2/ORNL_Brand_Agent_GPT-5.6-Sol_Light_Cost_Capacity.pdf",
+    "out/assets/cost-studies/2026-09-11-ornl-brand-agent-v2-3-2/ORNL_Brand_Agent_GPT-5.6-Sol_Thinking-Standard_Cost_Capacity.pdf",
+    "out/assets/cost-studies/2026-09-11-ornl-brand-agent-v2-3-2/ORNL_Brand_Agent_GPT-5.6-Sol_Pro_Cost_Capacity.pdf",
   ];
 
   await Promise.all(files.map((file) => access(new URL(file, projectRoot))));

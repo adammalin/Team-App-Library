@@ -5,6 +5,17 @@ import test from "node:test";
 const projectRoot = new URL("../", import.meta.url);
 const basePath = "/Team-App-Library";
 
+test("published OrgChart instructions and current guide include one-paste Windows setup", async () => {
+  for (const section of ["install", "update"]) {
+    const html = await readFile(new URL(`out/apps/orgchart-studio/${section}/index.html`, projectRoot), "utf8");
+    assert.match(html, /scripts\/install-windows\.ps1/);
+    assert.match(html, /Terminal, Command Prompt, or PowerShell/);
+    assert.doesNotMatch(html, /\$env:TEMP/);
+  }
+  await access(new URL("out/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-10-27.pdf", projectRoot));
+  await access(new URL("out/assets/downloads/orgchart-studio-install-windows.txt", projectRoot));
+});
+
 const exportedPages = [
   "out/index.html",
   "out/apps/badge-blur/index.html",

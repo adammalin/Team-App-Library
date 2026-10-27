@@ -192,23 +192,44 @@ function PlatformCommands({
         const command = details?.[kind];
         if (!details || !command) return null;
         return (
-          <section className="platform-section" key={platform}>
+          <section className="platform-section" id={platform + "-" + kind} key={platform}>
             <h2>
               <PlatformIcon platform={platform} />
               {details.label}
             </h2>
-            <CodeBlock
-              code={command}
-              label={
-                kind === "install"
-                  ? "First install"
-                  : kind === "update"
-                    ? "Update or repair"
-                    : "Launch"
-              }
-            />
+            {app.slug === "orgchart-studio" && platform === "windows" && kind !== "run" ? (
+              <p className="supporting-copy">
+                Open Terminal, Command Prompt, or PowerShell. Click Copy below, paste once,
+                and press Enter. Setup opens the app when it finishes. Optional AI setup is
+                available inside the app later.
+              </p>
+            ) : null}
             {kind === "run" && details.runNote ? (
               <p className="supporting-copy">{details.runNote}</p>
+            ) : null}
+            {app.slug === "orgchart-studio" && platform === "windows" && kind === "run" ? (
+              <details>
+                <summary>Alternate launch command</summary>
+                <CodeBlock code={command} label="Launch" />
+              </details>
+            ) : (
+              <CodeBlock
+                code={command}
+                label={
+                  kind === "install"
+                    ? "First install"
+                    : kind === "update"
+                      ? "Update or repair"
+                      : "Launch"
+                }
+              />
+            )}
+            {app.slug === "orgchart-studio" && platform === "windows" && kind !== "run" ? (
+              <p className="supporting-copy">
+                If setup fails, it displays the setup log location. Close the app and use
+                the same command to retry or repair. For later launches, choose OrgChart
+                Studio from the Start menu or desktop.
+              </p>
             ) : null}
           </section>
         );
@@ -264,7 +285,7 @@ function Install({ app }: { app: AppEntry }) {
     <>
       <section id="before" className="lead-section">
         <span className="eyebrow">First-time setup</span>
-        <h1>Install from source without a signed installer.</h1>
+        <h1>{app.slug === "orgchart-studio" ? "Copy, paste, and open OrgChart Studio." : "Install from source without a signed installer."}</h1>
         <p>
           The checked-in scripts prepare a private runtime, install exact dependencies,
           build the Electron app, and start it as your normal user.

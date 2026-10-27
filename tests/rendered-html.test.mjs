@@ -5,6 +5,24 @@ import test from "node:test";
 
 const projectRoot = new URL("../", import.meta.url);
 
+test("OrgChart Windows install and repair copy one complete shell-independent command", async () => {
+  const command = (await readFile(new URL("public/assets/downloads/orgchart-studio-install-windows.txt", projectRoot), "utf8")).trim();
+  assert.equal(command.split(/\r?\n/).length, 1);
+  assert.ok(command.startsWith("powershell.exe "));
+  assert.doesNotMatch(command, /\$|`/);
+  for (const section of ["install", "update"]) {
+    const response = await render(`/apps/orgchart-studio/${section}`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    const codeBlocks = [...html.matchAll(/<code>([\s\S]*?)<\/code>/g)].map((match) => match[1]
+      .replaceAll("&quot;", '"').replaceAll("&#x27;", "'").replaceAll("&#39;", "'").replaceAll("&amp;", "&"));
+    assert.ok(codeBlocks.includes(command), "The copied install command must remain a single complete line.");
+    assert.match(html, /Terminal, Command Prompt, or PowerShell/);
+    assert.doesNotMatch(html, /\$env:TEMP|normal, non-administrator PowerShell window/);
+    assert.match(html, /Desktop-Quick-Start-2026-10-27\.pdf/);
+  }
+});
+
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set(

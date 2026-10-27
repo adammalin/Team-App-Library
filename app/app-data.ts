@@ -96,6 +96,8 @@ export type AppEntry = {
   sourceNote?: string;
 };
 
+const orgChartWindowsInstall = "powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location ([IO.Path]::GetTempPath()); Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/adammalin/Org-Chart-Studio/main/scripts/install-windows.ps1' -OutFile orgchart-install.ps1 -ErrorAction Stop; & .\\orgchart-install.ps1\"";
+
 export const sectionLabels: Record<SectionId, string> = {
   overview: "Overview",
   install: "Install",
@@ -278,15 +280,20 @@ export const apps: AppEntry[] = [
     platforms: ["mac", "windows"],
     platformSummary: "macOS 13+ · Windows 10/11",
     guide: {
-      href: assetPath("/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf"),
-      label: "OrgChart Studio macOS Quick Start",
-      note: "2-page supplied guide · August 4, 2026",
+      href: assetPath("/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-10-27.pdf"),
+      label: "OrgChart Studio Mac & Windows Quick Start",
+      note: "3-page guide · One-paste Windows setup · October 27, 2026",
       preview: assetPath("/assets/guide-previews/orgchart-studio.png"),
     },
     additionalGuides: [
       {
+        href: assetPath("/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf"),
+        label: "Previous macOS-only guide",
+        note: "2-page supplied guide · August 4, 2026",
+      },
+      {
         href: assetPath("/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start.pdf"),
-        label: "Current Mac & Windows Quick Start",
+        label: "Previous Mac & Windows guide (August 2026)",
         note: "3-page repository guide · August 6, 2026",
       },
     ],
@@ -296,7 +303,7 @@ export const apps: AppEntry[] = [
       "Can expose optional local AI tools with chart scoping and human review",
     ],
     quickStart:
-      "The public bootstrap installs into a normal user folder, records the source revision, builds the app, and runs a desktop smoke check.",
+      "On Windows, paste one command into Terminal, Command Prompt, or PowerShell. Setup installs, checks, and opens the app, then creates shortcuts for everyday use. The Mac setup commands are below.",
     privacy:
       "Working chart data stays outside the application folder in Application Support or AppData by default. Use only content approved for the connected AI environment.",
     usageSteps: [
@@ -352,7 +359,7 @@ export const apps: AppEntry[] = [
       setupIntro:
         "The macOS and Windows setup scripts can register the local server in the shared desktop MCP configuration. The ChatGPT desktop app, Codex app, Codex CLI, and Codex IDE extension can use that local configuration; an ordinary ChatGPT web chat cannot reach this private desktop bridge.",
       setupSteps: [
-        "During setup, type y at Install the local MCP integration? [y/N]. If the app is already installed, open AI & MCP control and choose Install local AI integration.",
+        "After installing, open AI & MCP control and choose Install local AI integration. On macOS, you can also type y at the optional setup prompt. Windows setup runs without this prompt.",
         "Restart ChatGPT desktop or Codex once after registration.",
         "Open OrgChart Studio before asking the AI to use a chart tool.",
         "In AI & MCP control, resume MCP only for the intended session and allow all charts or select only the approved chart IDs.",
@@ -440,28 +447,27 @@ export const apps: AppEntry[] = [
           "Windows 10 or 11",
           "Internet access during setup",
           "Public GitHub access",
-          "Use a normal, non-administrator PowerShell window",
+          "Open Terminal, Command Prompt, or PowerShell as your normal user",
+          "Click Copy, paste the complete command once, and press Enter; setup may take several minutes",
         ],
-        install:
-          'Invoke-WebRequest -UseBasicParsing \u0060\n  -Uri "https://raw.githubusercontent.com/adammalin/Org-Chart-Studio/main/scripts/bootstrap-windows-source-test.ps1" \u0060\n  -OutFile "$env:TEMP\\orgchart-studio-install.ps1"\n\npowershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass \u0060\n  -File "$env:TEMP\\orgchart-studio-install.ps1" \u0060\n  -TargetDirectory "$env:USERPROFILE\\OrgChart-Studio-source-test"',
-        update:
-          'Invoke-WebRequest -UseBasicParsing \u0060\n  -Uri "https://raw.githubusercontent.com/adammalin/Org-Chart-Studio/main/scripts/bootstrap-windows-source-test.ps1" \u0060\n  -OutFile "$env:TEMP\\orgchart-studio-install.ps1"\n\npowershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass \u0060\n  -File "$env:TEMP\\orgchart-studio-install.ps1" \u0060\n  -TargetDirectory "$env:USERPROFILE\\OrgChart-Studio-source-test"',
+        install: orgChartWindowsInstall,
+        update: orgChartWindowsInstall,
         run:
-          'powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\\OrgChart-Studio-source-test\\scripts\\start-windows-source-test.ps1"',
+          "powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -Command \"& (Join-Path ([Environment]::GetFolderPath('UserProfile')) 'OrgChart-Studio-source-test\\scripts\\start-windows-source-test.ps1')\"",
         runNote:
-          "You can also double-click Start-OrgChart-Studio.cmd in the source-test folder. Use the red X to stop the interface and private service.",
+          "Choose OrgChart Studio from the Start menu or desktop. If shortcuts are unavailable, double-click Start-OrgChart-Studio.cmd in your OrgChart-Studio-source-test folder. Use the red X to close the app.",
         uninstall: [
           "Create and verify a current backup before removing the app.",
           "If you installed the local AI connection, remove it in Local AI control before deleting the application folder.",
           "Quit OrgChart Studio with the red X.",
-          "In File Explorer, move OrgChart-Studio-source-test from your user folder to the Recycle Bin.",
+          "Remove the OrgChart Studio shortcuts from the desktop and Start menu, then move OrgChart-Studio-source-test from your user folder to the Recycle Bin.",
         ],
         dataNote:
           "The chart library remains in your Windows application-data folder or the separate live-data folder you chose. Backups remain where you saved them. Remove those only when chart-data deletion is intentional and verified.",
       },
     },
     sourceNote:
-      "The supplied August 4 macOS PDF is preserved unchanged. These web instructions and the additional cross-platform PDF follow the newer August 6 repository scripts and backup behavior.",
+      "The current guide and Windows install/update command follow the October 27, 2026 installer. Earlier guides remain available for reference. Windows setup logs are saved under %LOCALAPPDATA%\\ORNL OrgChart Studio\\Installer; setup displays the log location if it fails.",
   },
   {
     slug: "usa-map-studio",

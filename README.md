@@ -22,6 +22,7 @@ A searchable catalog for the team's desktop apps, web apps, versioned Custom GPT
 
 ## Included Codex resources
 
+- ORNL – Presentations (workspace plugin with quick-start guide)
 - ORNL Presentation Designer
 - DOE Proposal Figure 1
 - 3D Modeling Agent

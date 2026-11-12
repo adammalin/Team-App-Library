@@ -40,6 +40,7 @@ const exportedPages = [
   "out/apps/usa-map-studio/usage/index.html",
   "out/apps/usa-map-studio/ai-integration/index.html",
   "out/resources/ornl-presentation-designer/index.html",
+  "out/resources/ornl-presentations/index.html",
   "out/resources/ercp-proposal-figures/index.html",
   "out/resources/3d-modeling-agent/index.html",
   "out/cost-studies/index.html",
@@ -121,6 +122,9 @@ test("prefixes routes and assets for the GitHub project site", async () => {
     home,
     new RegExp(`href="${basePath}/resources/ornl-presentation-designer/"`),
   );
+  assert.match(home, /ORNL – Presentations/);
+  assert.match(home, /https:\/\/chatgpt\.com\/plugins\/Plugin_0f2f62ae9f888191b96d515afe1c6101\?open_in_app/);
+  assert.match(home, new RegExp(`href="${basePath}/resources/ornl-presentations/"`));
   assert.match(
     presentationGuide,
     new RegExp(

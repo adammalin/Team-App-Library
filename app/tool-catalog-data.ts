@@ -1,6 +1,7 @@
 import { apps } from "./app-data";
 import { ercpProposalFiguresPlugin } from "./ercp-proposal-figures-data";
 import { presentationPlugin } from "./presentation-plugin-data";
+import { ornlPresentationsPlugin } from "./ornl-presentations-data";
 import { threeDModelingAgentPlugin } from "./three-d-modeling-agent-data";
 
 export const toolCategoryOrder = [
@@ -215,6 +216,29 @@ const customGpts: ToolCatalogEntry[] = [
 ];
 
 const codexPlugins: ToolCatalogEntry[] = [
+  {
+    slug: "ornl-presentations",
+    name: ornlPresentationsPlugin.name,
+    category: "codex-plugin",
+    kicker: "Codex Plugin · PowerPoint",
+    description:
+      "Create new editable ORNL slides or substantially redesign existing decks while preserving approved content, template colors, and editability. Make focused typography and layout repairs when needed.",
+    versionLabel: `v${ornlPresentationsPlugin.version} · Workspace plugin`,
+    tags: ["PowerPoint", "ORNL brand", "Presentations", "Slide redesign"],
+    actions: [
+      {
+        label: "Open plugin",
+        href: ornlPresentationsPlugin.pluginDirectoryUrl,
+        external: true,
+        kind: "primary",
+      },
+      {
+        label: "Quick start",
+        href: "/resources/ornl-presentations",
+        kind: "secondary",
+      },
+    ],
+  },
   {
     slug: "ornl-presentation-designer",
     name: presentationPlugin.name,

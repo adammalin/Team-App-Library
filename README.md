@@ -22,6 +22,8 @@ A searchable catalog for the team's desktop apps, web apps, versioned Custom GPT
 
 ## Included Codex resources
 
+- ORNL - OrgChart Studio (v0.3.2 private-pilot companion with access/version guidance)
+
 - ORNL – Presentations (workspace plugin with quick-start guide)
 - ORNL Presentation Designer
 - DOE Proposal Figure 1
@@ -72,3 +74,9 @@ Keep commands aligned with each application's current README and source scripts.
 ## Publishing status
 
 The public catalog is deployed to GitHub Pages by `.github/workflows/deploy-pages.yml` after changes reach `main`. Validate the Pages export locally before publishing, then confirm the workflow and public routes after the push.
+
+## OrgChart Studio documentation update — November 17, 2026
+
+The current three-page guide is `ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-11-17.pdf`; the dated October 27 guide is retained. Stable desktop/Mac PDF URLs and the thumbnail now mirror the current supplied files. Mac and Windows install/update copy controls match `public/assets/downloads/orgchart-studio-install-{macos,windows}.txt` and the reviewed source command files. Both platform commands are one line.
+
+The plugin is v0.3.2 and currently private; the catalog listing does not grant access. Public manual installation follows app v0.1.0 main, the plugin keeps its verified v0.2.0 source pin, and existing newer local v0.3.0 copies are not advertised as a public release. The plugin guide is `/resources/orgchart-studio/`. No plugin archive or org-chart data is distributed by this update.

@@ -1,3 +1,5 @@
+import { orgChartStudio, orgChartMacInstall, orgChartWindowsInstall, orgChartOpenPrompt } from "./orgchart-studio-data";
+
 export const sectionOrder = [
   "overview",
   "install",
@@ -96,7 +98,7 @@ export type AppEntry = {
   sourceNote?: string;
 };
 
-const orgChartWindowsInstall = "powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -Command \"Set-Location ([IO.Path]::GetTempPath()); Invoke-WebRequest -UseBasicParsing 'https://raw.githubusercontent.com/adammalin/Org-Chart-Studio/main/scripts/install-windows.ps1' -OutFile orgchart-install.ps1 -ErrorAction Stop; & .\\orgchart-install.ps1\"";
+
 
 export const sectionLabels: Record<SectionId, string> = {
   overview: "Overview",
@@ -270,7 +272,7 @@ export const apps: AppEntry[] = [
     slug: "orgchart-studio",
     name: "ORNL OrgChart Studio",
     shortName: "OrgChart Studio",
-    version: "0.1.0",
+    version: orgChartStudio.publicAppVersion,
     kicker: "Governed organization charts",
     description:
       "Create, review, version, back up, and export structured organization charts in a local Electron workspace.",
@@ -280,22 +282,14 @@ export const apps: AppEntry[] = [
     platforms: ["mac", "windows"],
     platformSummary: "macOS 13+ · Windows 10/11",
     guide: {
-      href: assetPath("/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-10-27.pdf"),
+      href: assetPath(orgChartStudio.guidePath),
       label: "OrgChart Studio Mac & Windows Quick Start",
-      note: "3-page guide · One-paste Windows setup · October 27, 2026",
+      note: "3-page guide · One-command Mac & Windows setup · November 17, 2026",
       preview: assetPath("/assets/guide-previews/orgchart-studio.png"),
     },
     additionalGuides: [
-      {
-        href: assetPath("/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start.pdf"),
-        label: "Previous macOS-only guide",
-        note: "2-page supplied guide · August 4, 2026",
-      },
-      {
-        href: assetPath("/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start.pdf"),
-        label: "Previous Mac & Windows guide (August 2026)",
-        note: "3-page repository guide · August 6, 2026",
-      },
+      {href: assetPath(orgChartStudio.macGuidePath), label: "Current macOS companion", note: "2-page guide · November 17, 2026"},
+      {href: assetPath("/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-10-27.pdf"), label: "Previous Mac & Windows guide", note: "Historical guide · October 27, 2026"},
     ],
     highlights: [
       "Separates the downloaded application from the working chart library",
@@ -303,7 +297,7 @@ export const apps: AppEntry[] = [
       "Can expose optional local AI tools with chart scoping and human review",
     ],
     quickStart:
-      "On Windows, paste one command into Terminal, Command Prompt, or PowerShell. Setup installs, checks, and opens the app, then creates shortcuts for everyday use. The Mac setup commands are below.",
+      "Paste one command into Terminal on Mac or Terminal, Command Prompt, or PowerShell on Windows. Setup installs, checks, and opens the published app. With access to the Codex companion, ask it to install a missing app or launch the existing one.",
     privacy:
       "Working chart data stays outside the application folder in Application Support or AppData by default. Use only content approved for the connected AI environment.",
     usageSteps: [
@@ -345,7 +339,7 @@ export const apps: AppEntry[] = [
       kicker: "AI integration / MCP server",
       title: "Let a desktop AI prepare chart changes for human review.",
       intro:
-        "OrgChart Studio includes an optional local Model Context Protocol companion. It gives ChatGPT desktop or Codex a bounded set of chart tools while the app remains the review and approval surface.",
+        "Use the ORNL - OrgChart Studio plugin to find, install, and launch the local app, then help with charts, source review, versions, imports, exports and backups. The plugin uses the installed app's Model Context Protocol (MCP) tools and native controls; the app remains the review surface.",
       overviewTitle: "What the MCP server does",
       overviewBody:
         "Model Context Protocol, or MCP, is an open standard that lets an AI client discover named tools with structured inputs. OrgChart Studio's on-demand STDIO server connects only to the running Electron app through a loopback address and a new private token for each launch.",
@@ -359,14 +353,15 @@ export const apps: AppEntry[] = [
       setupIntro:
         "The macOS and Windows setup scripts can register the local server in the shared desktop MCP configuration. The ChatGPT desktop app, Codex app, Codex CLI, and Codex IDE extension can use that local configuration; an ordinary ChatGPT web chat cannot reach this private desktop bridge.",
       setupSteps: [
-        "After installing, open AI & MCP control and choose Install local AI integration. On macOS, you can also type y at the optional setup prompt. Windows setup runs without this prompt.",
+        "If you have plugin access, open a new Codex chat, select ORNL - OrgChart Studio and ask it to open the app or install it if missing. For a manual connection, use Local AI control (AI & MCP control in older builds) and Install local AI integration.",
         "Restart ChatGPT desktop or Codex once after registration.",
         "Open OrgChart Studio before asking the AI to use a chart tool.",
-        "In AI & MCP control, resume MCP only for the intended session and allow all charts or select only the approved chart IDs.",
-        "Leave retained-source extraction off unless the files and the selected AI environment are approved for one another.",
+        "In Local AI control, check that MCP is enabled and the allowed chart scope matches the task. Respect a paused connection.",
+        "Check retained-source extraction before reading linked files. Public v0.1.0 starts it off; newer verified builds can start it on. Enable it only for sources approved for the selected AI environment.",
         "Type /mcp in ChatGPT desktop or Codex and confirm orgchart_studio is enabled.",
       ],
       examples: [
+        {title: "Install or launch with Codex", body: "The private pilot requires plugin access. Reuse a working app instead of reinstalling it.", prompt: orgChartOpenPrompt},
         {
           title: "Start with a read-only inventory",
           body: "Resolve the stable chart ID before requesting any change.",
@@ -401,10 +396,12 @@ export const apps: AppEntry[] = [
       boundaryPoints: [
         "Use only charts and retained sources approved for the selected ChatGPT or Codex environment.",
         "Prefer Selected charts over All charts for routine work, and pause MCP when the session ends.",
-        "Retained-source extraction is separately controlled, off by default, and resets off when the app restarts.",
-        "Ask the AI to stage proposals only. Apply, version, export, and backup remain explicit human actions in the app.",
+        "Retained-source extraction is separately controlled. Its initial setting depends on the app version; inspect the current toggle rather than assuming it is off.",
+        "Content replacements are staged for review. Authorized version snapshots can use MCP; exports and full backups use normal app controls. Review Apply decisions and Current designation separately.",
       ],
       resources: [
+        {label: "OrgChart Studio plugin and current version guide", href: assetPath(orgChartStudio.pluginGuidePath)},
+        {label: "Open the private pilot plugin (access required)", href: orgChartStudio.pluginDirectoryUrl},
         {
           label: "OrgChart Studio Codex handoff",
           href: "https://github.com/adammalin/Org-Chart-Studio/blob/main/docs/CODEX-HANDOFF.md",
@@ -424,14 +421,12 @@ export const apps: AppEntry[] = [
           "Public GitHub access",
           "Run as your normal user; no administrator access is needed",
         ],
-        install:
-          '/usr/bin/curl --fail --location --show-error \\\n  --output "$HOME/Downloads/orgchart-studio-install.zsh" \\\n  "https://raw.githubusercontent.com/adammalin/Org-Chart-Studio/main/scripts/bootstrap-mac-source-test.zsh"\n\n/bin/zsh "$HOME/Downloads/orgchart-studio-install.zsh" \\\n  "$HOME/OrgChart-Studio-source-test"',
-        update:
-          '/usr/bin/curl --fail --location --show-error \\\n  --output "$HOME/Downloads/orgchart-studio-install.zsh" \\\n  "https://raw.githubusercontent.com/adammalin/Org-Chart-Studio/main/scripts/bootstrap-mac-source-test.zsh"\n\n/bin/zsh "$HOME/Downloads/orgchart-studio-install.zsh" \\\n  "$HOME/OrgChart-Studio-source-test"',
+        install: orgChartMacInstall,
+        update: orgChartMacInstall,
         run:
           '/bin/zsh "$HOME/OrgChart-Studio-source-test/scripts/start-mac-source-test.zsh"',
         runNote:
-          "You can also double-click Start-OrgChart-Studio.command in the source-test folder. Use the red X or Command-Q to stop the interface and private service.",
+          "With plugin access, ask Codex to open OrgChart Studio. Otherwise run the command below or Start-OrgChart-Studio.command in the installed folder; no Dock icon is required. The red X or Command-Q stops the app and its local service.",
         uninstall: [
           "Create and verify a current backup before removing the app.",
           "If you installed the local AI connection, remove it in Local AI control before deleting the application folder.",
@@ -455,7 +450,7 @@ export const apps: AppEntry[] = [
         run:
           "powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -Command \"& (Join-Path ([Environment]::GetFolderPath('UserProfile')) 'OrgChart-Studio-source-test\\scripts\\start-windows-source-test.ps1')\"",
         runNote:
-          "Choose OrgChart Studio from the Start menu or desktop. If shortcuts are unavailable, double-click Start-OrgChart-Studio.cmd in your OrgChart-Studio-source-test folder. Use the red X to close the app.",
+          "With plugin access, ask Codex to open OrgChart Studio. Otherwise use the launch command or Start-OrgChart-Studio.cmd in the installed folder; no taskbar icon is required. Use the red X to close the app.",
         uninstall: [
           "Create and verify a current backup before removing the app.",
           "If you installed the local AI connection, remove it in Local AI control before deleting the application folder.",
@@ -467,7 +462,7 @@ export const apps: AppEntry[] = [
       },
     },
     sourceNote:
-      "The current guide and Windows install/update command follow the October 27, 2026 installer. Earlier guides remain available for reference. Windows setup logs are saved under %LOCALAPPDATA%\\ORNL OrgChart Studio\\Installer; setup displays the log location if it fails.",
+      "Updated November 17, 2026. Manual commands install public main (v0.1.0); the private plugin v0.3.2 uses a verified v0.2.0 fresh-install pin. Newer local v0.3.0 builds are not a public release. Reuse an existing working copy and inspect versions before updating. Windows setup logs are under %LOCALAPPDATA%\\ORNL OrgChart Studio\\Installer.",
   },
   {
     slug: "usa-map-studio",

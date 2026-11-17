@@ -1,4 +1,5 @@
 import { apps } from "./app-data";
+import { orgChartStudio } from "./orgchart-studio-data";
 import { ercpProposalFiguresPlugin } from "./ercp-proposal-figures-data";
 import { presentationPlugin } from "./presentation-plugin-data";
 import { ornlPresentationsPlugin } from "./ornl-presentations-data";
@@ -216,6 +217,21 @@ const customGpts: ToolCatalogEntry[] = [
 ];
 
 const codexPlugins: ToolCatalogEntry[] = [
+  {
+    slug: "orgchart-studio-companion",
+    name: orgChartStudio.pluginName,
+    category: "codex-plugin",
+    kicker: "Codex Plugin · Org charts",
+    description: "Install and launch OrgChart Studio, prepare reviewed chart updates, work with saved history, and help with imports, exports and backups. Private pilot; access is required.",
+    versionLabel: `v${orgChartStudio.pluginVersion} · Private pilot`,
+    tags: ["Org charts", "macOS", "Windows", "App launcher", "Access required"],
+    icon: (process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "") + "/assets/icons/orgchart-studio-topbar.svg",
+    iconKind: "image",
+    actions: [
+      {label: "Plugin guide & access", href: orgChartStudio.pluginGuidePath, kind: "primary"},
+      {label: "Open plugin", href: orgChartStudio.pluginDirectoryUrl, external: true, kind: "secondary"},
+    ],
+  },
   {
     slug: "ornl-presentations",
     name: ornlPresentationsPlugin.name,

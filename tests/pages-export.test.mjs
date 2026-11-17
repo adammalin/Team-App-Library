@@ -5,14 +5,14 @@ import test from "node:test";
 const projectRoot = new URL("../", import.meta.url);
 const basePath = "/Team-App-Library";
 
-test("published OrgChart instructions and current guide include one-paste Windows setup", async () => {
+test("published OrgChart guides and setup commands are current for both platforms", async () => {
   for (const section of ["install", "update"]) {
     const html = await readFile(new URL(`out/apps/orgchart-studio/${section}/index.html`, projectRoot), "utf8");
     assert.match(html, /scripts\/install-windows\.ps1/);
     assert.match(html, /Terminal, Command Prompt, or PowerShell/);
     assert.doesNotMatch(html, /\$env:TEMP/);
   }
-  await access(new URL("out/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-10-27.pdf", projectRoot));
+  await access(new URL("out/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-11-17.pdf", projectRoot));
   await access(new URL("out/assets/downloads/orgchart-studio-install-windows.txt", projectRoot));
 });
 
@@ -41,6 +41,7 @@ const exportedPages = [
   "out/apps/usa-map-studio/ai-integration/index.html",
   "out/resources/ornl-presentation-designer/index.html",
   "out/resources/ornl-presentations/index.html",
+  "out/resources/orgchart-studio/index.html",
   "out/resources/ercp-proposal-figures/index.html",
   "out/resources/3d-modeling-agent/index.html",
   "out/cost-studies/index.html",
@@ -290,4 +291,28 @@ test("copies downloadable files and disables Jekyll processing", async () => {
   ];
 
   await Promise.all(files.map((file) => access(new URL(file, projectRoot))));
+});
+
+
+test("OrgChart companion and complete commands survive the Pages base path", async () => {
+  const html=await readFile(new URL("out/resources/orgchart-studio/index.html",projectRoot),"utf8");
+  assert.match(html,/Plugin_8765a02936388191b4ce25a3ad811246/);
+  assert.match(html,/does not grant access/);
+  assert.match(html,new RegExp(`href="${basePath}/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-11-17\\.pdf"`));
+  const decode=html=>html.replaceAll("&quot;",'"').replaceAll("&#x27;","'").replaceAll("&#39;","'").replaceAll("&amp;","&");
+  for(const platform of ["macos","windows"]) {
+    const command=(await readFile(new URL(`public/assets/downloads/orgchart-studio-install-${platform}.txt`,projectRoot),"utf8")).trim();
+    assert.equal(command.split(/\r?\n/).length,1);
+    assert.equal((await readFile(new URL(`out/assets/downloads/orgchart-studio-install-${platform}.txt`,projectRoot),"utf8")).trim(),command);
+    for(const section of ["install","update"]) {
+      const text=await readFile(new URL(`out/apps/orgchart-studio/${section}/index.html`,projectRoot),"utf8");
+      const commands=[...text.matchAll(/<code>([\s\S]*?)<\/code>/g)].map(m=>decode(m[1]));
+      assert.ok(commands.includes(command),`${section} ${platform} copy command`);
+      assert.match(text,new RegExp(`href="${basePath}/assets/downloads/orgchart-studio-install-${platform}\\.txt"`));
+    }
+  }
+  const current=await readFile(new URL("out/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-11-17.pdf",projectRoot));
+  assert.deepEqual(current,await readFile(new URL("out/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start.pdf",projectRoot)));
+  const home=await readFile(new URL("out/index.html",projectRoot),"utf8");
+  assert.match(home,new RegExp(`href="${basePath}/resources/orgchart-studio/"`));
 });

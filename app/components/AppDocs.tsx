@@ -25,6 +25,7 @@ import { AppIcon } from "./AppIcon";
 import { CodeBlock } from "./CodeBlock";
 import { GuideCard } from "./GuideCard";
 import { SiteHeader } from "./SiteHeader";
+import { orgChartStudio, orgChartOpenPrompt, orgChartNewerFeatures } from "../orgchart-studio-data";
 
 const pageAnchors: Record<SectionId, { id: string; label: string }[]> = {
   overview: [
@@ -115,6 +116,7 @@ function DocsSidebar({ app, section }: { app: AppEntry; section: SectionId }) {
           <GithubLogo />
           Source repository
         </a>
+        {app.slug === "orgchart-studio" ? <Link href={orgChartStudio.pluginGuidePath}>Codex plugin & access</Link> : null}
       </div>
     </aside>
   );
@@ -204,6 +206,9 @@ function PlatformCommands({
                 available inside the app later.
               </p>
             ) : null}
+            {app.slug === "orgchart-studio" && platform === "mac" && kind !== "run" ? (
+              <p className="supporting-copy">Open Terminal. Click Copy, paste the complete one-line command, and press Return. Setup installs, checks, and opens the app.</p>
+            ) : null}
             {kind === "run" && details.runNote ? (
               <p className="supporting-copy">{details.runNote}</p>
             ) : null}
@@ -227,14 +232,29 @@ function PlatformCommands({
             {app.slug === "orgchart-studio" && platform === "windows" && kind !== "run" ? (
               <p className="supporting-copy">
                 If setup fails, it displays the setup log location. Close the app and use
-                the same command to retry or repair. For later launches, choose OrgChart
-                Studio from the Start menu or desktop.
+                the same command to retry or repair the public-main copy. For later launches,
+                use the Codex companion or the installed start script.
               </p>
+            ) : null}
+            {app.slug === "orgchart-studio" && kind !== "run" ? (
+              <a className="secondary-guide" href={(process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "") + `/assets/downloads/orgchart-studio-install-${platform === "mac" ? "macos" : "windows"}.txt`} download>Download this command as plain text</a>
             ) : null}
           </section>
         );
       })}
     </div>
+  );
+}
+
+function OrgChartRecentFeatures() {
+  return (
+    <section className="content-block" id="newer-builds">
+      <span className="eyebrow">Newer local builds · v{orgChartStudio.localAppVersion}</span>
+      <h2>What the latest local app adds</h2>
+      <p>These capabilities are available in the newer local build. Public manual installs still follow v{orgChartStudio.publicAppVersion}; the plugin’s verified fresh-install source is v{orgChartStudio.verifiedInstallVersion}. Check your installed version before starting a workflow.</p>
+      <ul className="check-list">{orgChartNewerFeatures.map(feature => <li key={feature}><CheckCircle weight="fill" />{feature}</li>)}</ul>
+      <p><Link href={orgChartStudio.pluginGuidePath}>Use the companion plugin</Link> to check which tools your running app exposes. A source comparison does not replace human review or designate a chart Current.</p>
+    </section>
   );
 }
 
@@ -276,6 +296,7 @@ function Overview({ app }: { app: AppEntry }) {
       <section id="guide">
         <GuideCard app={app} />
       </section>
+      {app.slug === "orgchart-studio" ? <OrgChartRecentFeatures /> : null}
     </>
   );
 }
@@ -344,6 +365,7 @@ function Update({ app }: { app: AppEntry }) {
         <h2>Before updating</h2>
         <ol className="numbered-list">
           {backupFirst ? <li>Create and verify a current OrgChart Studio backup.</li> : null}
+          {backupFirst ? <li>Check the installed version first. Public main can be older than a verified or local development copy; do not use it to launch a newer app.</li> : null}
           <li>Save any open project or finish the active review step.</li>
           <li>Quit the Electron app completely.</li>
           <li>Run the platform command below from a normal user account.</li>
@@ -374,12 +396,12 @@ function Run({ app }: { app: AppEntry }) {
         </p>
       </section>
       <section className="content-block">
+        {app.slug === "orgchart-studio" ? <CodeBlock code={orgChartOpenPrompt} label="Ask the Codex companion to launch Studio" /> : null}
         <PlatformCommands app={app} kind="run" />
       </section>
       <section id="rerun">
         <Note title="If the app no longer starts">
-          Rerun the update command. The setup workflow verifies or repairs the private runtime,
-          dependencies, build output, and desktop launch path.
+          {app.slug === "orgchart-studio" ? "Ask the Codex companion to inspect the existing installation first. If repair is needed, protect the library and use a compatible source version; the public installer can be older than your app." : "Rerun the update command. The setup workflow verifies or repairs the private runtime, dependencies, build output, and desktop launch path."}
         </Note>
       </section>
     </>
@@ -447,6 +469,7 @@ function Usage({ app }: { app: AppEntry }) {
           These steps summarize the checked-in guide and application documentation.
         </p>
       </section>
+      {app.slug === "orgchart-studio" ? <OrgChartRecentFeatures /> : null}
       <ol className="workflow-list">
         {app.usageSteps.map((step, index) => (
           <li key={step.title}>
@@ -652,6 +675,11 @@ export function AppDocs({ app, section }: { app: AppEntry; section: SectionId })
               <strong>{app.name}</strong>
             </div>
           </div>
+          {app.slug === "orgchart-studio" ? (
+            <Note title="App and plugin versions">
+              Public manual install: v{orgChartStudio.publicAppVersion}. Codex companion: v{orgChartStudio.pluginVersion}, using a verified v{orgChartStudio.verifiedInstallVersion} fresh-install source. Newer local v{orgChartStudio.localAppVersion} builds are not a public release. <Link href={orgChartStudio.pluginGuidePath}>Plugin guide, access and version details</Link>.
+            </Note>
+          ) : null}
           <SectionContent app={app} section={section} />
           <SectionPager app={app} section={section} />
           <footer className="docs-footer">

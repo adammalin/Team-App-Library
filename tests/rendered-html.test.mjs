@@ -5,21 +5,25 @@ import test from "node:test";
 
 const projectRoot = new URL("../", import.meta.url);
 
-test("OrgChart Windows install and repair copy one complete shell-independent command", async () => {
+test("OrgChart Mac and Windows install and repair copy the canonical one-line commands", async () => {
   const command = (await readFile(new URL("public/assets/downloads/orgchart-studio-install-windows.txt", projectRoot), "utf8")).trim();
   assert.equal(command.split(/\r?\n/).length, 1);
   assert.ok(command.startsWith("powershell.exe "));
   assert.doesNotMatch(command, /\$|`/);
+  const macCommand = (await readFile(new URL("public/assets/downloads/orgchart-studio-install-macos.txt", projectRoot), "utf8")).trim();
+  assert.equal(macCommand.split(/\r?\n/).length, 1);
   for (const section of ["install", "update"]) {
     const response = await render(`/apps/orgchart-studio/${section}`);
     assert.equal(response.status, 200);
     const html = await response.text();
     const codeBlocks = [...html.matchAll(/<code>([\s\S]*?)<\/code>/g)].map((match) => match[1]
       .replaceAll("&quot;", '"').replaceAll("&#x27;", "'").replaceAll("&#39;", "'").replaceAll("&amp;", "&"));
-    assert.ok(codeBlocks.includes(command), "The copied install command must remain a single complete line.");
+    assert.ok(codeBlocks.includes(command), "Windows copy must remain one complete line.");
+    assert.ok(codeBlocks.includes(macCommand), "Mac copy must remain one complete line.");
+    assert.ok(macCommand.includes(" && /bin/zsh "), "A failed Mac download must stop before script execution.");
     assert.match(html, /Terminal, Command Prompt, or PowerShell/);
     assert.doesNotMatch(html, /\$env:TEMP|normal, non-administrator PowerShell window/);
-    assert.match(html, /Desktop-Quick-Start-2026-10-27\.pdf/);
+    assert.match(html, /Desktop-Quick-Start-2026-11-17\.pdf/);
   }
 });
 
@@ -60,7 +64,7 @@ test("server-renders the app catalog", async () => {
   assert.match(html, /Web apps/);
   assert.match(html, /Custom GPTs/);
   assert.match(html, /Codex plugins/);
-  assert.match(html, /Showing[\s\S]{0,40}13[\s\S]{0,40}of[\s\S]{0,40}13[\s\S]{0,40}tools/);
+  assert.match(html, /Showing[\s\S]{0,40}14[\s\S]{0,40}of[\s\S]{0,40}14[\s\S]{0,40}tools/);
   assert.match(html, /Badge Blur/);
   assert.match(html, /src="\/assets\/icons\/badge-blur\.png"/);
   assert.match(html, /ORNL OrgChart Studio/);
@@ -434,4 +438,26 @@ test("keeps brand-created containers square and starter metadata absent", async 
   assert.doesNotMatch(layout, /Starter Project|codex-preview|_sites-preview/);
   assert.match(packageJson, /"name": "team-app-library"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
+});
+
+
+test("OrgChart companion lists current access, release channels and install/launch workflow", async () => {
+  const response = await render("/resources/orgchart-studio");
+  assert.equal(response.status, 200);
+  const html = (await response.text()).replace(/<!--[\s\S]*?-->/g, "");
+  for(const text of ["Plugin v0.3.2", "Public manual install v0.1.0", "Verified plugin install v0.2.0", "Newer local app v0.3.0", "private", "access", "Monthly updates", "Matrix Support", "Current designation"]) assert.ok(html.includes(text),text);
+  assert.match(html,/Plugin_8765a02936388191b4ce25a3ad811246/);
+  assert.match(html,/does not grant access/);
+  assert.match(html,/not a public release/);
+  assert.match(html,/Desktop-Quick-Start-2026-11-17\.pdf/);
+  assert.match(html,/orgchart-studio-install-macos\.txt/);
+  assert.match(html,/orgchart-studio-install-windows\.txt/);
+  assert.doesNotMatch(html,/href="[^"]*orgchart-studio-[0-9.]+\.zip/);
+  for(const section of ["", "/install", "/update", "/run", "/usage", "/uninstall", "/ai-integration"]) {
+    const page=await render("/apps/orgchart-studio"+section),text=await page.text();
+    assert.equal(page.status,200);
+    assert.match(text,/App and plugin versions/);
+    assert.match(text,/resources\/orgchart-studio/);
+    assert.match(text,/verified v[\s\S]{0,30}0.2.0/);
+  }
 });

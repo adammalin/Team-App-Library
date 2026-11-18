@@ -222,9 +222,9 @@ const codexPlugins: ToolCatalogEntry[] = [
     name: orgChartStudio.pluginName,
     category: "codex-plugin",
     kicker: "Codex Plugin · Org charts",
-    description: "Install and launch OrgChart Studio, prepare reviewed chart updates, work with saved history, and help with imports, exports and backups. Private pilot; access is required.",
-    versionLabel: `v${orgChartStudio.pluginVersion} · Private pilot`,
-    tags: ["Org charts", "macOS", "Windows", "App launcher", "Access required"],
+    description: "Install and launch OrgChart Studio, prepare reviewed chart updates, work with saved history, and help with imports, exports and backups. Available to anyone in ORNL with the link.",
+    versionLabel: `v${orgChartStudio.pluginVersion} · ORNL workspace`,
+    tags: ["Org charts", "macOS", "Windows", "App launcher", "ORNL workspace"],
     icon: (process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "") + "/assets/icons/orgchart-studio-topbar.svg",
     iconKind: "image",
     actions: [

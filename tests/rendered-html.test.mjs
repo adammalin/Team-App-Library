@@ -445,9 +445,11 @@ test("OrgChart companion lists current access, release channels and install/laun
   const response = await render("/resources/orgchart-studio");
   assert.equal(response.status, 200);
   const html = (await response.text()).replace(/<!--[\s\S]*?-->/g, "");
-  for(const text of ["Plugin v0.3.2", "Public manual install v0.1.0", "Verified plugin install v0.2.0", "Newer local app v0.3.0", "private", "access", "Monthly updates", "Matrix Support", "Current designation"]) assert.ok(html.includes(text),text);
+  for(const text of ["Plugin v0.3.2", "Public manual install v0.1.0", "Verified plugin install v0.2.0", "Newer local app v0.3.0", "ORNL workspace", "unlisted", "Monthly updates", "Matrix Support", "Current designation"]) assert.ok(html.includes(text),text);
   assert.match(html,/Plugin_8765a02936388191b4ce25a3ad811246/);
-  assert.match(html,/does not grant access/);
+  assert.match(html,/Anyone in ORNL with the link/);
+  assert.match(html,/unlisted/);
+  assert.doesNotMatch(html,/Private pilot|currently private|Access required/);
   assert.match(html,/not a public release/);
   assert.match(html,/Desktop-Quick-Start-2026-11-17\.pdf/);
   assert.match(html,/orgchart-studio-install-macos\.txt/);

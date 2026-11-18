@@ -361,7 +361,7 @@ export const apps: AppEntry[] = [
         "Type /mcp in ChatGPT desktop or Codex and confirm orgchart_studio is enabled.",
       ],
       examples: [
-        {title: "Install or launch with Codex", body: "The private pilot requires plugin access. Reuse a working app instead of reinstalling it.", prompt: orgChartOpenPrompt},
+        {title: "Install or launch with Codex", body: "Anyone in the ORNL workspace can enable the plugin through its direct link. Reuse a working app instead of reinstalling it.", prompt: orgChartOpenPrompt},
         {
           title: "Start with a read-only inventory",
           body: "Resolve the stable chart ID before requesting any change.",
@@ -401,7 +401,7 @@ export const apps: AppEntry[] = [
       ],
       resources: [
         {label: "OrgChart Studio plugin and current version guide", href: assetPath(orgChartStudio.pluginGuidePath)},
-        {label: "Open the private pilot plugin (access required)", href: orgChartStudio.pluginDirectoryUrl},
+        {label: "Open the plugin (ORNL workspace)", href: orgChartStudio.pluginDirectoryUrl},
         {
           label: "OrgChart Studio Codex handoff",
           href: "https://github.com/adammalin/Org-Chart-Studio/blob/main/docs/CODEX-HANDOFF.md",
@@ -462,7 +462,7 @@ export const apps: AppEntry[] = [
       },
     },
     sourceNote:
-      "Updated November 17, 2026. Manual commands install public main (v0.1.0); the private plugin v0.3.2 uses a verified v0.2.0 fresh-install pin. Newer local v0.3.0 builds are not a public release. Reuse an existing working copy and inspect versions before updating. Windows setup logs are under %LOCALAPPDATA%\\ORNL OrgChart Studio\\Installer.",
+      "Updated November 17, 2026. Manual commands install public main (v0.1.0); the ORNL workspace plugin v0.3.2 uses a verified v0.2.0 fresh-install pin. Newer local v0.3.0 builds are not a public release. Reuse an existing working copy and inspect versions before updating. Windows setup logs are under %LOCALAPPDATA%\\ORNL OrgChart Studio\\Installer.",
   },
   {
     slug: "usa-map-studio",

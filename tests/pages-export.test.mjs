@@ -297,7 +297,9 @@ test("copies downloadable files and disables Jekyll processing", async () => {
 test("OrgChart companion and complete commands survive the Pages base path", async () => {
   const html=await readFile(new URL("out/resources/orgchart-studio/index.html",projectRoot),"utf8");
   assert.match(html,/Plugin_8765a02936388191b4ce25a3ad811246/);
-  assert.match(html,/does not grant access/);
+  assert.match(html,/Anyone in ORNL with the link/);
+  assert.match(html,/unlisted/);
+  assert.doesNotMatch(html,/Private pilot|currently private|Access required/);
   assert.match(html,new RegExp(`href="${basePath}/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-11-17\\.pdf"`));
   const decode=html=>html.replaceAll("&quot;",'"').replaceAll("&#x27;","'").replaceAll("&#39;","'").replaceAll("&amp;","&");
   for(const platform of ["macos","windows"]) {

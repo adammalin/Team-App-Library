@@ -23,7 +23,7 @@ export default function OrgChartStudioPluginPage() {
           <h1>Install, open and work with OrgChart Studio.</h1>
           <p>Ask Codex to find your existing app or install it when missing, launch it on Mac or Windows, and help with chart updates, source reviews, history, imports, exports and backups. You review proposed content before applying it.</p>
           <div className="resource-actions">
-            <a className="resource-action resource-action--primary" href={orgChartStudio.pluginDirectoryUrl} target="_blank" rel="noreferrer"><ArrowSquareOut aria-hidden="true" />Open plugin · Access required</a>
+            <a className="resource-action resource-action--primary" href={orgChartStudio.pluginDirectoryUrl} target="_blank" rel="noreferrer"><ArrowSquareOut aria-hidden="true" />Open plugin · ORNL workspace</a>
             <a className="resource-action" href="#start">Quick start</a>
             <Link className="resource-action" href="/apps/orgchart-studio/install">Manual installation</Link>
           </div>
@@ -39,9 +39,9 @@ export default function OrgChartStudioPluginPage() {
         <aside className="resource-nav"><strong>On this page</strong><a href="#access">Plugin access</a><a href="#start">Install or launch</a><a href="#versions">App versions</a><a href="#work">Chart workflows</a><a href="#monthly">Monthly updates</a><a href="#guides">Guides and commands</a></aside>
         <article className="resource-content">
           <section id="access" className="resource-section"><span className="section-index">01</span><div>
-            <span className="eyebrow">Access</span><h2>A private pilot, listed here for reference.</h2>
-            <p>The plugin is currently private. This listing does not grant access or make the plugin public. Open its link in the account or workspace where you have access; otherwise ask the plugin owner to arrange access.</p>
-            <p>When available to your account, install or enable ORNL - OrgChart Studio in the Plugins Directory, then open a fresh Codex chat and select it. Installing the plugin does not itself install the app.</p>
+            <span className="eyebrow">Access</span><h2>Available to anyone in ORNL with the link.</h2>
+            <p>Link access is set to “Anyone in ORNL with the link.” Sign in to your ORNL workspace, then open the plugin link to install or enable it. It is unlisted, so use the direct link rather than relying on a directory search. Sharing verified {orgChartStudio.sharingVerifiedOn}.</p>
+            <p>After enabling ORNL - OrgChart Studio, open a fresh Codex desktop chat and select it. Plugin access does not grant access to another person’s chart database; chart data stays local. Installing the plugin does not itself install the app.</p>
           </div></section>
           <section id="start" className="resource-section"><span className="section-index">02</span><div>
             <span className="eyebrow">Install or launch</span><h2>Let Codex open the app for you.</h2>

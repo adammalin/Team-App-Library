@@ -2,10 +2,11 @@
 // Manual commands match the corresponding public/assets/downloads text files.
 export const orgChartStudio = {
   pluginName: "ORNL - OrgChart Studio",
-  pluginVersion: "0.3.2",
+  pluginVersion: "0.3.3",
   pluginDirectoryUrl: "https://chatgpt.com/plugins/Plugin_8765a02936388191b4ce25a3ad811246?open_in_app",
   pluginGuidePath: "/resources/orgchart-studio",
   pluginAccess: "Anyone in ORNL with the link",
+  pluginUpdatedOn: "November 18, 2026",
   sharingVerifiedOn: "November 18, 2026",
   publicAppVersion: "0.1.0",
   verifiedInstallVersion: "0.2.0",
@@ -21,6 +22,7 @@ export const orgChartOpenPrompt = "Open OrgChart Studio; install it if needed, t
 export const orgChartMonthlyPrompt = "Help me process this month's approved org-chart changes in OrgChart Studio. Check which monthly tools my installed version supports. Save the previous state before edits, stage source-linked proposals for review, preserve the official slide arrangement and support roles where supported, then help me save the reviewed state and a full backup. Report any unsupported steps.";
 
 export const orgChartNewerFeatures = [
+  "Durable-history builds add persistent user/agent undo and redo, conflict-aware reviewed reverts, recovery receipts and schema-v7 backups; availability follows actual installed controls and MCP tool discovery.",
   "Monthly updates with before-state checkpoints, a historical timeline and dated role lookup.",
   "A Current designation separate from Draft, source review and AI comparison results.",
   "Organization-tree library navigation and search across organizations, people and roles.",

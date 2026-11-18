@@ -462,7 +462,7 @@ export const apps: AppEntry[] = [
       },
     },
     sourceNote:
-      "Updated November 17, 2026. Manual commands install public main (v0.1.0); the ORNL workspace plugin v0.3.2 uses a verified v0.2.0 fresh-install pin. Newer local v0.3.0 builds are not a public release. Reuse an existing working copy and inspect versions before updating. Windows setup logs are under %LOCALAPPDATA%\\ORNL OrgChart Studio\\Installer.",
+      "Updated November 17, 2026. Manual commands install public main (v0.1.0); the ORNL workspace plugin v0.3.3 uses a verified v0.2.0 fresh-install pin. Newer local v0.3.0 builds are not a public release. Reuse an existing working copy and inspect versions before updating. Windows setup logs are under %LOCALAPPDATA%\\ORNL OrgChart Studio\\Installer.",
   },
   {
     slug: "usa-map-studio",

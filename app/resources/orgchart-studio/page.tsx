@@ -30,7 +30,7 @@ export default function OrgChartStudioPluginPage() {
         </div>
         <aside className="resource-hero__summary" aria-label="Plugin summary">
           <PlugsConnected weight="duotone" aria-hidden="true" />
-          <span>Plugin v{orgChartStudio.pluginVersion} · Updated {orgChartStudio.verifiedOn}</span>
+          <span>Plugin v{orgChartStudio.pluginVersion} · Updated {orgChartStudio.pluginUpdatedOn}</span>
           <strong>{orgChartStudio.pluginAccess}</strong>
           <ul><li>Mac and Windows install-and-launch helpers</li><li>Reuses an existing working app</li><li>Scoped MCP tools and normal app controls</li><li>10 workflows for charts, history and exports</li></ul>
         </aside>

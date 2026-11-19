@@ -12,4 +12,8 @@ Added Door Sign Studio to the existing Web apps category using the shared card a
 
 Updated README's included-web-app list and the existing rendered-catalog count expectation. Existing card styling and unrelated listings are retained. This catalog update links to the already deployed app; it does not change the app or publish a separate MCP endpoint.
 
-Validation: npm test passed all 13 rendered-site checks. npm run test:pages passed the production static export, TypeScript validation, and all six Pages checks. The first sandboxed Pages build could not reach Google Fonts; the same build passed with network access. Deployment and final live browser verification are pending.
+Validation: npm test passed all 13 rendered-site checks. npm run test:pages passed the production static export, TypeScript validation, and all six Pages checks. The first sandboxed Pages build could not reach Google Fonts; the same build passed with network access. Published in commit cdc260159c4c34d899510580a2be60021787f2b6. GitHub Pages deployment completed successfully: https://github.com/adammalin/Team-App-Library/actions/runs/44534574772 .
+
+Live browser verification passed: Door Sign Studio appears beside QR Studio in Web apps; category counts show two web apps and 15 total tools. Searching for signage filters correctly to the new card. Open Door Sign Studio opens https://adammalin.github.io/ORNL-Door-Signs/ in a new tab and the editor loads. The temporary launch-test tab was closed, existing Door Sign Studio tabs were retained, and the Team App Library Web apps view is left open. Screenshot: outputs/door-sign-studio-listing/live-web-apps.jpg.
+
+Final summary-only commit records the verified deployment; no additional application code changes were needed.

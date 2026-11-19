@@ -64,7 +64,7 @@ test("server-renders the app catalog", async () => {
   assert.match(html, /Web apps/);
   assert.match(html, /Custom GPTs/);
   assert.match(html, /Codex plugins/);
-  assert.match(html, /Showing[\s\S]{0,40}14[\s\S]{0,40}of[\s\S]{0,40}14[\s\S]{0,40}tools/);
+  assert.match(html, /Showing[\s\S]{0,40}15[\s\S]{0,40}of[\s\S]{0,40}15[\s\S]{0,40}tools/);
   assert.match(html, /Badge Blur/);
   assert.match(html, /src="\/assets\/icons\/badge-blur\.png"/);
   assert.match(html, /ORNL OrgChart Studio/);

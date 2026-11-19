@@ -10,6 +10,7 @@ A searchable catalog for the team's desktop apps, web apps, versioned Custom GPT
 
 ## Included web apps
 
+- Door Sign Studio
 - QR Studio
 
 ## Included Custom GPTs

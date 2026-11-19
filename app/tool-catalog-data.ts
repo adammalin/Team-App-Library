@@ -73,6 +73,24 @@ const desktopTools: ToolCatalogEntry[] = apps.map((app) => ({
 
 const webTools: ToolCatalogEntry[] = [
   {
+    slug: "door-sign-studio",
+    name: "Door Sign Studio",
+    category: "web-app",
+    kicker: "Browser-based ORNL door-sign designer",
+    description:
+      "Create ORNL door signs from editable layouts in multiple sizes. Add names, roles, and room numbers, choose approved imagery, save and reopen JSON designs, and download 300-dpi PNGs or exact-size PDFs for printing.",
+    versionLabel: "Live web app",
+    tags: ["Door signs", "Signage", "Templates", "Approved images", "JSON", "PNG", "PDF", "300 dpi"],
+    actions: [
+      {
+        label: "Open Door Sign Studio",
+        href: "https://adammalin.github.io/ORNL-Door-Signs/",
+        external: true,
+        kind: "primary",
+      },
+    ],
+  },
+  {
     slug: "qr-studio",
     name: "QR Studio",
     category: "web-app",

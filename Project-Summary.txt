@@ -1,0 +1,15 @@
+TEAM APP LIBRARY — DOOR SIGN STUDIO LISTING
+Updated: November 19, 2026
+
+Request: Add the existing Door Sign Studio web app to the team's apps website.
+
+Catalog: https://adammalin.github.io/Team-App-Library/
+Repository: https://github.com/adammalin/Team-App-Library
+Working checkout: /Users/ia2/Documents/Coding Projects/team-app-library
+Door Sign Studio: https://adammalin.github.io/ORNL-Door-Signs/
+
+Added Door Sign Studio to the existing Web apps category using the shared card and external-launch behavior. The listing describes editable ORNL sign layouts, names/roles/room numbers, approved imagery, portable JSON, 300-dpi PNG and exact-size PDF exports. Search keywords cover door signs, signage, templates, approved images, JSON, PNG, PDF, and 300 dpi. Counts derive from catalog data: two web apps and 15 total tools.
+
+Updated README's included-web-app list and the existing rendered-catalog count expectation. Existing card styling and unrelated listings are retained. This catalog update links to the already deployed app; it does not change the app or publish a separate MCP endpoint.
+
+Validation: npm test passed all 13 rendered-site checks. npm run test:pages passed the production static export, TypeScript validation, and all six Pages checks. The first sandboxed Pages build could not reach Google Fonts; the same build passed with network access. Deployment and final live browser verification are pending.

@@ -23,7 +23,7 @@ test("OrgChart Mac and Windows install and repair copy the canonical one-line co
     assert.ok(macCommand.includes(" && /bin/zsh "), "A failed Mac download must stop before script execution.");
     assert.match(html, /Terminal, Command Prompt, or PowerShell/);
     assert.doesNotMatch(html, /\$env:TEMP|normal, non-administrator PowerShell window/);
-    assert.match(html, /Desktop-Quick-Start-2026-11-17\.pdf/);
+    assert.match(html, /Quick-Start-2026-11-20\.pdf/);
   }
 });
 
@@ -451,7 +451,7 @@ test("OrgChart companion lists current access, release channels and install/laun
   assert.match(html,/unlisted/);
   assert.doesNotMatch(html,/Private pilot|currently private|Access required/);
   assert.match(html,/not a public release/);
-  assert.match(html,/Desktop-Quick-Start-2026-11-17\.pdf/);
+  assert.match(html,/Quick-Start-2026-11-20\.pdf/);
   assert.match(html,/orgchart-studio-install-macos\.txt/);
   assert.match(html,/orgchart-studio-install-windows\.txt/);
   assert.doesNotMatch(html,/href="[^"]*orgchart-studio-[0-9.]+\.zip/);

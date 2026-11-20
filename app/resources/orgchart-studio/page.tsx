@@ -26,6 +26,7 @@ export default function OrgChartStudioPluginPage() {
             <a className="resource-action resource-action--primary" href={orgChartStudio.pluginDirectoryUrl} target="_blank" rel="noreferrer">Get the companion plugin</a>
             <a className="resource-action" href={orgChartStudio.browserUrl} target="_blank" rel="noreferrer">Open browser app</a>
             <Link className="resource-action" href={orgChartStudio.browserGuidePath}>Browser guide</Link>
+            <a className="resource-action" href={asset(orgChartStudio.guidePath)} target="_blank" rel="noreferrer">Quick-start PDF</a>
           </div>
         </div>
         <aside className="resource-hero__summary" aria-label="Plugin summary">
@@ -76,7 +77,7 @@ export default function OrgChartStudioPluginPage() {
             <CodeBlock code={orgChartDesktopPrompt} label="Explicitly request the desktop app" />
             <p>Native installation and launch require Codex with local execution on that Mac or Windows computer. The companion reuses a working installation, checks the local service and discovers its MCP tools. A Dock or taskbar icon is not required.</p>
             <p><Link href="/apps/orgchart-studio/install">Desktop install commands</Link> · <Link href="/apps/orgchart-studio/update">Update or repair</Link> · <Link href="/apps/orgchart-studio/run">Launch again</Link> · <Link href="/apps/orgchart-studio/ai-integration">Desktop MCP connection</Link></p>
-            <p><a href={asset(orgChartStudio.guidePath)} target="_blank" rel="noreferrer">Mac &amp; Windows desktop quick-start PDF · November 17, 2026</a>. The dated PDF covers desktop setup. Copy the complete commands from the web instructions or download the <a href={asset("/assets/downloads/orgchart-studio-install-macos.txt")}>Mac command</a> and <a href={asset("/assets/downloads/orgchart-studio-install-windows.txt")}>Windows command</a>. Manual commands follow public main; the plugin retains its verified desktop source pin.</p>
+            <p><a href={asset(orgChartStudio.guidePath)} target="_blank" rel="noreferrer">Browser &amp; companion quick-start PDF · November 20, 2026</a>. Start with the browser and plugin instructions; page 3 covers optional desktop setup. Copy the complete commands from the web instructions or download the <a href={asset("/assets/downloads/orgchart-studio-install-macos.txt")}>Mac command</a> and <a href={asset("/assets/downloads/orgchart-studio-install-windows.txt")}>Windows command</a>. Manual commands follow public main; the plugin retains its verified desktop source pin.</p>
           </div></section>
         </article>
       </div>

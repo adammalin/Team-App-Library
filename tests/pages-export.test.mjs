@@ -301,7 +301,7 @@ test("OrgChart companion and complete commands survive the Pages base path", asy
   assert.match(html,/Anyone in ORNL with the link/);
   assert.match(html,/unlisted/);
   assert.doesNotMatch(html,/Private pilot|currently private|Access required/);
-  assert.match(html,new RegExp(`href="${basePath}/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-11-17\\.pdf"`));
+  assert.match(html,new RegExp(`href="${basePath}/assets/guides/ORNL-OrgChart-Studio-Quick-Start-2026-11-20\\.pdf"`));
   const decode=html=>html.replaceAll("&quot;",'"').replaceAll("&#x27;","'").replaceAll("&#39;","'").replaceAll("&amp;","&");
   for(const platform of ["macos","windows"]) {
     const command=(await readFile(new URL(`public/assets/downloads/orgchart-studio-install-${platform}.txt`,projectRoot),"utf8")).trim();
@@ -314,7 +314,7 @@ test("OrgChart companion and complete commands survive the Pages base path", asy
       assert.match(text,new RegExp(`href="${basePath}/assets/downloads/orgchart-studio-install-${platform}\\.txt"`));
     }
   }
-  const current=await readFile(new URL("out/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-11-17.pdf",projectRoot));
+  const current=await readFile(new URL("out/assets/guides/ORNL-OrgChart-Studio-Quick-Start-2026-11-20.pdf",projectRoot));
   assert.deepEqual(current,await readFile(new URL("out/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start.pdf",projectRoot)));
   const home=await readFile(new URL("out/index.html",projectRoot),"utf8");
   assert.match(home,new RegExp(`href="${basePath}/resources/orgchart-studio/"`));
@@ -347,4 +347,16 @@ test("OrgChart browser-first routes, companion notice and desktop alternatives s
   assert.match(plugin, /Plugin v(?:<!--.*?-->)*0.5.0/);
   assert.match(plugin, /ornl.sharepoint.com\/sites\/orgchart/);
   assert.doesNotMatch(plugin, /Plugin v0.3.3|Newer local app v0.3.0/);
+});
+
+
+test("current browser and plugin guides link the revised PDF and preserve the dated desktop original", async () => {
+  for (const route of ["web-apps/orgchart-studio", "resources/orgchart-studio", "apps/orgchart-studio"]) {
+    const html = await readFile(new URL(`out/${route}/index.html`, projectRoot), "utf8");
+    assert.match(html, new RegExp(`href="${basePath}/assets/guides/ORNL-OrgChart-Studio-Quick-Start-2026-11-20\\.pdf"`));
+  }
+  const dated = await readFile(new URL("out/assets/guides/ORNL-OrgChart-Studio-Quick-Start-2026-11-20.pdf", projectRoot));
+  assert.deepEqual(dated, await readFile(new URL("out/assets/guides/ORNL-OrgChart-Studio-Quick-Start.pdf", projectRoot)));
+  assert.deepEqual(dated, await readFile(new URL("out/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start.pdf", projectRoot)));
+  assert.deepEqual(await readFile(new URL("out/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-11-17.pdf", projectRoot)), await readFile(new URL("public/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-11-17.pdf", projectRoot)));
 });

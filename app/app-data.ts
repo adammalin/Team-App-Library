@@ -283,12 +283,13 @@ export const apps: AppEntry[] = [
     platformSummary: "macOS 13+ · Windows 10/11",
     guide: {
       href: assetPath(orgChartStudio.guidePath),
-      label: "OrgChart Studio Mac & Windows Quick Start",
-      note: "3-page guide · One-command Mac & Windows setup · November 17, 2026",
+      label: "OrgChart Studio Browser & Companion Quick Start",
+      note: "3-page guide · Browser first, companion plugin & optional desktop setup · November 20, 2026",
       preview: assetPath("/assets/guide-previews/orgchart-studio.png"),
     },
     additionalGuides: [
-      {href: assetPath(orgChartStudio.macGuidePath), label: "Current macOS companion", note: "2-page guide · November 17, 2026"},
+      {href: assetPath("/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-11-17.pdf"), label: "Previous desktop quick start", note: "Historical Mac & Windows guide · November 17, 2026"},
+      {href: assetPath(orgChartStudio.macGuidePath), label: "Previous macOS desktop guide", note: "Historical guide · November 17, 2026"},
       {href: assetPath("/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-10-27.pdf"), label: "Previous Mac & Windows guide", note: "Historical guide · October 27, 2026"},
     ],
     highlights: [

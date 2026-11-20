@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: "Use the latest OrgChart Studio in your browser. Open and save libraries, review AI changes, explore history, and enable its optional Codex companion plugin.",
 };
 
+const asset = (path: string) => (process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "") + path;
+
 export default function OrgChartBrowserPage() {
   return <div className="resource-page orgchart-workflow-page">
     <SiteHeader compact />
@@ -21,6 +23,7 @@ export default function OrgChartBrowserPage() {
           <p>Use the latest OrgChart Studio to update organizations, people and roles, review AI changes, explore historical checkpoints, and import or export your work. Start in Simple mode; switch to Advanced when you need detailed controls.</p>
           <div className="resource-actions">
             <a className="resource-action resource-action--primary" href={orgChartStudio.browserUrl} target="_blank" rel="noreferrer">Open OrgChart Studio</a>
+            <a className="resource-action" href={asset(orgChartStudio.guidePath)} target="_blank" rel="noreferrer">Quick-start PDF</a>
             <Link className="resource-action" href="/apps/orgchart-studio">Desktop alternative</Link>
           </div>
         </div>

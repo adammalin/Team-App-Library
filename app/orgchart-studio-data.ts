@@ -14,7 +14,7 @@ export const orgChartStudio = {
   publicAppVersion: "0.1.0",
   verifiedInstallVersion: "0.2.0",
   verifiedOn: "November 20, 2026",
-  guidePath: "/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start-2026-11-17.pdf",
+  guidePath: "/assets/guides/ORNL-OrgChart-Studio-Quick-Start-2026-11-20.pdf",
   macGuidePath: "/assets/guides/ORNL-OrgChart-Studio-macOS-Quick-Start-2026-11-17.pdf",
 } as const;
 

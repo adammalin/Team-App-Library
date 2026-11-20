@@ -47,14 +47,17 @@ const desktopTools: ToolCatalogEntry[] = apps.map((app) => ({
   name: app.name,
   category: "desktop-app",
   kicker: app.kicker,
-  description: app.description,
+  description: app.slug === "orgchart-studio" ? "Try OrgChart Studio in the browser first—no installation needed. Desktop remains an option for macOS and Windows; its separate installer can be older than the live web app." : app.description,
   versionLabel: `v${app.version} · ${app.platformSummary}`,
   tags: [
     ...app.platforms.map((platform) => (platform === "mac" ? "macOS" : "Windows")),
     app.aiIntegration.type === "local" ? "Local AI" : "MCP integration",
     "Desktop app",
   ],
-  actions: [
+  actions: app.slug === "orgchart-studio" ? [
+    {label: "Try browser first", href: orgChartStudio.browserUrl, external: true, kind: "primary"},
+    {label: "Desktop app guide", href: "/apps/orgchart-studio", kind: "secondary"},
+  ] : [
     {
       label: "Open app guide",
       href: `/apps/${app.slug}`,
@@ -72,6 +75,21 @@ const desktopTools: ToolCatalogEntry[] = apps.map((app) => ({
 }));
 
 const webTools: ToolCatalogEntry[] = [
+  {
+    slug: "orgchart-studio-web",
+    name: "OrgChart Studio · Browser",
+    category: "web-app",
+    kicker: "Recommended · Browser-first org charts",
+    description: "Create and update org charts, review AI proposals, explore historical checkpoints, and import or export libraries without installing an app. Save your working library file after changes. Optional Codex companion plugin available.",
+    versionLabel: `Live web app · Companion v${orgChartStudio.pluginVersion}`,
+    tags: ["Org charts", "Browser", "AI review", "History", "Import", "Export", "Companion plugin"],
+    icon: (process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "") + "/assets/icons/orgchart-studio-topbar.svg",
+    iconKind: "image",
+    actions: [
+      {label: "Open OrgChart Studio", href: orgChartStudio.browserUrl, external: true, kind: "primary"},
+      {label: "Browser guide & plugin", href: orgChartStudio.browserGuidePath, kind: "secondary"},
+    ],
+  },
   {
     slug: "door-sign-studio",
     name: "Door Sign Studio",
@@ -240,9 +258,9 @@ const codexPlugins: ToolCatalogEntry[] = [
     name: orgChartStudio.pluginName,
     category: "codex-plugin",
     kicker: "Codex Plugin · Org charts",
-    description: "Install and launch OrgChart Studio, prepare reviewed chart updates, work with saved history, and help with imports, exports and backups. Available to anyone in ORNL with the link.",
+    description: "Open OrgChart Studio in the browser first, prepare source-linked chart updates, review AI changes, preserve monthly history, and help with saving, imports and exports. Mac and Windows desktop setup remains available. Anyone in ORNL with the link can enable the companion.",
     versionLabel: `v${orgChartStudio.pluginVersion} · ORNL workspace`,
-    tags: ["Org charts", "macOS", "Windows", "App launcher", "ORNL workspace"],
+    tags: ["Org charts", "Browser first", "macOS", "Windows", "AI review", "ORNL workspace"],
     icon: (process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "") + "/assets/icons/orgchart-studio-topbar.svg",
     iconKind: "image",
     actions: [

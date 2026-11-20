@@ -1,4 +1,4 @@
-import { orgChartStudio, orgChartMacInstall, orgChartWindowsInstall, orgChartOpenPrompt } from "./orgchart-studio-data";
+import { orgChartStudio, orgChartMacInstall, orgChartWindowsInstall, orgChartDesktopPrompt } from "./orgchart-studio-data";
 
 export const sectionOrder = [
   "overview",
@@ -297,7 +297,7 @@ export const apps: AppEntry[] = [
       "Can expose optional local AI tools with chart scoping and human review",
     ],
     quickStart:
-      "Paste one command into Terminal on Mac or Terminal, Command Prompt, or PowerShell on Windows. Setup installs, checks, and opens the published app. With access to the Codex companion, ask it to install a missing app or launch the existing one.",
+      "Try the browser version first for the latest workflow without installation. If you need the desktop app, follow the Mac or Windows instructions below, or ask the Codex companion to open your existing desktop installation.",
     privacy:
       "Working chart data stays outside the application folder in Application Support or AppData by default. Use only content approved for the connected AI environment.",
     usageSteps: [
@@ -361,7 +361,7 @@ export const apps: AppEntry[] = [
         "Type /mcp in ChatGPT desktop or Codex and confirm orgchart_studio is enabled.",
       ],
       examples: [
-        {title: "Install or launch with Codex", body: "Anyone in the ORNL workspace can enable the plugin through its direct link. Reuse a working app instead of reinstalling it.", prompt: orgChartOpenPrompt},
+        {title: "Install or launch with Codex", body: "Anyone in the ORNL workspace can enable the plugin through its direct link. Reuse a working app instead of reinstalling it.", prompt: orgChartDesktopPrompt},
         {
           title: "Start with a read-only inventory",
           body: "Resolve the stable chart ID before requesting any change.",
@@ -462,7 +462,7 @@ export const apps: AppEntry[] = [
       },
     },
     sourceNote:
-      "Updated November 17, 2026. Manual commands install public main (v0.1.0); the ORNL workspace plugin v0.3.3 uses a verified v0.2.0 fresh-install pin. Newer local v0.3.0 builds are not a public release. Reuse an existing working copy and inspect versions before updating. Windows setup logs are under %LOCALAPPDATA%\\ORNL OrgChart Studio\\Installer.",
+      "Updated November 20, 2026. The latest workflow is available in the browser. Desktop manual commands still install public main (v0.1.0); the ORNL workspace plugin v0.5.0 retains its verified v0.2.0 desktop fresh-install pin. Reuse an existing working copy and inspect versions before updating. Windows setup logs are under %LOCALAPPDATA%\\ORNL OrgChart Studio\\Installer.",
   },
   {
     slug: "usa-map-studio",

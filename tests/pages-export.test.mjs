@@ -18,6 +18,7 @@ test("published OrgChart guides and setup commands are current for both platform
 
 const exportedPages = [
   "out/index.html",
+  "out/web-apps/orgchart-studio/index.html",
   "out/apps/badge-blur/index.html",
   "out/apps/orgchart-studio/index.html",
   "out/apps/usa-map-studio/index.html",
@@ -317,4 +318,33 @@ test("OrgChart companion and complete commands survive the Pages base path", asy
   assert.deepEqual(current,await readFile(new URL("out/assets/guides/ORNL-OrgChart-Studio-Desktop-Quick-Start.pdf",projectRoot)));
   const home=await readFile(new URL("out/index.html",projectRoot),"utf8");
   assert.match(home,new RegExp(`href="${basePath}/resources/orgchart-studio/"`));
+});
+
+
+test("OrgChart browser-first routes, companion notice and desktop alternatives survive export", async () => {
+  const browser = await readFile(new URL("out/web-apps/orgchart-studio/index.html", projectRoot), "utf8");
+  assert.match(browser, /<aside[^>]+aria-labelledby="companion-title"/);
+  assert.match(browser, /This app has a companion plugin/);
+  assert.match(browser, /href="https:\/\/chatgpt.com\/plugins\/Plugin_8765a02936388191b4ce25a3ad811246/);
+  assert.match(browser, /href="https:\/\/adammalin.github.io\/Org-Chart-Studio\/"/);
+  assert.match(browser, new RegExp(`href="${basePath}/resources/orgchart-studio/"`));
+  assert.match(browser, /Prepare library download/);
+  assert.match(browser, /cloud synchronization/);
+  assert.match(browser, /unencrypted by default/);
+  assert.match(browser, /History \/ Timeline/);
+  assert.match(browser, /Simple and Advanced/);
+  for (const section of ["", "install/", "update/", "run/", "usage/", "uninstall/", "ai-integration/"]) {
+    const desktop = await readFile(new URL(`out/apps/orgchart-studio/${section}index.html`, projectRoot), "utf8");
+    assert.match(desktop, /Try the browser version first/);
+    assert.match(desktop, new RegExp(`href="${basePath}/web-apps/orgchart-studio/"`));
+    assert.match(desktop, /href="https:\/\/adammalin.github.io\/Org-Chart-Studio\/"/);
+  }
+  const home = await readFile(new URL("out/index.html", projectRoot), "utf8");
+  assert.match(home, new RegExp(`href="${basePath}/web-apps/orgchart-studio/"`));
+  assert.match(home, /OrgChart Studio · Browser/);
+  assert.match(home, /Try browser first/);
+  const plugin = await readFile(new URL("out/resources/orgchart-studio/index.html", projectRoot), "utf8");
+  assert.match(plugin, /Plugin v(?:<!--.*?-->)*0.5.0/);
+  assert.match(plugin, /ornl.sharepoint.com\/sites\/orgchart/);
+  assert.doesNotMatch(plugin, /Plugin v0.3.3|Newer local app v0.3.0/);
 });

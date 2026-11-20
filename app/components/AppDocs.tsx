@@ -25,7 +25,7 @@ import { AppIcon } from "./AppIcon";
 import { CodeBlock } from "./CodeBlock";
 import { GuideCard } from "./GuideCard";
 import { SiteHeader } from "./SiteHeader";
-import { orgChartStudio, orgChartOpenPrompt, orgChartNewerFeatures } from "../orgchart-studio-data";
+import { orgChartStudio, orgChartDesktopPrompt, orgChartNewerFeatures } from "../orgchart-studio-data";
 
 const pageAnchors: Record<SectionId, { id: string; label: string }[]> = {
   overview: [
@@ -249,9 +249,9 @@ function PlatformCommands({
 function OrgChartRecentFeatures() {
   return (
     <section className="content-block" id="newer-builds">
-      <span className="eyebrow">Newer local builds · v{orgChartStudio.localAppVersion}</span>
-      <h2>What the latest local app adds</h2>
-      <p>These capabilities are available in the newer local build. Public manual installs still follow v{orgChartStudio.publicAppVersion}; the plugin’s verified fresh-install source is v{orgChartStudio.verifiedInstallVersion}. Check your installed version before starting a workflow.</p>
+      <span className="eyebrow">Available in the live browser app</span>
+      <h2>Use the latest browser workflow</h2>
+      <p>The live browser app includes these capabilities. Desktop tools depend on the installed build: manual installs follow v{orgChartStudio.publicAppVersion}; the plugin’s verified fresh-install source remains v{orgChartStudio.verifiedInstallVersion}. <Link href={orgChartStudio.browserGuidePath}>Start with the browser guide</Link>.</p>
       <ul className="check-list">{orgChartNewerFeatures.map(feature => <li key={feature}><CheckCircle weight="fill" />{feature}</li>)}</ul>
       <p><Link href={orgChartStudio.pluginGuidePath}>Use the companion plugin</Link> to check which tools your running app exposes. A source comparison does not replace human review or designate a chart Current.</p>
     </section>
@@ -396,7 +396,7 @@ function Run({ app }: { app: AppEntry }) {
         </p>
       </section>
       <section className="content-block">
-        {app.slug === "orgchart-studio" ? <CodeBlock code={orgChartOpenPrompt} label="Ask the Codex companion to launch Studio" /> : null}
+        {app.slug === "orgchart-studio" ? <CodeBlock code={orgChartDesktopPrompt} label="Ask the Codex companion to launch desktop Studio" /> : null}
         <PlatformCommands app={app} kind="run" />
       </section>
       <section id="rerun">
@@ -676,8 +676,8 @@ export function AppDocs({ app, section }: { app: AppEntry; section: SectionId })
             </div>
           </div>
           {app.slug === "orgchart-studio" ? (
-            <Note title="App and plugin versions">
-              Public manual install: v{orgChartStudio.publicAppVersion}. Codex companion: v{orgChartStudio.pluginVersion}, using a verified v{orgChartStudio.verifiedInstallVersion} fresh-install source. Newer local v{orgChartStudio.localAppVersion} builds are not a public release. <Link href={orgChartStudio.pluginGuidePath}>Plugin guide, access and version details</Link>.
+            <Note title="Try the browser version first">
+              <a href={orgChartStudio.browserUrl} target="_blank" rel="noreferrer">Open the latest OrgChart Studio in your browser</a>—no app installation needed. <Link href={orgChartStudio.browserGuidePath}>Browser guide &amp; companion plugin</Link>. The instructions below are for the optional desktop app. Public manual install: v{orgChartStudio.publicAppVersion}; companion v{orgChartStudio.pluginVersion} keeps its verified v{orgChartStudio.verifiedInstallVersion} desktop fresh-install source. <Link href={orgChartStudio.pluginGuidePath}>Plugin guide, access and version details</Link>.
             </Note>
           ) : null}
           <SectionContent app={app} section={section} />

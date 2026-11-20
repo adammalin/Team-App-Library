@@ -3914,3 +3914,53 @@ img {
     font-size: 2.4rem;
   }
 }
+
+/* OrgChart's browser-first guides share the existing resource-page design. */
+.orgchart-workflow-page .resource-section {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.orgchart-workflow-page .resource-section p,
+.orgchart-workflow-page .resource-section li {
+  font-size: 1rem;
+}
+
+.orgchart-companion-notice {
+  border-left-color: var(--ornl-green);
+  margin: 2.5rem auto;
+  max-width: 1360px;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.orgchart-companion-notice > div {
+  min-width: 0;
+}
+
+.orgchart-companion-notice h2 {
+  color: var(--ornl-hale-navy);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.2;
+  margin: 0 0 0.8rem;
+}
+
+.orgchart-companion-notice p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.orgchart-companion-notice .resource-actions {
+  margin: 1.25rem 0 0.75rem;
+}
+
+.orgchart-companion-notice .resource-action {
+  background: var(--ornl-green);
+  color: var(--ornl-polar);
+  font-size: 1rem;
+  white-space: normal;
+}
+
+.orgchart-companion-notice .resource-action:not(.resource-action--primary) {
+  background: var(--ornl-polar);
+  border-color: var(--ornl-hale-navy);
+  color: var(--ornl-hale-navy);
+}

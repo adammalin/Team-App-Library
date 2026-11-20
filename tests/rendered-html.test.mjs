@@ -64,7 +64,7 @@ test("server-renders the app catalog", async () => {
   assert.match(html, /Web apps/);
   assert.match(html, /Custom GPTs/);
   assert.match(html, /Codex plugins/);
-  assert.match(html, /Showing[\s\S]{0,40}15[\s\S]{0,40}of[\s\S]{0,40}15[\s\S]{0,40}tools/);
+  assert.match(html, /Showing[\s\S]{0,40}16[\s\S]{0,40}of[\s\S]{0,40}16[\s\S]{0,40}tools/);
   assert.match(html, /Badge Blur/);
   assert.match(html, /src="\/assets\/icons\/badge-blur\.png"/);
   assert.match(html, /ORNL OrgChart Studio/);
@@ -445,7 +445,7 @@ test("OrgChart companion lists current access, release channels and install/laun
   const response = await render("/resources/orgchart-studio");
   assert.equal(response.status, 200);
   const html = (await response.text()).replace(/<!--[\s\S]*?-->/g, "");
-  for(const text of ["Plugin v0.3.3", "Public manual install v0.1.0", "Verified plugin install v0.2.0", "Newer local app v0.3.0", "ORNL workspace", "unlisted", "Monthly updates", "Matrix Support", "Current designation"]) assert.ok(html.includes(text),text);
+  for(const text of ["Plugin v0.5.0", "Public manual install v0.1.0", "Verified plugin install v0.2.0", "Browser first", "ORNL workspace", "unlisted", "Monthly updates", "Matrix Support", "Current designation"]) assert.ok(html.includes(text),text);
   assert.match(html,/Plugin_8765a02936388191b4ce25a3ad811246/);
   assert.match(html,/Anyone in ORNL with the link/);
   assert.match(html,/unlisted/);
@@ -458,7 +458,7 @@ test("OrgChart companion lists current access, release channels and install/laun
   for(const section of ["", "/install", "/update", "/run", "/usage", "/uninstall", "/ai-integration"]) {
     const page=await render("/apps/orgchart-studio"+section),text=await page.text();
     assert.equal(page.status,200);
-    assert.match(text,/App and plugin versions/);
+    assert.match(text,/Try the browser version first/);
     assert.match(text,/resources\/orgchart-studio/);
     assert.match(text,/verified v[\s\S]{0,30}0.2.0/);
   }
